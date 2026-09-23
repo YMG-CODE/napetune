@@ -1,156 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>曐間のTERMINALIS — CONTINUE ONLINE</title><style>
-:root{--bg:#030a0e;--text:#e8edf0;--muted:#82939b;--line:#27404a;--cyan:#34e6ee}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:radial-gradient(circle at 75% 0%,rgba(24,104,128,.16),transparent 31rem),linear-gradient(#02080c,#050d11 45%,#02080c);font-family:"Noto Sans JP","Yu Gothic",sans-serif;line-height:2.05;letter-spacing:.035em}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.018) 4px)}.top{min-height:74vh;display:grid;place-items:center;padding:56px 24px 72px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}.top:after{content:"";position:absolute;width:380px;height:380px;border:1px solid rgba(52,230,238,.16);border-radius:50%;right:-140px;top:90px;box-shadow:0 0 70px rgba(52,230,238,.08)}.hero{width:min(760px,100%);position:relative;z-index:1}.kicker,.system,.chapter-no,.meta{font-family:Consolas,"Courier New",monospace}.kicker{color:var(--cyan);letter-spacing:.26em;font-size:.78rem}h1{font-size:clamp(2rem,7vw,4.7rem);font-weight:400;letter-spacing:.08em;margin:.45em 0 .12em}.subtitle{color:var(--muted);letter-spacing:.18em}.signal{margin-top:48px;border-left:2px solid var(--cyan);padding:10px 0 10px 20px;color:#b9faff}.meta{margin-top:42px;color:var(--muted);font-size:.78rem;letter-spacing:.12em}main{width:min(720px,calc(100% - 38px));margin:0 auto;padding:72px 0 140px}.chapter-head{margin:110px 0 54px;padding-top:26px;border-top:1px solid var(--line);display:flex;gap:22px;align-items:baseline}.chapter-no{font-size:.82rem;color:var(--cyan);letter-spacing:.16em}h2{font-size:1.55rem;font-weight:500;letter-spacing:.09em;margin:0}p{margin:0 0 .62em;font-family:"Noto Serif JP","Yu Mincho",serif;font-size:1.03rem}.breath{height:1.05rem}.system{margin:22px 0;padding:15px 18px;border-left:1px solid var(--cyan);background:rgba(52,230,238,.045);color:var(--cyan);font-size:.88rem;letter-spacing:.07em;white-space:pre-wrap}.divider{display:flex;align-items:center;gap:14px;margin:76px 0;color:var(--muted);font:11px Consolas,monospace;letter-spacing:.2em}.divider span{height:1px;background:var(--line);flex:1}footer{border-top:1px solid var(--line);padding:30px;text-align:center;color:var(--muted);font:11px Consolas,monospace;letter-spacing:.15em}@media(max-width:600px){body{line-height:1.95}.top{min-height:62vh;padding-top:42px}main{padding-top:34px}p{font-size:.98rem}.chapter-head{margin-top:76px}}
-
-/* --- STORY FX --- */
-ruby rt{font-size:.28em;letter-spacing:.12em;color:#8beef2}
-#fx-boot{position:fixed;inset:0;z-index:9999;background:#02070a;display:grid;place-items:center;transition:opacity .7s ease,visibility .7s ease}.fx-boot-inner{width:min(620px,84vw);font:12px/1.8 Consolas,"Courier New",monospace;color:#86eef2;letter-spacing:.12em}.fx-boot-line{opacity:.28;margin:.35em 0}.fx-boot-line.on{opacity:1;text-shadow:0 0 14px rgba(52,230,238,.42)}.fx-boot.done{opacity:0;visibility:hidden}.fx-flash{position:fixed;inset:0;z-index:9997;pointer-events:none;opacity:0}.fx-flash.red{background:rgba(255,25,25,.15)}.fx-flash.cyan{background:radial-gradient(circle at 50% 45%,rgba(52,230,238,.16),rgba(52,230,238,.02) 45%,transparent 70%)}.fx-flash.black{background:#000}.fx-flash.pulse{animation:fxPulse 1.9s ease-in-out 2}.fx-flash.blink{animation:fxBlink .18s linear 1}.fx-flash.blackout{animation:fxBlackout .24s linear 1}.fx-flash.signal{animation:fxSignal 1.35s ease-out 1}.fx-flash.impulse{background:repeating-linear-gradient(90deg,transparent 0 9%,rgba(52,230,238,.06) 9.4% 9.8%,transparent 10.2% 18%);animation:fxImpulse .8s ease-out 1;transform-origin:center}
-@keyframes fxPulse{0%,100%{opacity:0}18%{opacity:.28}38%{opacity:.05}58%{opacity:.22}80%{opacity:.03}}
-@keyframes fxBlink{0%,100%{opacity:0}45%{opacity:.8}}
-@keyframes fxBlackout{0%{opacity:0}25%{opacity:1}75%{opacity:1}100%{opacity:0}}
-@keyframes fxSignal{0%{opacity:0;filter:blur(10px)}35%{opacity:.6;filter:blur(2px)}100%{opacity:0;filter:blur(0)}}
-@keyframes fxImpulse{0%{opacity:0;transform:scaleX(.7)}35%{opacity:.85;transform:scaleX(1.03)}100%{opacity:0;transform:scaleX(1.25)}}
-.system.fx-system{position:relative;overflow:hidden}.system.fx-system::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);transform:translateX(-120%)}.system.fx-system.reveal::after{animation:scanSweep .7s ease-out 1}@keyframes scanSweep{to{transform:translateX(120%)}}
-.system .type-cursor{display:inline-block;width:.55em;height:1em;border-right:1px solid currentColor;transform:translateY(.15em);animation:cursor .75s step-end infinite}@keyframes cursor{50%{border-color:transparent}}
-.glitch{animation:glitch .42s steps(2,end) 1}@keyframes glitch{0%,100%{transform:none;filter:none}20%{transform:translateX(-2px);filter:drop-shadow(2px 0 rgba(255,0,40,.8))}40%{transform:translateX(2px);filter:drop-shadow(-2px 0 rgba(0,220,255,.85))}60%{transform:translateX(-1px)}80%{transform:translateX(1px)}}
-.signal-event{box-shadow:0 0 0 1px rgba(52,230,238,.12),0 0 28px rgba(52,230,238,.07)}
-.reticle-ring{position:fixed;left:50%;top:50%;width:26vmin;height:26vmin;margin:-13vmin 0 0 -13vmin;border:1px solid rgba(52,230,238,.5);border-radius:50%;z-index:9996;pointer-events:none;opacity:0}.reticle-ring::before,.reticle-ring::after{content:"";position:absolute;background:rgba(52,230,238,.55)}.reticle-ring::before{left:50%;top:-8vmin;width:1px;height:42vmin}.reticle-ring::after{top:50%;left:-8vmin;height:1px;width:42vmin}.reticle-ring.deploy{animation:reticleDeploy 1.1s cubic-bezier(.16,.8,.2,1) 1}@keyframes reticleDeploy{0%{opacity:0;transform:scale(.25) rotate(-45deg)}35%{opacity:.9}100%{opacity:0;transform:scale(1.7) rotate(0)}}
-.fx-hud-badge{position:fixed;right:16px;bottom:14px;z-index:50;font:10px Consolas,monospace;letter-spacing:.16em;color:#5e7a82;opacity:.55;pointer-events:none}.fx-hud-badge b{color:#7ceff3;font-weight:400}
-@media(prefers-reduced-motion:reduce){#fx-boot{display:none}.fx-flash,.reticle-ring,.system.fx-system::after{animation:none!important}.system .type-cursor{display:none}}
-
-
-/* --- CORTIA MAP INSERT --- */
-.cortia-map{
-  margin:64px 0 74px;
-  border:1px solid rgba(52,230,238,.28);
-  background:
-    linear-gradient(rgba(52,230,238,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(52,230,238,.025) 1px,transparent 1px),
-    radial-gradient(circle at 50% 48%,rgba(52,230,238,.07),transparent 55%),
-    #02090d;
-  background-size:24px 24px,24px 24px,auto,auto;
-  position:relative;
-  overflow:hidden;
-  box-shadow:0 0 42px rgba(0,0,0,.28);
-}
-.cortia-map::before{
-  content:"CORTIA / MARGIT TERMINAL DISTRICT";
-  display:block;
-  padding:14px 18px 11px;
-  border-bottom:1px solid rgba(52,230,238,.18);
-  color:#8beef2;
-  font:11px Consolas,"Courier New",monospace;
-  letter-spacing:.16em;
-}
-.cortia-map .map-caption{
-  padding:10px 18px 14px;
-  border-top:1px solid rgba(52,230,238,.14);
-  color:#70858e;
-  font:10px Consolas,"Courier New",monospace;
-  letter-spacing:.12em;
-}
-.cortia-map svg{display:block;width:100%;height:auto}
-.cortia-map .zone{fill:rgba(8,22,29,.82);stroke:rgba(126,211,219,.35);stroke-width:1.4}
-.cortia-map .core{fill:rgba(20,78,90,.28);stroke:#34e6ee;stroke-width:2}
-.cortia-map .route{fill:none;stroke:rgba(52,230,238,.30);stroke-width:3;stroke-dasharray:8 7}
-.cortia-map .daily{fill:none;stroke:rgba(255,255,255,.44);stroke-width:2.2;stroke-dasharray:4 6}
-.cortia-map .label{fill:#e8edf0;font:600 17px "Noto Sans JP","Yu Gothic",sans-serif;letter-spacing:.05em}
-.cortia-map .sub{fill:#7f949d;font:12px Consolas,"Courier New",monospace;letter-spacing:.08em}
-.cortia-map .cyan{fill:#8bf7fb}
-.cortia-map .tiny{fill:#6e838c;font:10px Consolas,"Courier New",monospace;letter-spacing:.08em}
-.cortia-map .hill{fill:none;stroke:rgba(163,184,192,.25);stroke-width:1.2}
-@media(max-width:600px){
-  .cortia-map{margin:44px 0 54px}
-  .cortia-map .label{font-size:14px}
-  .cortia-map .sub{font-size:10px}
-}
-
-
-/* --- CHAPTER READER UI v2 --- */
-:root{--reader-panel:rgba(3,12,17,.94)}
-body.reader-mode{overflow-x:hidden}
-.reader-start{position:fixed;inset:0;z-index:9998;display:grid;place-items:center;padding:24px;background:
-radial-gradient(circle at 50% 32%,rgba(52,230,238,.11),transparent 34rem),
-linear-gradient(180deg,rgba(1,6,9,.97),rgba(2,9,13,.995));transition:opacity .45s ease,visibility .45s ease}
-.reader-start.hidden{opacity:0;visibility:hidden;pointer-events:none}
-.reader-start-card{width:min(620px,92vw);border:1px solid rgba(52,230,238,.24);padding:34px 30px 28px;background:rgba(2,9,13,.78);box-shadow:0 0 70px rgba(52,230,238,.06)}
-.reader-start-kicker,.reader-start-meta,.reader-progress-label,.reader-controls,.reader-resume{font-family:Consolas,"Courier New",monospace}
-.reader-start-kicker{font-size:.72rem;letter-spacing:.25em;color:var(--cyan)}
-.reader-start h3{font-size:clamp(1.7rem,6vw,3.3rem);font-weight:400;letter-spacing:.08em;margin:.5em 0 .2em}
-.reader-start-sub{color:var(--muted);letter-spacing:.16em;margin-bottom:30px}
-.reader-start-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:.76rem;letter-spacing:.11em;color:#a9c1c8}
-.reader-start-meta b{font-weight:400;color:#dffcff}
-.reader-start-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
-.reader-btn{appearance:none;border:1px solid rgba(52,230,238,.42);background:rgba(52,230,238,.055);color:#dffcff;padding:12px 18px;font:12px Consolas,monospace;letter-spacing:.15em;cursor:pointer;transition:.2s}
-.reader-btn:hover,.reader-btn:focus{background:rgba(52,230,238,.13);box-shadow:0 0 20px rgba(52,230,238,.08);outline:none}
-.reader-btn.primary{background:rgba(52,230,238,.13)}
-.reader-resume{margin-top:13px;color:var(--muted);font-size:.7rem;letter-spacing:.08em}
-.reader-progress{position:sticky;top:0;z-index:80;background:linear-gradient(180deg,rgba(2,8,12,.97),rgba(2,8,12,.88));backdrop-filter:blur(8px);border-bottom:1px solid rgba(52,230,238,.14);padding:10px 18px 9px}
-.reader-progress-inner{width:min(720px,calc(100% - 2px));margin:auto}
-.reader-progress-row{display:flex;align-items:center;justify-content:space-between;gap:14px}
-.reader-progress-label{font-size:.66rem;letter-spacing:.16em;color:#8ba0a8;white-space:nowrap}
-.reader-progress-label b{color:#bff8fb;font-weight:400}
-.reader-dots{display:flex;gap:6px;align-items:center;justify-content:flex-end;flex:1}
-.reader-dot{width:5px;height:5px;border-radius:50%;background:#20353c;transition:.25s}
-.reader-dot.done{background:#50747c}
-.reader-dot.active{background:var(--cyan);box-shadow:0 0 10px rgba(52,230,238,.7);transform:scale(1.35)}
-.reader-bar{height:1px;background:#18313a;margin-top:8px;overflow:hidden}
-.reader-bar span{display:block;height:100%;width:0;background:var(--cyan);box-shadow:0 0 9px rgba(52,230,238,.6);transition:width .35s ease}
-.reader-stage{display:none}
-.reader-stage.active{display:block;animation:readerIn .38s ease-out}
-@keyframes readerIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.reader-controls{margin:72px 0 14px;padding-top:24px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px}
-.reader-controls button{appearance:none;border:0;background:transparent;color:#a8c1c8;font:11px Consolas,monospace;letter-spacing:.14em;cursor:pointer;padding:12px 4px}
-.reader-controls button:hover{color:#e9ffff}
-.reader-controls button:disabled{opacity:.18;cursor:default}
-.reader-controls .next{text-align:right;color:#bff8fb}
-.reader-controls .prev{text-align:left}
-.reader-controls .counter{color:#5f7780;font-size:10px;letter-spacing:.12em}
-.reader-chapter-next{display:block;color:#6f858d;font-size:.68rem;margin-top:4px}
-.reader-end-note{text-align:center;margin:36px 0 10px;color:#82939b;font:10px Consolas,monospace;letter-spacing:.16em}
-body[data-reader-chapter="11"] .reader-progress{border-bottom-color:rgba(52,230,238,.35)}
-body[data-reader-chapter="11"] .reader-dot.active{animation:readerSignal 1.4s ease-in-out infinite}
-@keyframes readerSignal{50%{box-shadow:0 0 18px rgba(52,230,238,.95)}}
-@media(max-width:600px){
- .reader-start-card{padding:28px 22px 22px}
- .reader-start-meta{grid-template-columns:1fr}
- .reader-progress{padding-left:12px;padding-right:12px}
- .reader-progress-label{font-size:.59rem}
- .reader-dots{gap:5px}.reader-dot{width:4px;height:4px}
- .reader-controls{grid-template-columns:1fr 1fr}.reader-controls .counter{display:none}
-}
-
-</style></head><body class="reader-mode">
-<div id="reader-start" class="reader-start">
-  <div class="reader-start-card">
-    <div class="reader-start-kicker">MARGIT ARCHIVE / PROLOGUE</div>
-    <h3><ruby>曐間<rt>せいかん</rt></ruby>のTERMINALIS</h3>
-    <div class="reader-start-sub">CONTINUE ONLINE — DAY 0</div>
-    <div class="reader-start-meta">
-      <span>RECORDS <b id="reader-count">12</b></span>
-      <span>READING TIME <b id="reader-time">-- MIN</b></span>
-      <span>STATUS <b>ARCHIVE READY</b></span>
-      <span>FORMAT <b>INTERACTIVE PROLOGUE</b></span>
-    </div>
-    <div class="reader-start-actions">
-      <button id="reader-start-btn" class="reader-btn primary">START / 01</button>
-      <button id="reader-resume-btn" class="reader-btn" hidden>CONTINUE</button>
-    </div>
-    <div id="reader-resume-text" class="reader-resume">Progress is stored only in this browser.</div>
-  </div>
-</div>
-<div id="reader-progress" class="reader-progress" hidden>
-  <div class="reader-progress-inner">
-    <div class="reader-progress-row">
-      <div class="reader-progress-label">MARGIT ARCHIVE / <b id="reader-record">RECORD 01 / 12</b></div>
-      <div id="reader-dots" class="reader-dots" aria-label="chapter progress"></div>
-    </div>
-    <div class="reader-bar"><span id="reader-bar-fill"></span></div>
-  </div>
-</div>
-<div id="fx-boot"><div class="fx-boot-inner"><div class="fx-boot-line" data-t="0">CONNECTING...</div><div class="fx-boot-line" data-t="420">MARGIT ARCHIVE : LINK ESTABLISHED</div><div class="fx-boot-line" data-t="880">CONTINUE ONLINE</div></div></div><div id="fx-red" class="fx-flash red"></div><div id="fx-cyan" class="fx-flash cyan"></div><div id="fx-black" class="fx-flash black"></div><div id="fx-impulse" class="fx-flash impulse"></div><div id="fx-reticle" class="reticle-ring"></div><div class="fx-hud-badge">ARCHIVE / <b>LIVE</b></div><header class="top"><div class="hero"><div class="kicker">CONTINUE ONLINE / PROLOGUE</div><h1><ruby>曐間<rt>せいかん</rt></ruby>のTERMINALIS</h1><div class="subtitle">SEIKAN NO TERMINALIS</div><div class="signal">UNKNOWN SIGNAL DETECTED<br>CONTACT : UNKNOWN<br>SIGNAL : UNSTABLE</div><div class="meta">MARGIT ARCHIVE / RECONSTRUCTING RECORD...</div></div></header><main><p>『曐間のTERMINALIS』</p>
-<p>CONTINUE ONLINE — PROLOGUE</p>
-<p>編集用たたき台 v0.1</p>
-<section class="chapter-head"><div class="chapter-no">01</div><h2>今日も、二人分。</h2></section>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>曐間のTERMINALIS — CONTINUE ONLINE</title><style>body{margin:0;background:#03090d;color:#e8eef1;font-family:'Yu Gothic',sans-serif;line-height:2.05;letter-spacing:.035em}body:before{content:'';position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.12;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.02) 4px)}#fx{position:fixed;inset:0;z-index:60;pointer-events:none}.flash,.blackout,.streak{position:absolute;inset:0;opacity:0}.flash.red{background:rgba(180,0,0,.15)}.flash.cyan{background:rgba(0,220,255,.08)}.blackout{background:#000}.reticlefx{position:absolute;left:50%;top:50%;width:32vmin;height:32vmin;transform:translate(-50%,-50%) scale(.4);border:1px solid rgba(66,237,244,.2);border-radius:50%;opacity:0}.reticlefx:before,.reticlefx:after{content:'';position:absolute;background:rgba(66,237,244,.75)}.reticlefx:before{left:50%;top:-12%;width:1px;height:124%}.reticlefx:after{top:50%;left:-12%;height:1px;width:124%}.streak{background:repeating-linear-gradient(110deg,transparent 0 28px,rgba(66,237,244,.09) 29px 30px,transparent 31px 56px)}.boot{position:fixed;z-index:100;inset:0;background:#010609;display:grid;place-items:center;transition:opacity .55s}.boot.hide{opacity:0;pointer-events:none}.bootbox{width:min(640px,84vw);font:14px Consolas,monospace;color:#42edf4;letter-spacing:.09em}.bootline{opacity:.2;margin:.65em 0}.bootline.on{opacity:1}.top{min-height:70vh;display:grid;place-items:center;padding:55px 24px 70px;border-bottom:1px solid #20353e}.hero{width:min(800px,100%)}.kicker,.system,.chapter-no,.meta{font-family:Consolas,'Courier New',monospace}.kicker{color:#42edf4;letter-spacing:.24em;font-size:.78rem}h1{font-size:clamp(2.3rem,7vw,5rem);font-weight:400;letter-spacing:.075em;margin:.45em 0 .1em}ruby rt{font-size:.27em;letter-spacing:.16em}.subtitle{color:#7f929a;letter-spacing:.2em}.signal{margin-top:45px;border-left:2px solid #42edf4;padding:10px 0 10px 20px;color:#bcfbff;font:14px Consolas,monospace;letter-spacing:.09em}.meta{margin-top:38px;color:#7f929a;font-size:.75rem;letter-spacing:.12em}main{width:min(730px,calc(100% - 38px));margin:0 auto;padding:70px 0 145px}.chapter-head{margin:105px 0 52px;padding-top:24px;border-top:1px solid #20353e;display:flex;gap:20px;align-items:baseline}.chapter-no{font-size:.8rem;color:#42edf4;letter-spacing:.16em}h2{font-size:1.55rem;font-weight:500;letter-spacing:.09em;margin:0}p{margin:0 0 .68em;font-family:'Yu Mincho',serif;font-size:1.02rem}.system{margin:22px 0;padding:14px 17px;border-left:1px solid #42edf4;background:rgba(66,237,244,.045);color:#42edf4;font-size:.86rem;letter-spacing:.075em;overflow:hidden}.system.danger{border-left-color:#ff5a5a;color:#ff8a8a;background:rgba(255,60,60,.045)}.voice-fragment{position:relative;color:#c7fbff;text-shadow:1px 0 rgba(66,237,244,.65),-1px 0 rgba(255,255,255,.15);animation:signalJitter 1.5s infinite steps(2,end)}.voice-clear{color:#ecfeff;font-size:1.08em;text-shadow:0 0 16px rgba(66,237,244,.42)}@keyframes signalJitter{0%,86%,100%{transform:none}88%{transform:translateX(1px)}90%{transform:translateX(-1px)}92%{transform:none}}.cortia-map{margin:62px 0 72px;border:1px solid rgba(66,237,244,.27);background:#02090d;overflow:hidden}.cortia-map svg{display:block;width:100%;height:auto}.map-caption{padding:10px 16px 13px;border-top:1px solid rgba(66,237,244,.13);color:#6e838c;font:10px Consolas,monospace;letter-spacing:.1em}.zone{fill:rgba(8,22,29,.82);stroke:rgba(126,211,219,.35);stroke-width:1.4}.core{fill:rgba(20,78,90,.28);stroke:#42edf4;stroke-width:2}.route{fill:none;stroke:rgba(66,237,244,.28);stroke-width:3;stroke-dasharray:8 7}.daily{fill:none;stroke:rgba(255,255,255,.42);stroke-width:2.2;stroke-dasharray:4 6}.label{fill:#e8edf0;font:600 17px 'Yu Gothic',sans-serif;letter-spacing:.05em}.sub{fill:#7f949d;font:12px Consolas,monospace;letter-spacing:.08em}.cyan{fill:#8bf7fb}.tiny{fill:#6e838c;font:10px Consolas,monospace;letter-spacing:.08em}.hill{fill:none;stroke:rgba(163,184,192,.25);stroke-width:1.2}footer{border-top:1px solid #20353e;padding:28px;text-align:center;color:#7f929a;font:11px Consolas,monospace;letter-spacing:.14em}@media(max-width:600px){body{line-height:1.92}.top{min-height:62vh}.chapter-head{margin-top:74px}.cortia-map{margin:44px 0 54px}.label{font-size:14px}.sub{font-size:10px}p{font-size:.97rem}}</style></head><body><div class="boot"><div class="bootbox"><div class="bootline">CONNECTING...</div><div class="bootline">MARGIT ARCHIVE : LINK ESTABLISHED</div><div class="bootline">CONTINUE ONLINE</div></div></div><div id="fx"><div class="flash red"></div><div class="flash cyan"></div><div class="blackout"></div><div class="reticlefx"></div><div class="streak"></div></div><header class="top"><div class="hero"><div class="kicker">CONTINUE ONLINE / PROLOGUE</div><h1><ruby>曐間<rt>せいかん</rt></ruby>のTERMINALIS</h1><div class="subtitle">SEIKAN NO TERMINALIS</div><div class="signal">UNKNOWN SIGNAL DETECTED<br>CONTACT : UNKNOWN<br>SIGNAL : UNSTABLE</div><div class="meta">MARGIT ARCHIVE / RECONSTRUCTING RECORD...</div></div></header><main><section class="chapter-head" id="ch01"><div class="chapter-no">01</div><h2>今日も、二人分。</h2></section>
 <p>卵を一つ割ってから、イズ・ローレットは少し考えた。</p>
 <p>もう一つ。</p>
 <p>小さなボウルの縁で殻を割る。二つ目の卵が、先に入れたものの隣へ落ちた。</p>
@@ -190,70 +38,34 @@ body[data-reader-chapter="11"] .reader-dot.active{animation:readerSignal 1.4s ea
 <svg viewBox="0 0 760 560" role="img" aria-labelledby="cortiaMapTitle cortiaMapDesc">
 <title id="cortiaMapTitle">コルティア Margitターミナル周辺概略図</title>
 <desc id="cortiaMapDesc">中央にMargitターミナル、西に学校、東に研究施設、北に商業区と繁華街、南に公園とイズの家、南東の丘に天文台がある。</desc>
-
-<!-- cardinal frame -->
 <path d="M380 35 L380 73 M365 52 L380 35 L395 52" stroke="#8bf7fb" stroke-width="2" fill="none"/>
 <text x="380" y="25" text-anchor="middle" class="sub cyan">N / NORTH</text>
 <text x="380" y="542" text-anchor="middle" class="sub">S / SOUTH</text>
 <text x="26" y="286" class="sub">W / WEST</text>
 <text x="650" y="286" class="sub">E / EAST</text>
-
-<!-- city ring / roads -->
 <ellipse cx="380" cy="286" rx="285" ry="205" fill="none" stroke="rgba(126,211,219,.14)" stroke-width="1.2"/>
 <ellipse cx="380" cy="286" rx="235" ry="160" fill="none" stroke="rgba(126,211,219,.09)" stroke-width="1"/>
-<path class="route" d="M105 286 H655"/>
-<path class="route" d="M380 90 V486"/>
-
-<!-- zones -->
+<path class="route" d="M105 286 H655"/><path class="route" d="M380 90 V486"/>
 <rect class="zone" x="265" y="86" width="230" height="88" rx="5"/>
-<text x="380" y="120" text-anchor="middle" class="label">商業区・繁華街</text>
-<text x="380" y="145" text-anchor="middle" class="sub">COMMERCIAL / NIGHT DISTRICT</text>
-
+<text x="380" y="120" text-anchor="middle" class="label">商業区・繁華街</text><text x="380" y="145" text-anchor="middle" class="sub">COMMERCIAL / NIGHT DISTRICT</text>
 <rect class="zone" x="86" y="235" width="168" height="102" rx="5"/>
-<text x="170" y="276" text-anchor="middle" class="label">学校</text>
-<text x="170" y="301" text-anchor="middle" class="sub">IZ / DESIGN ENGINEERING</text>
-
+<text x="170" y="276" text-anchor="middle" class="label">学校</text><text x="170" y="301" text-anchor="middle" class="sub">IZ / DESIGN ENGINEERING</text>
 <rect class="core" x="292" y="218" width="176" height="136" rx="8"/>
-<circle cx="380" cy="286" r="43" fill="none" stroke="rgba(52,230,238,.55)" stroke-width="1.5"/>
-<circle cx="380" cy="286" r="24" fill="none" stroke="rgba(52,230,238,.30)" stroke-width="1"/>
-<text x="380" y="275" text-anchor="middle" class="label cyan">MARGIT</text>
-<text x="380" y="299" text-anchor="middle" class="sub cyan">TERMINAL</text>
-<text x="380" y="325" text-anchor="middle" class="tiny">THREE-PLANET ROUTE / LOGISTICS</text>
-
+<circle cx="380" cy="286" r="43" fill="none" stroke="rgba(52,230,238,.55)" stroke-width="1.5"/><circle cx="380" cy="286" r="24" fill="none" stroke="rgba(52,230,238,.30)" stroke-width="1"/>
+<text x="380" y="275" text-anchor="middle" class="label cyan">MARGIT</text><text x="380" y="299" text-anchor="middle" class="sub cyan">TERMINAL</text>
 <rect class="zone" x="506" y="222" width="168" height="126" rx="5"/>
-<text x="590" y="260" text-anchor="middle" class="label">研究施設</text>
-<text x="590" y="285" text-anchor="middle" class="sub">RESEARCH DISTRICT</text>
-<text x="590" y="312" text-anchor="middle" class="tiny">RAIN LECHNER / HANGAR 04</text>
-
+<text x="590" y="260" text-anchor="middle" class="label">研究施設</text><text x="590" y="285" text-anchor="middle" class="sub">RESEARCH DISTRICT</text><text x="590" y="312" text-anchor="middle" class="tiny">RAIN LECHNER / HANGAR 04</text>
 <path class="zone" d="M205 393 Q380 350 520 398 L500 477 Q355 520 190 470 Z"/>
-<text x="335" y="421" text-anchor="middle" class="label">公園</text>
-<text x="335" y="445" text-anchor="middle" class="sub">PARK / SOUTH RESIDENTIAL AREA</text>
-
-<rect class="zone" x="242" y="454" width="110" height="54" rx="5"/>
-<text x="297" y="477" text-anchor="middle" class="label" style="font-size:14px">IZの家</text>
-<text x="297" y="497" text-anchor="middle" class="tiny">LOURET HOME</text>
-
-<!-- southeast hill / observatory -->
-<path class="hill" d="M500 477 Q565 400 662 420"/>
-<path class="hill" d="M520 493 Q585 418 682 440"/>
-<circle cx="625" cy="404" r="25" fill="rgba(8,22,29,.9)" stroke="rgba(126,211,219,.45)" stroke-width="1.4"/>
-<path d="M625 379 V352 M612 365 H638 M617 404 H633" stroke="#8bf7fb" stroke-width="1.5"/>
-<text x="625" y="451" text-anchor="middle" class="label" style="font-size:14px">天文台 / 観測塔</text>
-<text x="625" y="470" text-anchor="middle" class="tiny">SOUTHEAST HILL</text>
-
-<!-- IZ daily movement -->
-<path class="daily" d="M297 454 C270 405 205 372 170 337"/>
-<path class="daily" d="M254 286 C270 286 276 286 292 286"/>
-<path class="daily" d="M468 286 C482 286 492 286 506 286"/>
+<text x="335" y="421" text-anchor="middle" class="label">公園</text><text x="335" y="445" text-anchor="middle" class="sub">PARK / SOUTH RESIDENTIAL AREA</text>
+<rect class="zone" x="242" y="454" width="110" height="54" rx="5"/><text x="297" y="477" text-anchor="middle" class="label" style="font-size:14px">IZの家</text><text x="297" y="497" text-anchor="middle" class="tiny">LOURET HOME</text>
+<path class="hill" d="M500 477 Q565 400 662 420"/><path class="hill" d="M520 493 Q585 418 682 440"/>
+<circle cx="625" cy="404" r="25" fill="rgba(8,22,29,.9)" stroke="rgba(126,211,219,.45)" stroke-width="1.4"/><path d="M625 379 V352 M612 365 H638 M617 404 H633" stroke="#8bf7fb" stroke-width="1.5"/>
+<text x="625" y="451" text-anchor="middle" class="label" style="font-size:14px">天文台 / 観測塔</text><text x="625" y="470" text-anchor="middle" class="tiny">SOUTHEAST HILL</text>
+<path class="daily" d="M297 454 C270 405 205 372 170 337"/><path class="daily" d="M254 286 C270 286 276 286 292 286"/><path class="daily" d="M468 286 C482 286 492 286 506 286"/>
 <text x="216" y="365" class="tiny">IZ / DAILY ROUTE</text>
-
-<!-- orientation marks -->
-<path d="M54 94 h48 M54 94 v48 M706 94 h-48 M706 94 v48 M54 510 h48 M54 510 v-48 M706 510 h-48 M706 510 v-48"
-stroke="rgba(52,230,238,.22)" stroke-width="1.2" fill="none"/>
 </svg>
-<figcaption class="map-caption">CITY ORIENTATION / IZ'S DAILY RANGE — schematic, not to scale</figcaption>
+<figcaption class="map-caption">CORTIA / MARGIT TERMINAL DISTRICT — schematic, not to scale</figcaption>
 </figure>
-
 <p>イズは視線を台所へ戻した。</p>
 <p>フライパンが温まっている。</p>
 <p>「……危な」</p>
@@ -289,7 +101,6 @@ stroke="rgba(52,230,238,.22)" stroke-width="1.2" fill="none"/>
 <p>四方の小さな突起を持った、すこし不思議な、それでいて端正なデザインのイヤリング。</p>
 <p>中央には、磨かれた緑色の石が収まっている。</p>
 <p>母からもらったものだ。</p>
-<div class="breath"></div>
 <p>イズは指先でその輪に触れた。冷たい銀の感触は、もう毎朝確かめるほどのものでもない。つけていることを忘れるくらい、いつものものになっていた。</p>
 <p>「それ、今日もつけてるんだ」</p>
 <p>「うん」</p>
@@ -389,7 +200,7 @@ stroke="rgba(52,230,238,.22)" stroke-width="1.2" fill="none"/>
 <p>いつもと同じ、父との昼食。</p>
 <p>少なくとも――</p>
 <p>あの日までは。</p>
-<section class="chapter-head"><div class="chapter-no">02</div><h2>午後三時まで</h2></section>
+<section class="chapter-head" id="ch02"><div class="chapter-no">02</div><h2>午後三時まで</h2></section>
 <p>「それ、何の図面だ？」</p>
 <p>弁当箱を半分ほど空にしたところで、レインが言った。</p>
 <p>イズは手元の端末を難しい顔をして見ていたが、顔を上げ、端末を父の方へ滑らせた。</p>
@@ -413,7 +224,6 @@ stroke="rgba(52,230,238,.22)" stroke-width="1.2" fill="none"/>
 <p>さっきまでMargitの観測波形を見つめていた人間と、同じ人物には見えない。</p>
 <p>イズは黙って聞いた。</p>
 <p>こういうときの父が好きだった。</p>
-<div class="breath"></div>
 <p>普段のレインは、言葉を探すのに少し時間がかかる。人と話すより、図面や数式を相手にしている方が楽そうに見えることもある。けれど機械の話になると、その沈黙は迷いではなくなる。頭の中で構造を組み直し、必要な言葉を一つずつ選んでいるのだと、イズには分かった。</p>
 <p>質問すると、子供だからと答えを省略しない。</p>
 <p>分からないと言えば説明する。</p>
@@ -559,7 +369,6 @@ stroke="rgba(52,230,238,.22)" stroke-width="1.2" fill="none"/>
 <p>ジェルボーは、イズの好奇心を十分に理解しつつ、きっぱりと答える。</p>
 <p>イズはTERMINALISを見上げた。</p>
 <p>何度見ても、不思議なBOARDだった。</p>
-<div class="breath"></div>
 <p>格納庫で向き合うたびに少しだけ足が止まる。新型だから、というだけではない。父が長い時間をかけている機体なのに、そのことをほとんど話そうとしないからかもしれなかった。</p>
 <p>武装らしいものもある。</p>
 <p>駆動部もある。</p>
@@ -627,7 +436,7 @@ stroke="rgba(52,230,238,.22)" stroke-width="1.2" fill="none"/>
 <p>だけど、なぜだか惹かれてしまう。</p>
 <p>窓の外を、Margitへ向かう輸送艇が横切っていった。</p>
 <p>教室の隅にある交通情報には、</p>
-<div class="system">MARGIT TRAFFIC : NORMAL</div>
+<div class="system"><span>MARGIT TRAFFIC : NORMAL</span></div>
 <p>いつもと同じ表示。</p>
 <p>イズはそれを気にも留めなかった。</p>
 <p>午後の授業が始まる。</p>
@@ -653,10 +462,7 @@ stroke="rgba(52,230,238,.22)" stroke-width="1.2" fill="none"/>
 <p>「…………」</p>
 <p>そして、誰もいない部屋で小さく呟いた。</p>
 <p>「……早すぎる」</p>
-<div class="divider"><span></span><i>CONTINUE</i><span></span></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<section class="chapter-head"><div class="chapter-no">03</div><h2>帰る場所</h2></section>
+<section class="chapter-head" id="ch03"><div class="chapter-no">03</div><h2>帰る場所</h2></section>
 <p>午後の授業が終わるころには、窓の外が少し橙色に染まり始めていた。</p>
 <p>イズは端末を閉じ、大きく伸びをする。</p>
 <p>「終わったー」</p>
@@ -887,2808 +693,1638 @@ stroke="rgba(52,230,238,.22)" stroke-width="1.2" fill="none"/>
 <p>・夕食ではIZの設計思想として「乗った人が、ちゃんと行きたいところまで行けるBOARD」を仮置き。終盤の「撃破せず、到達せよ」と遠く響き合うが、現時点では17歳の素朴な言葉として扱う。</p>
 <p>・Rainの「遠くにいる誰かを見つけられるもの」はCONTACT思想への薄い伏線。強すぎると感じる場合は次稿でさらに弱める候補。</p>
 <p>・本ファイルはユーザーが直接修正する編集用原稿。ユーザー修正は次稿で原則尊重する</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<section class="chapter-head"><div class="chapter-no">04</div><h2>昨日と同じ朝</h2></section>
-<div class="breath"></div>
-<div class="breath"></div>
+<section class="chapter-head" id="ch04"><div class="chapter-no">04</div><h2>昨日と同じ朝</h2></section>
 <p>卵を一つ割る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは冷蔵庫の中を見て、少し考えた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>もう一つ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>小さなボウルの縁で殻を割る。二つ目の卵が、先に入れたものの隣へ落ちた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昨日と同じ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>今日も二人分。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……また卵」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>思わず声が出てしまった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昨日の昼、父は明日の弁当にも卵がいいと言った。</p>
 <p>今日の昼になれば、たぶんそんなことは忘れている。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは卵を混ぜ、温めておいたフライパンへ流し込んだ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>窓の外では、いつものように街が朝を迎えている。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>公園。</p>
 <p>その向こうにMargit。</p>
 <p>さらに南東の丘には、朝靄に薄く霞んだ観測塔。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>何も変わらない朝だった。</p>
 <p>少なくとも、家の中では。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父の部屋の扉は閉じていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「お父さん」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>返事がない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズはもう一度呼ぼうとして、やめた。</p>
 <p>昨夜、夕食のあとで「少しだけ」と仕事部屋へ入っていったのを覚えている。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>少しだけ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>レイン・レヒネルの言う「少しだけ」を、イズは信用していない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ドアを開ける。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……やっぱり」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父は机に突っ伏して眠っていた。</p>
 <p>端末の画面だけが、薄暗い部屋を照らしている。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>何本もの波形。</p>
 <p>昨日、研究所で見たものと似ていた。</p>
 <p>Margitの観測データ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズには、それ以上は分からない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「お父さん」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>肩を揺らす。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……ん」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「朝」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……ああ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「学校行くよ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「そうか」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「そうか、じゃなくて」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>レインがゆっくり顔を上げた。</p>
 <p>寝癖がひどい。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「寝た？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「寝ていた」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「机でね」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ああ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「それは寝たって言わない」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「難しいな」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「難しくない」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは端末を見る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「昨日のやつ？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>レインの視線が、画面へ戻った。</p>
 <p>ほんの一瞬だった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ああ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「まだ見てるの？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「少し気になることがある」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昨日は「何もない」と言った。</p>
 <p>今日は「気になることがある」。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズはそこに気づいた。</p>
 <p>けれど、何が、とまでは聞かなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「朝ご飯あるから」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ああ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ちゃんと食べて」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「分かった」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「返事だけじゃなくて」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「食べるよ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>そこでイズはようやく部屋を出た。</p>
 <p>廊下へ出る直前、もう一度だけ振り返る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父は端末を閉じていた。</p>
 <p>珍しく、言われたことを守る気らしい。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>それならいい。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは自分の支度へ戻った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>学校へ向かうころには、Margitの周囲もすっかり動き始めていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昨日と同じ人波。</p>
 <p>昨日と同じ輸送艇。</p>
 <p>昨日と同じ、頭上いっぱいの案内表示。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズはその下を歩く。</p>
 <p>右耳では、銀色のイヤリングが歩調に合わせて小さく揺れていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>中央ホールへ入ったところで、人の流れが一度だけ滞った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>前を歩いていた人が足を止める。</p>
 <p>頭上の表示が切り替わった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズもつられて見上げた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">MARGIT TRAFFIC</div>
-<div class="system">ROUTE-01 : NORMAL</div>
-<div class="system">ROUTE-02 : NORMAL</div>
-<div class="system">FRENDALT ROUTE : DELAYED</div>
-<div class="system">ARRIVAL SCHEDULE : RECALCULATING</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>MARGIT TRAFFIC</span></div>
+<div class="system"><span>ROUTE-01 : NORMAL</span></div>
+<div class="system"><span>ROUTE-02 : NORMAL</span></div>
+<div class="system"><span>FRENDALT ROUTE : DELAYED</span></div>
+<div class="system"><span>ARRIVAL SCHEDULE : RECALCULATING</span></div>
 <p>「また遅れてる」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>近くにいた男が呟いた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「フレンダルト？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「みたいだな」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「最近多いな」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>そんな会話が聞こえた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>フレンダルト。</p>
 <p>三つの星のうち、BOARDをはじめとする重工業の多くを担う星だ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>Margitを通じて届く機械部品の中には、フレンダルトで造られたものも多い。</p>
 <p>学校の実習機だって例外ではなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>誰も慌ててはいない。</p>
 <p>足を止めていた人々も、すぐに歩き始める。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズも同じだった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>貨物船が遅れることくらいある。</p>
 <p>天候。</p>
 <p>機材。</p>
 <p>管制。</p>
 <p>理由はいくらでも考えられる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>それに、自分が乗るわけでもない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは端末の時刻を確認した。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……まずい」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>航路より、今は授業の方が問題だった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ギリギリ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>教室へ入ると、昨日と同じ友人が振り返った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「今日は研究所寄ってないよね？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「朝から行かないよ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「イズなら行きそう」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「行かない」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ほんとに？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……たぶん」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ほら」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>笑われた。</p>
 <p>イズも席に着きながら笑う。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「そういえば」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>友人が端末を操作した。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「フレンダルトの航路、また遅れてるって」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「見た」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「荷物来ないと実習ずれるかもだって」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「何の？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「駆動系」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズの手が止まった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「それは困る」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「そこだけ反応速いね」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「大事でしょ、BOARDの足は」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「っぷはは！・・・足ねー、たしかに、イズ博士にとってはだいじ！</p>
 <p>私は休講でもいいけどー」</p>
 <p>友は思わず吹き出してしまったようだ。</p>
 <p>「よくない」</p>
 <p>少しふくれた顔のイズ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>前方に授業開始の表示が出た。</p>
 <p>会話はそこで終わった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>講師が入ってくる。</p>
 <p>いつもの授業が始まる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは端末を開いた。</p>
 <p>フレンダルト航路の遅延について、それ以上考えることはなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>十二時少し前。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>授業を終えたイズは、昨日と同じように研究所へ向かった。</p>
 <p>紙袋には、二人分の弁当。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昨日とほとんど同じ道。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ただ、Margitの中央ホールを通ったとき。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">FRENDALT ROUTE : DELAYED</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>FRENDALT ROUTE : DELAYED</span></div>
 <p>表示はまだ戻っていなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>朝から数時間。</p>
 <p>珍しいな、とだけ思った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>東側へ抜ける。</p>
 <p>研究地区が見えてくる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>そこでイズは、歩く速度を少し落とした。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昨日より、人が多い。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>白衣。</p>
 <p>作業着。</p>
 <p>軍服姿の人間もいる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>数人が端末を見ながら早足で研究棟の間を行き来している。</p>
 <p>大型の搬送車が一台、イズの前を横切った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>何かあったのだろうか。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>それでも警報は鳴っていない。</p>
 <p>人々が走っているわけでもない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは受付へ向かった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「こんにちは」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつもの場所にジェルボーがいた。</p>
 <p>それだけで、少し安心した。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「こんにちは、イズ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつもの声。</p>
 <p>ただし今日は、片手に端末を持っている。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「忙しいんですか？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ちょっとね」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「何かあった？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「フレンダルトからの荷物が遅れてるのよ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「Margit？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「そう」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボーは軽く端末を持ち上げた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「部品が届かないと、こっちの予定も全部ずれるから」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「大変ですね」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「大変なのよ。だからイズも将来、設計するときは納期を守る技術者になりなさいな」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「私のせいじゃないですよね？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「未来へのお願い」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「嫌なお願い」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボーが笑った。</p>
 <p>イズも笑う。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつものジェルボーだった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「お父さんは？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「いるわよ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ご飯食べました？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「あなたが来ると思って、誰も手を出してません」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「なんで私の仕事になってるんですか」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「一番成功率が高いから」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「もう」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは紙袋を持ち直した。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「じゃあ、行ってきます」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「あ、イズ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>呼び止められる。</p>
 <p>振り返る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボーは何か言いかけた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……何ですか？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ううん」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつもの笑顔に戻る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「十五時の授業、遅れないようにね」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「昨日も間に合いました」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「四分前」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「間に合ってます」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「はいはい」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは研究棟の奥へ歩き出した。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>背中で、ジェルボーの声が聞こえた。</p>
 <p>今度は自分に向けたものではない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「――あ、NKS25型なら、そう、まだ３番格納庫に在庫があるから凌げるでしょ、ええと・・・そっちはまだ連絡がつかないの」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは少しだけ振り返った。</p>
 <p>ジェルボーは端末を耳元へ寄せている。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「フレンダルト側の管制。そう。通常回線も」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>仕事の話だ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは前を向いた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父の部屋の前まで来る。</p>
 <p>扉が少し開いていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「お父さん？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>返事がない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>押し開ける。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>レインはいた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昨日と同じ机。</p>
 <p>昨日と同じ端末。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>けれど。</p>
 <p>昨日とは違っていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>弁当を持ってきた娘が部屋に入ったことに、気づいていない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>画面いっぱいに、波形が表示されている。</p>
 <p>一つではない。</p>
 <p>何本も。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>その横を、イズには意味の分からない数値が流れていく。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「お父さん」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「…………」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「お父さん」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>反応がない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは机のすぐ横まで歩いた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「レイン・レヒネル博士…」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつもなら、これで気づく。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>今日は。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「…………」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>気づかない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは父の肩へ手を伸ばした。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>その瞬間。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「――はっ！！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>何かにひどく怯えたように、レインは体をのけぞらせた</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父がゆっくり振り返る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……イズか…すまない」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ようやく気づいたような顔だった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ごめん…驚かせた」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは手を下ろした。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつも通り、研究にもくもくとのめり込んでいる父とは違う様子に、おもわず、イズもたじろいでしまっていた。</p>
 <p>イズは、すこし、気持ちを落ち着かせるように聞いた</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「何してるの？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「観測だ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「Margit？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ああ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「フレンダルトが遅れてるから？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>レインは答えなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>画面を見る。</p>
 <p>それから、イズを見る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「今日、午後の授業は？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「十五時から」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「終わったら、まっすぐ家に帰りなさい」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「え？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「北側には行かずに」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「行く予定ないけど」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「研究所にも来なくていい」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは眉を寄せた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「なんで？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「今日は――」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>そこで言葉が止まる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父は何かを探すように、視線を落とした。</p>
 <p>説明するための言葉を。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昨日、公園でTERMINALISについて聞いたときと同じ顔。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>でも。</p>
 <p>今日は、少し違う。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「念のためだ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ようやく出てきた言葉は、それだけだった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「何の？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>レインは答えない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズはしばらく待った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつもなら、父が言葉を見つけるまで待てる。</p>
 <p>けれど今日は、その沈黙が妙に長く感じられた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……分かった」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは紙袋を机に置く。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「でも」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>レインを見る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「お昼は食べて」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ああ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ちゃんと」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「分かった」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズはまだ少し納得していなかった。</p>
 <p>それでも、それ以上は聞かなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>部屋を出る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>扉を閉める直前。</p>
 <p>レインの声がした。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「イズ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「何？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父はこちらを見ていた。</p>
 <p>何か言おうとしている。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは待った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「…………」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>長い沈黙のあと。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「お弁当、ありがとう」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは少しだけ笑った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「うん」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>扉を閉める。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>廊下を歩きながら、イズは考えた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>フレンダルト航路の遅延。</p>
 <p>忙しそうな研究所。</p>
 <p>ジェルボーの電話。</p>
 <p>父の態度。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>何かが起きている。</p>
 <p>たぶん。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>でも、それが何なのかは分からない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>窓の向こう。</p>
 <p>街の中央には、巨大なMargitが見える。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつも通り。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>そのさらに向こうには学校がある。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>午後三時から授業。</p>
 <p>終わったら家へ帰る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父も、あとで帰ってくるだろう。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズはそう思った。</p>
 <p>そして歩き出した。</p>
-<div class="breath"></div>
 <p>右耳で、小さな銀色の円環が冷たく揺れた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<section class="chapter-head"><div class="chapter-no">05</div><h2>午後三時</h2></section>
-<div class="breath"></div>
-<div class="breath"></div>
+<section class="chapter-head" id="ch05"><div class="chapter-no">05</div><h2>午後三時</h2></section>
 <p>午後三時の実習は、予定通り始まった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>少なくとも、最初は。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>実習棟の床には、整備用のレールが何本も走っている。</p>
 <p>その中央に、訓練用BOARDの脚部が固定されていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>腰から上はない。</p>
 <p>太腿から下だけの、無骨な実習機だ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズはこういう機械が嫌いではなかった。</p>
 <p>むしろ、好きだった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>装甲を外された脚部は、普段なら見えないものを全部見せてくれる。</p>
 <p>駆動軸。配線。冷却管。姿勢制御用の小さなアクチュエータ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「・・・イズ・・イズ！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>隣から声が飛んだ。</p>
 <p>一瞬、我に返る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ん？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「先生、さっきから三回、呼んでるよ…」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>顔を上げる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>教官がこちらを見ていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ローレット。聞いているか」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「聞いてます」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「では、右膝の追従遅延。原因は？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは表示された波形を見る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「第二軸の補正が強すぎます。たぶん、荷重を拾ったあとに戻しすぎてる」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「たぶん？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……八割くらい」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>教室の何人かが笑った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>教官は少しだけ眉を上げる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「なら、残り二割を確認しろ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「はい」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは端末へ視線を戻した。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>隣の友人が、小声で言う。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「博士」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「やめて」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「イズ博士」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「やめてって」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつもの実習だった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつもの教室。</p>
 <p>いつもの機械油の匂い。</p>
 <p>いつもの軽口。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>だから、昼のことも少しだけ遠くなっていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>フレンダルトの航路の遅延。</p>
 <p>研究所の慌ただしさ。</p>
 <p>父の顔。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>考えても分からないことは、考え続けても仕方がない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>今は目の前の脚だ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは補正値を一段下げた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>脚部がゆっくりと屈伸する。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>一度。</p>
 <p>二度。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>三度目で、動きが滑らかになった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ほら」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ほんとに直した」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「だから言ったでしょ。八割って。残り二割も今確認した」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>友人が呆れたように笑った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>そのとき。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>実習棟の照明が、一度だけ暗くなった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>すぐに戻る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>誰かが天井を見上げた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「停電？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「瞬断だろ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>教官が端末を確認する。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「作業を止めろ。機体には触るな」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ざわつきながら、学生たちが手を離した。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズも一歩下がる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>訓練用BOARDの脚部は、何事もなかったように停止している。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>数秒後。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>壁面表示の隅に、小さな通知が出た。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">MARGIT TRAFFIC</div>
-<div class="system">FRENDALT ROUTE : SUSPENDED</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>MARGIT TRAFFIC</span></div>
+<div class="system"><span>FRENDALT ROUTE : SUSPENDED</span></div>
 <p>イズは目を細めた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>遅延ではない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>停止。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……止まった？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>友人も気づいたらしい。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「さっきまで遅れてるだけじゃなかった？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「うん」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>教官が表示を消した。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「実習を続ける。交通管制は管制の仕事だ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>それで、教室はまた動き始めた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>けれど。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>さっきまでと同じ音には聞こえなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>授業が終わったのは、十六時四十分だった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>外へ出ると、空はまだ明るい。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「北側、やっぱ行かない？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>友人が鞄を肩へ掛けながら言った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ごめん、今日は帰る」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「イズさま、そこをなんとかさ…たまにはこう…」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「お父さんに、まっすぐ帰れって言われた」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「え」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>おもわず友人が足を止める。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「何その反応」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「研究所によるんじゃないんだ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「今日は来なくていいって」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ふーん」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>少し考えてから、友人はMargitの方を見た。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「例の航路が止まっちゃってるせい、とかもあるのかな」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「分かんない」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズも同じ方を見る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>巨大なターミナルは、いつもと同じ場所に立っていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>けれど、人の流れが違う。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>中央へ向かう人より、そこから離れていく人の方が多い。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>貨物区画の上では、輸送機が何機も待機したまま動いていない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>案内表示が切り替わる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">FRENDALT ROUTE : SUSPENDED</div>
-<div class="system">GENERAL TRAFFIC : RESTRICTED</div>
-<div class="system">PLEASE FOLLOW LOCAL GUIDANCE</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>FRENDALT ROUTE : SUSPENDED</span></div>
+<div class="system"><span>GENERAL TRAFFIC : RESTRICTED</span></div>
+<div class="system"><span>PLEASE FOLLOW LOCAL GUIDANCE</span></div>
 <p>「……やっぱ変じゃない？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>友人が言った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「…うん」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>今度は、イズも否定しなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>端末を取り出す。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父へ短いメッセージを送る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『授業終わった。今から帰る』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>送信。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>表示はすぐに変わった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">DELIVERING...</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>DELIVERING...</span></div>
 <p>既読にはならない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「じゃ、また明日ね」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「うん。また明日」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>友人は北へ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは南へ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつもの分かれ道だった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>公園へ続く道を歩く。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>研究所には行かない。</p>
 <p>父に言われた通り、今日はまっすぐ帰る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>それだけのことだった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>右手には公園。</p>
 <p>正面には住宅区。</p>
 <p>少し顔を上げれば、南東の丘に観測塔が見える。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>朝と同じ景色。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズはもう一度、端末を見た。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">DELIVERING...</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>DELIVERING...</span></div>
 <p>「……遅い」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>通信まで混んでいるのだろうか。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>そのときだった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>遠くで、低い音がした。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>雷に似ていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>けれど、空に雲はなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>歩いていた人が、一人、足を止めた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>続いて、もう一人。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズも振り返る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>Margitの上空。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>白い筋が、一本。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>空を横切った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>遅れて、音が来た。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>今度は雷ではなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>腹の奥まで響く、重い衝撃音。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>Margitの一角で、光が弾けた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>数秒。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>街中の音が消えたように感じた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>そして。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>警報が鳴った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<section class="chapter-head"><div class="chapter-no">06</div><h2>帰れない</h2></section>
-<div class="breath"></div>
-<div class="breath"></div>
+<section class="chapter-head" id="ch06"><div class="chapter-no">06</div><h2>帰れない</h2></section>
 <p>警報は、街のすべての音を押しのけるように鳴り続けた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズはその場から動けなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>Margitの一角から、黒い煙が上がっている。</p>
 <p>さっき光が弾けた場所だ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>事故。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>最初に浮かんだのは、その言葉だった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>けれど。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>もう一本、白い筋が空を走った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>今度は見えた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>上からではない。</p>
 <p>Margitの向こう側から、低い軌道で飛び込んできた何かが、ターミナル上空を横切った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>その直後、空に光が散った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>乾いた破裂音が連続する。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……なに」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>誰かが呟いた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>警報に重なって、街頭の案内表示が一斉に切り替わる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">EMERGENCY ALERT</div>
-<div class="system">SEEK SHELTER IMMEDIATELY</div>
-<div class="system">FOLLOW LOCAL EVACUATION GUIDANCE</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system danger" data-fx="alarm"><span>EMERGENCY ALERT</span></div>
+<div class="system"><span>SEEK SHELTER IMMEDIATELY</span></div>
+<div class="system"><span>FOLLOW LOCAL EVACUATION GUIDANCE</span></div>
 <p>事故ではない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>そのことだけは、イズにも分かった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「避難してください！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>通りの向こうから警備員らしい人が叫んでいる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「公園地下の避難区画へ！ 走らず、誘導に従ってください！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>走るなと言われても、走り出す人はいた。</p>
 <p>立ち尽くす人もいた。</p>
 <p>端末を耳に当てたまま、何度も同じ名前を呼んでいる人もいた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは端末を見る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">DELIVERING...</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>DELIVERING...</span></div>
 <p>まだ届いていない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昼の顔が浮かぶ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『終わったら、まっすぐ家に帰りなさい』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>帰らなければ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父に言われた通りに。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは南へ走り出した。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>公園までなら、すぐだ。</p>
 <p>その先が住宅区。</p>
 <p>家までは、いつもの道なら十分もかからない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>けれど、いつもの道ではなくなっていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>交差点の誘導灯が赤く点滅している。</p>
 <p>自動車は路肩で停止し、人だけが南へ流れていく。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>頭上を、低い轟音が通り過ぎた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>反射的に身をすくめる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>見上げた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>BOARDだった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>一機。</p>
 <p>二機。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>見慣れた輸送用でも、作業用でもない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>装甲が厚い。</p>
 <p>背中から噴き出す光が、機体を無理やり空へ押し上げている。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>軍用BOARD。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>それ自体は珍しいものではない。</p>
 <p>学校でも、研究所でも見たことがある。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>けれど、こんなふうに街の上を飛ぶ姿を、イズは知らなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>二機はMargitへ向かっていく。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>そのさらに向こう。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>別の影が見えた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>形が違う。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>遠すぎて細部までは分からない。</p>
 <p>ただ、この街の機体ではないことだけは分かった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>次の瞬間。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>光が交差した。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは目を閉じた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>爆音。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>地面が揺れる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「きゃっ……！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>足を取られ、膝をつく。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>鞄が地面へ落ちた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>周囲から悲鳴が上がる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>公園の木々の向こうで、何かが燃えていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは鞄を拾う。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>手が震えていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>初めて、それに気づいた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>怖い。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>当たり前のことなのに、言葉になるまで少し時間がかかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>端末が震えた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズはすぐに画面を見る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父からではなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">EMERGENCY NETWORK</div>
-<div class="system">CIVILIAN COMMUNICATION RESTRICTED</div>
-<div class="system">PRIORITY CHANNELS ONLY</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>EMERGENCY NETWORK</span></div>
+<div class="system"><span>CIVILIAN COMMUNICATION RESTRICTED</span></div>
+<div class="system"><span>PRIORITY CHANNELS ONLY</span></div>
 <p>「……お父さん」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>発信する。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>呼び出し音すら鳴らない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">CONNECTION FAILED</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>CONNECTION FAILED</span></div>
 <p>もう一度。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">CONNECTION FAILED</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>CONNECTION FAILED</span></div>
 <p>「なんで……」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昼には話せた。</p>
 <p>研究所にいた。</p>
 <p>いつもの机の前にいた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>なのに今は、その数キロ先へ声すら届かない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>人の流れに押され、イズは公園の入口まで来た。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>地下避難区画を示す表示が点滅している。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">SHELTER</div>
+<div class="system"><span>SHELTER</span></div>
 <p>↓</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ここへ入ればいい。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>そうすれば安全なのだろう。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父にも、そう言われた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>まっすぐ帰れ、と。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは一歩、避難区画へ向かった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>そのとき。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>端末の画面が一瞬だけ乱れた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ノイズ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>表示が戻る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>メッセージ欄。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『授業終わった。今から帰る』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>その下に、小さく表示されていた文字が変わっていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">DELIVERED</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>DELIVERED</span></div>
 <p>イズは息を止めた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「届いた……」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>既読ではない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>返事もない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ただ、届いた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>それだけだった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>なのに。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズはMargitの向こう側を見た。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>東。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>研究所のある方角。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>煙の向こうに、建物の輪郭がかすかに見える。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昼の父</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>の声が蘇る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『研究所にも来なくていい』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつもの父なら、そんなことは言わない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>今日だけ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>念のため。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>何のため？</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>答えなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは避難区画の入口を見る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>それから、東を見る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……ごめん」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>誰に言ったのか、自分でも分からなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは人の流れから外れた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>家とは逆へ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>研究所へ向かって走り出した。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<section class="chapter-head"><div class="chapter-no">07</div><h2>東へ</h2></section>
-<div class="breath"></div>
-<div class="breath"></div>
+<section class="chapter-head" id="ch07"><div class="chapter-no">07</div><h2>東へ</h2></section>
 <p>研究所へ向かう道を、イズは走った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昼なら、Margitの外周を抜けて東へ行くのが一番早い。</p>
 <p>けれど今、その道は封鎖されていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>赤い誘導灯。</p>
 <p>降りた防壁。</p>
 <p>行き先を失った人の波。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">MARGIT CENTRAL AREA : ACCESS PROHIBITED</div>
-<div class="system">EAST SERVICE ROUTE : CLOSED</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>MARGIT CENTRAL AREA : ACCESS PROHIBITED</span></div>
+<div class="system"><span>EAST SERVICE ROUTE : CLOSED</span></div>
 <p>「うそ……」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>息を切らしながら、イズは足を止めた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>研究所は、この向こうだ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつもなら十五分もかからない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>見えているのに、行けない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>また爆音がした。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>今度は近い。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>人々が一斉に身を伏せる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズも壁際へしゃがみ込んだ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>頭上を何かが通り過ぎる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>次いで、少し離れた建物の窓がまとめて震えた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「東へ行っちゃ駄目だ！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>警備員が叫んでいる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「避難区画へ戻って！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは立ち上がる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「研究所に父がいるんです」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「今は入れない！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「でも――」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「戻って！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>怒鳴っているわけではなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>その人も怖いのだと、イズには分かった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>だから、それ以上は言えなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>踵を返す。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>戻るふりをして、人の流れへ入る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>数十歩。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>角を曲がったところで、また東を見る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>正面の道は駄目。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>なら。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは周囲を見回した。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>Margitの外周。</p>
 <p>研究区画。</p>
 <p>学校。</p>
 <p>公園。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>頭の中に、いつもの街が浮かぶ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>普段なら使わない道が一本あった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>研究所へ弁当を届け始めたころ、ジェルボーに教えられた整備区画沿いの通路。</p>
 <p>貨物搬入用の裏道で、一般の交通路とはつながっていない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……行ける」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>誰に言うでもなく呟いた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>怖くないわけではなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>むしろ、さっきより怖かった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>それでも。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは走った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>東へ近づくほど、街から人が減っていった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>代わりに増えたのは、警報と機械の音だった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>閉じた店舗。</p>
 <p>放置された搬送車。</p>
 <p>路肩に転がったコンテナ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>その隙間を抜ける。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>遠くでは、まだBOARD同士の光が交差していた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズはなるべく見ないようにした。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>見れば、足が止まりそうだった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>端末を確認する。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父からの返信はない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>発信。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">CONNECTION FAILED</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>CONNECTION FAILED</span></div>
 <p>「……もう」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>端末を握りしめる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>そのとき、画面に別の着信が割り込んだ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>名前を見て、イズはすぐに応答する。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ジェルボーさん！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『イズ！？』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>聞き慣れた声だった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>けれど、聞いたことのない声でもあった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>息が速い。</p>
 <p>背後で誰かが何かを叫んでいる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『今どこ！？』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「研究所に向かってる」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>一瞬、向こうが黙った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『……なんで！？』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「お父さんと連絡つかないから」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『イズ、戻って。今すぐ』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「でも」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『レインならここにいる』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>足が止まった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「いるの？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『いる。だから大丈夫。あなたは避難して』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>胸の奥が、少しだけ緩んだ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父はいる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>研究所に。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>無事だ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>それだけで、膝から力が抜けそうになる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……声、聞かせて」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『え？』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「お父さんに代わって」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>向こうで、また短い沈黙。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>今度の沈黙は、嫌なものだった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ジェルボーさん？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『今、手が離せないの』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「何してるの？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『イズ』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>声が変わった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつもの冗談っぽさが消える。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『お願い。今日は言うこと聞いて』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>その言葉に、昼の父の声が重なった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>研究所にも来なくていい。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>念のためだ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……何が起きてるの？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>答えはなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>代わりに、通信の向こうで警報が鳴った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>こちらの街頭警報とは違う。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>短く、鋭い音。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>何度も繰り返す。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『――待って、第三隔壁を閉じて！』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボーの声が遠ざかる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『そこ、まだ人が――』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>大きな音。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>通信が乱れた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ジェルボーさん？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『イズ、聞いて』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ノイズの向こうから声が戻る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『研究所には――』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>そこで途切れた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">CONNECTION LOST</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system" data-fx="lost"><span>CONNECTION LOST</span></div>
 <p>「……ジェルボーさん？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>呼び返す。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>反応はない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>もう一度発信する。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">CONNECTION FAILED</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>CONNECTION FAILED</span></div>
 <p>イズは画面を見つめた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>戻れと言われた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>二人に。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父にも。</p>
 <p>ジェルボーにも。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>正しいのは、たぶん二人だ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>自分は学生で。</p>
 <p>軍人でも、救助員でもない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>研究所へ行ったところで、何ができるかも分からない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>それでも。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>最後に聞こえた警報が、耳から離れなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは顔を上げる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>東の空。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>研究区画の方角に、黒い煙が上がっていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>走り出す。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>今度は、迷わなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>研究区画の外周へ着いたころには、息が痛かった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>見慣れた正門は閉じていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昼には人と搬送車が行き交っていた場所に、分厚い防壁が降りている。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>その手前に、壊れた輸送車が斜めに止まっていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……どうしよう」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは周囲を見る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>そして。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>防壁の脇にある小さな認証端末が目に入った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつも使っている学生用の入構口。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>駆け寄る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>端末は生きていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは学生証をかざす。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">ACCESS DENIED</div>
-<div class="system">EMERGENCY LOCKDOWN</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>ACCESS DENIED</span></div>
+<div class="system"><span>EMERGENCY LOCKDOWN</span></div>
 <p>「だよね……」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>もう一度。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">ACCESS DENIED</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>ACCESS DENIED</span></div>
 <p>「お願い」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>三度目。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">ACCESS DENIED</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>ACCESS DENIED</span></div>
 <p>その直後。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>研究区画の奥で、白い光が弾けた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>爆音。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>少し遅れて、地面が突き上げられる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「っ……！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは防壁へ手をついた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>認証端末の表示が消える。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>正門の照明も落ちた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>真っ黒になった画面に、自分の顔が映る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>汗で髪が頬に張りついていた。</p>
 <p>右耳の銀色の円環も見えた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>数秒。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>低い起動音とともに、非常灯が赤く点いた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>端末も再起動する。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">MAIN POWER : LOST</div>
-<div class="system">EMERGENCY POWER : ACTIVE</div>
-<div class="system">ACCESS CONTROL : FAILSAFE</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system" data-fx="blackout"><span>MAIN POWER : LOST</span></div>
+<div class="system"><span>EMERGENCY POWER : ACTIVE</span></div>
+<div class="system"><span>ACCESS CONTROL : FAILSAFE</span></div>
 <p>「……え？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>防壁の脇で、何かが大きく噛み合う音がした。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>続いて、重いロックが外れる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>さっきまで閉じていた入構扉が、数センチだけ戻った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは端末と扉を交互に見る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>非常電源への切り替えで、ロック機構が一時的に落ちた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>おそらく、この状態は長くは続かない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>復旧すれば、また閉じる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「今なら……」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>両手を隙間へかける。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>重い。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>それでも、体を横にすれば通れるところまで押し開いた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>背後で端末が警告音を鳴らす。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">ACCESS CONTROL : RECOVERING</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>ACCESS CONTROL : RECOVERING</span></div>
 <p>イズは迷わなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>鞄を先に押し込み、その隙間へ身体を滑り込ませる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>怖いと思っていたが、なぜか身体が動いた</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>直後。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>背中で扉が重い音を立てた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>振り返る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<p>扉は再び堅く、閉じていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<section class="chapter-head"><div class="chapter-no">08</div><h2>研究所</h2></section>
-<div class="breath"></div>
-<div class="breath"></div>
+<p>扉は再び堅く、閉ざされた。</p>
+<section class="chapter-head" id="ch08"><div class="chapter-no">08</div><h2>研究所</h2></section>
 <p>中は、昼とは別の場所になっていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>赤い非常灯だけが廊下を照らしている。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>天井の一部が落ち、床には書類や工具が散らばっていた。</p>
 <p>どこかで警報が鳴っている。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは息を整える間もなく走り出した。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「お父さん！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>返事はない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ジェルボーさん！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>自分の声だけが廊下に響く。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昼に通った受付を抜ける。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>人がいない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いや。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>奥から二人の職員が走ってきた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「君、どうして中に――」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「レイン・レヒネル博士は！？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「今は東棟へ行くな！ 避難区画へ――」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>その先は聞けなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>また施設が揺れた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>壁の表示が明滅する。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">FACILITY ALERT</div>
-<div class="system">EAST BLOCK : EVACUATION IN PROGRESS</div>
-<div class="system">HANGAR BLOCK : EMERGENCY POWER</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system danger" data-fx="alarm"><span>FACILITY ALERT</span></div>
+<div class="system"><span>EAST BLOCK : EVACUATION IN PROGRESS</span></div>
+<div class="system"><span>HANGAR BLOCK : EMERGENCY POWER</span></div>
 <p>東棟。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父の研究室がある。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズはそちらへ向こうとした。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「イズ！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>声が飛んだ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>振り返る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>廊下の向こうから、ジェルボーが走ってくる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>白衣ではなかった。</p>
 <p>作業用の上着の袖をまくり、片手に端末を持っている。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……なんでいるの」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>怒っている。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>それより先に、イズは聞いた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「お父さんは？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボーが息を止める。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「無事なの？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……生きてる」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「どこ？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「イズ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「どこにいるの？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボーは東棟を見る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>それだけで分かった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズが走り出そうとする。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>腕を掴まれた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「駄目！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「離して！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「東棟はもう入れない！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「でもお父さんがいるんでしょ！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「いるから駄目なの！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズの動きが止まった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボー自身も、言ってから口を閉じた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……どういうこと」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>答える前に、施設の奥で鈍い衝撃がした。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>照明が落ちる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>一秒。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>二秒。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>非常灯が戻った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボーの端末が警告を吐き出す。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『東棟第二隔壁、応答なし！』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>誰かの声。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『主任、第四格納庫の独立電源は生きています！』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「第四……」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズが呟いた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昼に見た、暗い格納庫。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>その中央に立っていた機体。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>TERMINALIS。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボーが端末を見る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『外周防壁、次の衝撃には持ちません！』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『地下避難区画への連絡路は？』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>『崩落。南側も火災で閉鎖です』</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボーの顔から血の気が引いた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズにも意味は分かった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>外へ戻れない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>地下へも行けない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……ジェルボーさん」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「考えてる」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>早口だった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ちょっと黙って。今、考えてるから」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>端末を何度も切り替える。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>避難経路。</p>
 <p>電源区画。</p>
 <p>隔壁。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>どれも赤い。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ひとつだけ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="system">HANGAR 04 : INDEPENDENT POWER</div>
-<div class="system">STRUCTURAL STATUS : STABLE</div>
-<div class="breath"></div>
-<div class="breath"></div>
+<div class="system"><span>HANGAR 04 : INDEPENDENT POWER</span></div>
+<div class="system"><span>STRUCTURAL STATUS : STABLE</span></div>
 <p>ジェルボーの指が止まった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズも見た。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>二人とも、同じ場所を思い浮かべていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……第四格納庫」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「うん」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボーはすぐには続けなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>TERMINALISがある。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>それを知っているからこそ、迷っているように見えた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「格納庫自体は独立構造。防爆壁もある」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「じゃあ、そこに行けば――」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「待って」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>強い声だった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「機体には触らないで」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昼と同じ言葉。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>けれど、今は冗談ではなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「中に入って。格納庫の内側で待ってて」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「ジェルボーさんは？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「私は残る」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「お父さんは？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボーは答えなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「一緒に行こう」</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<p>「イズ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
+<p>「イズ…」</p>
 <p>「格納庫、安全なんでしょ？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「あなたが行くの」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「なんで」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボーがイズの肩を掴む。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつもの笑う目ではなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「あなたまでここに残ったら、レインに殺される」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……こんなときに？」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「こんなときだからよ」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>一瞬だけ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>いつものジェルボーだった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>すぐに表情が戻る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「第四格納庫までなら西側通路が生きてる。行って」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「でも――」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「行って！」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>また衝撃。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>今度は天井から細かな埃が落ちた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボーがイズを庇うように身体を寄せる。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「お願い」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>小さな声だった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは何も言えなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>父のところへ行きたい。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボーも置いていきたくない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>でも。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ここにいても、二人の邪魔になるだけかもしれない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……絶対、来てね」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「行く」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「お父さんも」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボーは一瞬だけ黙った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「連れていく」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは頷いた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>走り出す。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>西側通路へ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>数歩進んで、振り返った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>ジェルボーはもうこちらを見ていなかった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>端末を耳に当て、東棟へ向かって走り出していた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>第四格納庫の扉は、半分だけ開いていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>中は暗い。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昼と同じだった。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>違うのは、赤い非常灯だけ。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>イズは中へ入る。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>背後で防爆扉がゆっくり閉じ始めた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>そして。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>暗闇の中央に、それは立っていた。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>TERMINALIS。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>昼に見たときと同じ姿。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>閉じた照準器。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>俯いた顔。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>動く気配はない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>「……また会ったね」</p>
-<div class="breath"></div>
-<div class="breath"></div>
 <p>言ってから、自分でも変なことを言ったと思った。</p>
-<div class="breath"></div>
-<div class="breath"></div>
+<p>感じたことのない恐怖や不安を紛らわせるために、こぼれた言葉に近かった。</p>
 <p>返事などあるはずがない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<p>格納庫の外で、遠く爆発音がした。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<p>TERMINALISは動かない。</p>
-<div class="breath"></div>
-<div class="breath"></div>
-<p>ただ、そこに立っていた。</p><section class="chapter-head"><div class="chapter-no">09</div><h2>機内</h2></section>
+<p>消火剤とオイルと火薬のにおいが混じったようなような、格納庫。</p>
+<p>外で、遠く、低い爆発音が響く。</p>
+<p>相対的につくられた、恐ろしい静寂の中で、TERMINALISは眠ったままであった。</p>
+<section class="chapter-head" id="ch09"><div class="chapter-no">09</div><h2>機内</h2></section>
 <p>格納庫の防爆扉が閉じきる音は、思っていたよりも大きかった。</p>
+<p>重い金属音が格納庫の奥まで響き、そこで途切れる。</p>
 <p>イズはしばらく扉を見ていた。</p>
-<div class="system">HANGAR 04 : INDEPENDENT POWER<br>STRUCTURAL STATUS : STABLE<br>EXTERNAL LINK : LOST</div>
+<p>戻れない。</p>
+<p>そう思った途端、急に息が浅くなった。</p>
+<p>「……大丈夫」</p>
+<p>自分に言い聞かせる。</p>
+<p>ジェルボーは来ると言った。</p>
+<p>父も連れてくると。</p>
+<p>だから、ここで待てばいい。</p>
+<p>機体には触らない。</p>
+<p>昼と同じ言葉を思い出し、イズはTERMINALISから少し離れた壁際へ移動した。</p>
+<p>端末を見る。</p>
+<p>圏外。</p>
+<p>父からの返信はない。</p>
+<p>ジェルボーにもつながらない。</p>
+<p>格納庫の設備表示だけが、赤い非常灯の下で生きていた。</p>
+<div class="system"><span>HANGAR 04 : INDEPENDENT POWER</span></div>
+<div class="system"><span>STRUCTURAL STATUS : STABLE</span></div>
+<div class="system"><span>EXTERNAL LINK : LOST</span></div>
+<p>「……安定、ね」</p>
+<p>言葉とは裏腹に、床が小さく震えた。</p>
+<p>一度。</p>
+<p>二度。</p>
+<p>天井のクレーンが軋む。</p>
+<p>イズはTERMINALISを見上げた。</p>
+<p>相変わらず黙したままだが、人のいない格納庫では、その巨大な機体がそこにいるだけで少しだけましだった。</p>
+<p>次の衝撃は、これまでとは違った。</p>
+<p>床が跳ねた。</p>
+<p>「っ！」</p>
+<p>イズは壁へ手をつく。</p>
+<p>同時に、格納庫の照明がすべて消えた。</p>
+<p>暗闇。</p>
+<p>一拍遅れて、赤い非常灯が戻る。</p>
+<p>警報。</p>
+<div class="system"><span>HANGAR 04 : STRUCTURAL LOAD DETECTED</span></div>
+<div class="system"><span>OUTER SECTION : DAMAGE</span></div>
+<div class="system"><span>FIRE SUPPRESSION : ACTIVE</span></div>
+<p>天井近くから白い消火剤が噴き出した。</p>
+<p>格納庫の端で何かが燃えている。</p>
+<p>「うそ……」</p>
+<p>さっきまで緑だった構造表示の一部が、黄色へ変わる。</p>
+<div class="system danger" data-fx="alarm"><span>STRUCTURAL STATUS : CAUTION</span></div>
+<p>安全だったはずの場所が、安全ではなくなっていく。</p>
 <p>そのとき、端末が震えた。</p>
+<p>イズは飛びつくように画面を見た。</p>
+<p>着信。</p>
+<p>表示された名前に、息が止まる。</p>
 <p>「お父さん！」</p>
+<p>『イズ』</p>
+<p>声だった。</p>
+<p>ノイズだらけで、遠い。</p>
+<p>それでも間違えようがなかった。</p>
+<p>「お父さん、どこ！？ ジェルボーさんが――」</p>
+<p>『第四格納庫にいるのか』</p>
+<p>「……うん」</p>
+<p>短い沈黙。</p>
+<p>向こうで警報が鳴っている。</p>
 <p>『TERMINALISは見えるか』</p>
+<p>イズは機体を見上げた。</p>
 <p>「見える」</p>
 <p>『中に入れ』</p>
+<p>意味が分からなかった。</p>
+<p>「……え？」</p>
 <p>『コクピットに入るんだ』</p>
+<p>「でも、ジェルボーさんが機体には触るなって」</p>
 <p>『今は私が許可する』</p>
+<p>また衝撃。</p>
+<p>通信が大きく乱れた。</p>
+<p>「お父さん？」</p>
+<p>『格納庫より、機内の方が安全だ』</p>
+<p>レインの声は急いでいた。</p>
+<p>けれど、怒鳴ってはいなかった。</p>
+<p>『TERMINALISには独立電源がある。耐圧区画も生きている。中で待て』</p>
+<p>「お父さんたちは？」</p>
+<p>返事が少し遅れた。</p>
+<p>『行く』</p>
+<p>「本当に？」</p>
+<p>『ああ』</p>
+<p>イズは唇を噛んだ。</p>
+<p>「……約束したからね」</p>
+<p>一瞬だけ、向こうの呼吸が聞こえた。</p>
+<p>『覚えている』</p>
+<p>昨日の夜の言葉だった。</p>
+<p>いつか教えて。</p>
+<p>約束ね。</p>
+<p>こんな形で、その約束を思い出したくはなかった。</p>
+<p>『イズ』</p>
+<p>「なに」</p>
 <p>『乗っても、動かすな』</p>
-<div class="system">CONNECTION LOST</div>
-<div class="system">REMOTE AUTHORIZATION<br>R. LECHNER<br>ACCESS : GRANTED</div>
+<p>「……分かった」</p>
+<p>『絶対にだ』</p>
+<p>「分かったってば」</p>
+<p>ほんの少しだけ、いつもの会話に戻った気がした。</p>
+<p>そして通信が切れた。</p>
+<div class="system" data-fx="lost"><span>CONNECTION LOST</span></div>
+<p>「……もう」</p>
+<p>イズは画面を握りしめた。</p>
+<p>TERMINALISを見上げる。</p>
+<p>昼には、触ることすら許されなかった機体。</p>
+<p>今は、その中へ入れと言われている。</p>
+<p>怖かった。</p>
+<p>けれど、父の声を聞いたからか。</p>
+<p>さっきより足は動いた。</p>
+<p>機体の足元へ走る。</p>
+<p>整備用昇降機は非常電源で生きていた。</p>
+<p>認証端末に学生証をかざす。</p>
+<div class="system"><span>ACCESS DENIED</span></div>
+<p>「……だよね」</p>
+<p>その直後。</p>
+<p>端末の表示が切り替わった。</p>
+<div class="system"><span>REMOTE AUTHORIZATION</span></div>
+<div class="system"><span>R. LECHNER</span></div>
+<div class="system"><span>ACCESS : GRANTED</span></div>
+<p>イズは目を見開く。</p>
+<p>「お父さん……」</p>
+<p>昇降機が動き出した。</p>
+<p>ゆっくりと、TERMINALISの胸部へ上がっていく。</p>
+<p>近づくほど、機体は大きかった。</p>
+<p>装甲の傷。</p>
+<p>整備用のマーキング。</p>
+<p>閉じたままの照準器。</p>
+<p>昼には下から見上げるだけだったものが、今は手の届く距離にある。</p>
+<p>胸部脇のハッチが開いた。</p>
+<p>暗い機内。</p>
+<p>非常灯だけが細く点いている。</p>
+<p>イズは一度だけ、格納庫を振り返った。</p>
+<p>誰もいない。</p>
+<p>「……入るからね」</p>
+<p>誰に断っているのか分からなかった。</p>
 <p>イズはTERMINALISの中へ入った。</p>
-
-<section class="chapter-head"><div class="chapter-no">10</div><h2>襲撃</h2></section>
-<div class="system">TERMINALIS<br>STANDBY POWER : ACTIVE<br>MAIN SYSTEM : OFFLINE<br>CONTACT : ---</div>
-<p>敵BOARDが防爆扉をこじ開けようとしている。</p>
+<section class="chapter-head" id="ch10"><div class="chapter-no">10</div><h2>襲撃</h2></section>
+<p>コクピットは、思っていたより狭かった。</p>
+<p>左右を囲む操作盤。</p>
+<p>正面の表示器。</p>
+<p>手元には二本の操縦桿と、見慣れない補助入力系。</p>
+<p>けれど。</p>
+<p>「……これ」</p>
+<p>全部が未知というわけではない。</p>
+<p>姿勢制御。</p>
+<p>脚部駆動。</p>
+<p>慣性補正。</p>
+<p>非常時の手動系。</p>
+<p>配置こそ違うが、学校で扱う試験用BOARDと考え方は同じだった。</p>
+<p>イズはシートへ身体を滑り込ませる。</p>
+<p>固定具が肩と腰を押さえた。</p>
+<p>正面表示が淡く点灯する。</p>
+<div class="system"><span>TERMINALIS</span></div>
+<div class="system"><span>STANDBY POWER : ACTIVE</span></div>
+<div class="system"><span>MAIN SYSTEM : OFFLINE</span></div>
+<div class="system"><span>CONTACT : ---</span></div>
+<p>「……CONTACT？」</p>
+<p>見覚えのない項目だった。</p>
+<p>その下には、知っているものが並んでいる。</p>
+<p>駆動系。</p>
+<p>姿勢制御系。</p>
+<p>機体状態。</p>
+<p>イズは触らなかった。</p>
+<p>動かすな。</p>
+<p>父の言葉を守る。</p>
+<p>ただ、待つ。</p>
+<p>そう決めた直後だった。</p>
+<p>格納庫の外で、何かが激突した。</p>
+<p>防爆扉が大きく歪む。</p>
+<p>「……っ！」</p>
+<p>警報がコクピットにも入る。</p>
+<div class="system"><span>HANGAR 04 : OUTER GATE DAMAGE</span></div>
+<div class="system"><span>SECURITY BARRIER : LOST</span></div>
+<p>外部カメラが自動的に起動した。</p>
+<p>赤い非常灯の格納庫。</p>
+<p>閉じていたはずの防爆扉。</p>
+<p>その中央が、内側へ押し込まれている。</p>
+<p>もう一度。</p>
+<p>金属が裂けた。</p>
+<p>できた隙間から、巨大な腕が入ってくる。</p>
+<p>「……BOARD」</p>
+<p>見慣れた作業機ではない。</p>
+<p>装甲。</p>
+<p>武装。</p>
+<p>外で見た戦闘用の機体と同じ種類のものだった。</p>
+<p>それが、防爆扉をこじ開けようとしている。</p>
+<p>端末が鳴った。</p>
+<p>父からだった。</p>
+<p>「お父さん！」</p>
+<p>『イズ、聞こえるか』</p>
+<p>「聞こえる。外にBOARDが――」</p>
+<p>『分かっている』</p>
+<p>『格納庫の防壁が破られた』</p>
+<p>「どうすればいいの」</p>
+<p>返事がない。</p>
+<p>「お父さん？」</p>
+<p>『…………』</p>
+<p>長い沈黙だった。</p>
+<p>さっきまで迷わず指示を出していた父が、初めて言葉を失った。</p>
+<p>防爆扉がまた歪む。</p>
+<p>敵の腕が、さらに深く入ってくる。</p>
+<p>「お父さん！」</p>
 <p>『……TERMINALISを起動しろ』</p>
+<p>イズは息を止めた。</p>
 <p>「動かすなって言ったじゃん」</p>
-<p>『言った。今は動かせ』</p>
+<p>『言った』</p>
+<p>「でも――」</p>
+<p>『今は動かせ』</p>
+<p>低い声だった。</p>
+<p>迷いを押し込めるような声。</p>
 <p>『基本設計は一般的なBOARDと変わらない』</p>
+<p>一拍。</p>
 <p>『よく知っているな？』</p>
+<p>イズは正面の表示を見る。</p>
+<p>昼休みに読んだ脚部構造。</p>
+<p>授業で何度も触れた姿勢制御。</p>
+<p>他にも、何度も父と図面を挟んで会話したこと。</p>
+<p>けれどTERMOINALISは、イズが思った以上に「知らない機体」だった。</p>
+<p>でも、知らないものだけでできているわけではない。</p>
 <p>「……うん」</p>
 <p>『なら、分かるところだけ使え』</p>
-<div class="system">STARTUP SEQUENCE RECEIVED<br>DISCONNECT FORM<br>BASIC CONTROL ONLY</div>
-<div class="system">MAIN SYSTEM : START<br>POWER BUS : ONLINE<br>BASIC DRIVE : ONLINE<br>ATTITUDE CONTROL : ONLINE<br>RETICLE : STOWED<br>CONTACT : ---</div>
+<p>「分からないところは？」</p>
+<p>『触るな』</p>
+<p>言い終わるか終わらないかのうちに、父の声が飛んできた。</p>
+<p>イズは、こんなときなのに少しだけ笑いそうになった。</p>
+<p>「それなら、できる」</p>
+<p>『起動手順を送る』</p>
+<p>表示の一部が切り替わる。</p>
+<div class="system"><span>STARTUP SEQUENCE RECEIVED</span></div>
+<div class="system"><span>DISCONNECT FORM</span></div>
+<div class="system"><span>BASIC CONTROL ONLY</span></div>
+<p>イズの目が文字を追う。</p>
+<p>「DEACTIVE……？」</p>
+<p>『今は気にするな。通常駆動だけ使え』</p>
+<p>防爆扉が裂けた。</p>
+<p>向こう側から機体の頭部が覗く。</p>
+<p>『イズ』</p>
+<p>「分かってる」</p>
+<p>右手を主電源へ。</p>
+<p>指が震えていた。</p>
+<p>止める。</p>
+<p>一度、息を吸う。</p>
+<p>もう一度、手を伸ばす。</p>
+<div class="system"><span>MAIN SYSTEM : START</span></div>
+<p>低い振動がシートを伝った。</p>
+<p>暗かった操作盤に、ひとつずつ光が入る。</p>
+<div class="system"><span>POWER BUS : ONLINE</span></div>
+<div class="system"><span>BASIC DRIVE : ONLINE</span></div>
+<div class="system"><span>ATTITUDE CONTROL : ONLINE</span></div>
+<div class="system"><span>RETICLE : STOWED</span></div>
+<div class="system"><span>CONTACT : ---</span></div>
+<p>格納庫の中央で。</p>
+<p>ずっと眠っていた機兵の目に、初めて光が灯った。</p>
+<p>「……起きた」</p>
+<p>『まだだ』</p>
+<p>父の声。</p>
+<p>『駆動系の出力を上げろ。少しずつ、順番にだ！』</p>
+<p>「簡単に言うね……」</p>
+<p>イズは操縦桿を握った。</p>
+<p>学校の試験機より重い。</p>
+<p>入力に対して、わずかな遅れ。</p>
+<p>けれど反応はある。</p>
+<p>右脚。</p>
+<p>左脚。</p>
+<p>重心。</p>
+<p>表示される数値を追う。</p>
+<p>何度も見たものだ。</p>
+<p>機体がゆっくりと顔を上げる。</p>
+<p>閉じた照準器の奥で、視界が開く。</p>
+<p>イズはペダルへ足を置いた。</p>
+<p>「右脚、荷重……四十二」</p>
+<p>左へ逃がす。</p>
+<p>「姿勢補正……入る」</p>
+<p>TERMINALISの足が動いた。</p>
+<p>一歩。</p>
+<p>格納庫の床が震える。</p>
+<p>イズ自身が驚いていた。</p>
+<p>もう一歩。</p>
+<p>今度は少し滑らかだった。</p>
+<p>『そうだ』</p>
+<p>レインの声が聞こえる。</p>
+<p>『それでいい』</p>
 <p>敵BOARDが防爆扉を押し破った。</p>
-<p>その腕にあるものが、こちらを向いた。</p>
-<p>武器だ。</p>
-<p>――撃たれる。</p>
-<p>これは、戦争なのか。</p>
-<p>怖い。</p>
-<p>殺される。</p>
-<p>――私も、人を殺せる。</p>
+<p>巨大な装甲が格納庫へ踏み込む。</p>
+<p>武装がこちらを向く。</p>
+<p>イズの身体が固まった。</p>
+<p>授業にはない。</p>
+<p>設計図にもない。</p>
+<p>誰かに武器を向けられる感覚だけは、どこにも書いていなかった。</p>
 <p>「……お父さん」</p>
 <p>『戦うな』</p>
-<p>『お前に戦わせるために、乗せたんじゃない』</p>
+<p>間髪を入れずに返ってきた。</p>
 <p>『西側搬出口へ行け。外へ出ろ』</p>
-
-<section class="chapter-head"><div class="chapter-no">11</div><h2>飛べるか</h2></section>
-<div class="system">HOSTILE UNIT : TRACKING<br>WEAPON LOCK : DETECTED</div>
+<p>「でも、お父さんたちは」</p>
+<p>『私たちも向かう』</p>
+<p>「またそれ」</p>
+<p>『本当だ』</p>
+<p>「……信じるからね」</p>
+<p>『ああ』</p>
+<p>敵BOARDが動く。</p>
+<p>イズも動いた。</p>
+<p>TERMINALISを反転させる。</p>
+<p>思ったより速い。</p>
+<p>「わっ――！」</p>
+<p>姿勢が崩れる。</p>
+<p>警告。</p>
+<div class="system"><span>ATTITUDE ERROR</span></div>
+<div class="system"><span>AUTO COMPENSATION</span></div>
+<p>反射的に逆入力。</p>
+<p>機体が踏みとどまった。</p>
+<p>「……いける」</p>
+<p>怖い。</p>
+<p>それでも。</p>
+<p>分かる。</p>
+<p>これはBOARDだ。</p>
+<p>自分がずっと好きで、学んできた機械だ。</p>
+<p>イズは前を見る。</p>
+<p>「行くよ、TERMINALIS」</p>
+<p>閉じた照準器のまま、機体は走り出した。</p>
+<section class="chapter-head" id="ch11"><div class="chapter-no">11</div><h2>飛べるか</h2></section>
+<p>西側搬出口へ向けて、TERMINALISを走らせる。</p>
+<p>格納庫を出た瞬間、視界が一気に開けた。</p>
+<p>研究区画の通路。</p>
+<p>崩れた外壁。</p>
+<p>燃えている搬送設備。</p>
+<p>知っている場所なのに、もう昼の研究所ではなかった。</p>
+<p>背後で敵BOARDが追ってくる。</p>
+<p>警告音。</p>
+<div class="system"><span>HOSTILE UNIT : TRACKING</span></div>
+<div class="system danger" data-fx="alarm"><span>WEAPON LOCK : DETECTED</span></div>
+<p>「追ってくる……！」</p>
+<p>『振り返るな』</p>
+<p>レインの声。</p>
+<p>『出口だけ見ろ』</p>
+<p>「分かってる！」</p>
+<p>分かっている。</p>
+<p>でも、背中に武器を向けられていると分かっただけで、身体が強張る。</p>
+<p>さっき感じた恐怖が、まだ胸の奥に残っていた。</p>
+<p>殺されるかもしれない。</p>
+<p>そして。</p>
+<p>自分も、殺せるかもしれない。</p>
+<p>その二つが、同じ重さで怖かった。</p>
+<p>イズは操縦桿を握り直す。</p>
 <p>「戦わない」</p>
-<p>西側搬出口が崩落する。</p>
-<div class="system">WEST SERVICE EXIT : BLOCKED</div>
+<p>誰に言うでもなく、呟いた。</p>
+<p>西側搬出口が見えた。</p>
+<p>非常灯の向こう。</p>
+<p>あと少し。</p>
+<p>そのとき。</p>
+<p>前方で大きな爆発が起きた。</p>
+<p>「っ！」</p>
+<p>搬出口の天井が崩れる。</p>
+<p>鋼材と壁材が一気に落ち、通路を塞いだ。</p>
+<div class="system"><span>WEST SERVICE EXIT : BLOCKED</span></div>
+<p>「そんな……！」</p>
+<p>『止まるな、別経路を――』</p>
+<p>レインの声が途切れる。</p>
+<div class="system" data-fx="lost"><span>CONNECTION LOST</span></div>
+<p>「お父さん！」</p>
+<p>返事はない。</p>
+<p>背後から衝撃。</p>
+<p>TERMINALISの肩が大きく揺れた。</p>
+<p>直撃ではない。</p>
+<p>壁をかすめた砲撃の爆風だった。</p>
+<div class="system"><span>ATTITUDE ERROR</span></div>
+<div class="system"><span>LEFT SHOULDER : IMPACT DETECTED</span></div>
+<p>「っ……！」</p>
+<p>反射的に入力を入れる。</p>
+<p>倒れかけた機体が踏みとどまる。</p>
+<p>イズは前を見る。</p>
+<p>崩落。</p>
+<p>右は火災。</p>
+<p>左は隔壁が閉じている。</p>
+<p>後ろには敵。</p>
 <p>地上に、道がない。</p>
-<div class="system">SEARCH SYSTEM : STANDBY</div>
-<div class="system">GELLÉRT PLASMA JOINT<br>VECTOR CONTROL<br>HIGH-OUTPUT DRIVE<br>FLIGHT ASSIST : LOCKED<br>CONTACT REQUIRED</div>
+<p>「……どうすればいいの」</p>
+<p>返事はない。</p>
+<p>代わりに、正面表示の一部が切り替わった。</p>
+<div class="system"><span>SEARCH SYSTEM : STANDBY</span></div>
+<p>「……SEARCH？」</p>
+<p>見たことのない表示だった。</p>
+<p>その下に、膨大な設計情報が展開される。</p>
+<p>イズの目が止まる。</p>
+<div class="system"><span>GELLÉRT PLASMA JOINT</span></div>
+<div class="system"><span>VECTOR CONTROL</span></div>
+<div class="system"><span>HIGH-OUTPUT DRIVE</span></div>
+<div class="system"><span>FLIGHT ASSIST : LOCKED</span></div>
+<p>「なに、これ……」</p>
+<p>通常のBOARDでは見ない構成だった。</p>
+<p>関節部に配置された高出力系。</p>
+<p>固定ではない。</p>
+<p>推力を受け流し、方向を変えるための構造。</p>
+<p>「支えるためじゃない……？」</p>
+<p>イズはデータを追う。</p>
+<p>脚。</p>
+<p>腰。</p>
+<p>肩。</p>
+<p>複数の出力点が、姿勢制御系へつながっている。</p>
+<p>「これ……全部、推力に使える？」</p>
+<p>その瞬間。</p>
+<p>敵BOARDが瓦礫を乗り越えてきた。</p>
+<p>照準がこちらへ向く。</p>
+<div class="system danger" data-fx="alarm"><span>WEAPON LOCK : WARNING</span></div>
+<p>イズは息を呑む。</p>
+<p>飛べる。</p>
+<p>理屈では。</p>
+<p>でも。</p>
+<p>表示には鍵が掛かっている。</p>
+<div class="system"><span>FLIGHT ASSIST : LOCKED</span></div>
+<div class="system"><span>CONTACT REQUIRED</span></div>
 <p>「CONTACT……？」</p>
-<div class="system">SEARCHING...<br>UNKNOWN SIGNAL DETECTED<br>CONTACT : UNKNOWN<br>SOURCE : ----<br>SIGNAL : UNSTABLE</div>
+<p>昼から何度も見た、意味の分からない項目。</p>
+<p>その文字が、初めて動いた。</p>
+<div class="system"><span>SEARCHING...</span></div>
+<p>ノイズ。</p>
+<p>表示が一瞬乱れる。</p>
+<p>格納庫でも、授業でも、見たことのない波形が走った。</p>
+<div class="system unknown" data-fx="unknown"><span>UNKNOWN SIGNAL DETECTED</span></div>
+<div class="system"><span>CONTACT : UNKNOWN</span></div>
+<div class="system"><span>SOURCE : ----</span></div>
+<div class="system"><span>SIGNAL : UNSTABLE</span></div>
+<p>「……え？」</p>
+<p>同時に。</p>
 <p>右耳が熱を持った。</p>
+<p>イズは反射的に耳へ触れる。</p>
+<p>銀色の円環。</p>
 <p>中央の緑色の石が、淡く光っている。</p>
-<p>『……べ……るか……』</p>
+<p>「これ……」</p>
+<p>ノイズの向こう。</p>
+<p>何かが聞こえた。</p>
+<p>音なのか。</p>
+<p>声なのか。</p>
+<p>確実に言えるのは、父からの通信回線ではない、ということ</p>
+<p class="voice-fragment" data-fx="voice-fragment">『……べ……るか……』</p>
+<p>イズの指が止まる。</p>
 <p>「……だれなの？」</p>
-<div class="system">RETICLE : DEPLOYING<br>EXTERNAL CONTACT : DETECTED<br>RETICLE FORM : INITIALIZING</div>
+<p>返事はない。</p>
+<p>敵BOARDが一歩、近づく。</p>
+<p>警告音が重なる。</p>
+<div class="system danger" data-fx="alarm"><span>WEAPON LOCK : CRITICAL</span></div>
+<p>その瞬間。</p>
+<p>TERMINALISの頭部で、何かが動いた。</p>
+<p>閉じていた照準器が、ゆっくりと開き始める。</p>
+<div class="system" data-fx="reticle"><span>RETICLE : DEPLOYING</span></div>
+<div class="system"><span>EXTERNAL CONTACT : DETECTED</span></div>
+<div class="system"><span>RETICLE FORM : INITIALIZING</span></div>
+<p>視界が変わった。</p>
+<p>それまでただの外部映像だった世界に、細い線と距離情報が重なる。</p>
+<p>敵。</p>
+<p>瓦礫。</p>
+<p>空。</p>
+<p>そして。</p>
+<p>正面に、ひとつだけ見慣れない表示。</p>
+<div class="system"><span>CONTACT : UNKNOWN</span></div>
+<div class="system"><span>SIGNAL : UNSTABLE</span></div>
+<p>ノイズがほどける。</p>
 <p>今度は、はっきり聞こえた。</p>
-<p>『飛べるか？』</p>
+<p class="voice-clear" data-fx="voice-clear">『飛べるか？』</p>
+<p>イズは息を止めた。</p>
+<p>誰なのか分からない。</p>
+<p>どこから話しているのかも分からない。</p>
+<p>それでも。</p>
+<p>問いの意味だけは、分かった。</p>
+<p>イズはもう一度、機構データを見る。</p>
+<p>ゲレルト系出力。</p>
+<p>姿勢制御。</p>
+<p>各関節のベクトル制御。</p>
+<p>学校で習ったものとは違う。</p>
+<p>けれど、考え方まで違うわけではない。</p>
+<p>荷重を逃がす。</p>
+<p>姿勢を崩さない。</p>
+<p>力の向きを変える。</p>
+<p>地面に支えさせるのではなく。</p>
+<p>空間そのものへ、推力を逃がす。</p>
+<p>「……そうか」</p>
+<p>指が動く。</p>
+<p>表示を切り替える。</p>
+<p>出力制限。</p>
+<p>姿勢補正。</p>
+<p>左右推力の同期。</p>
+<p>頭の中で、一つずつつながっていく。</p>
+<p>敵BOARDの照準が発光した。</p>
+<p>時間がない。</p>
+<p>でも。</p>
+<p>さっきまでとは違う。</p>
+<p>何をすればいいか、分からないわけではない。</p>
+<p>イズは前を見る。</p>
+<p>瓦礫の向こう。</p>
+<p>崩れた外壁のさらに先。</p>
+<p>空が見えた。</p>
 <p>「……たぶん」</p>
+<p>自分でも、少し笑ってしまう。</p>
+<p>こんなときに。</p>
 <p>「飛べる」</p>
-<div class="system">RETICLE FORM : ACTIVE<br>FLIGHT ASSIST : AVAILABLE<br>GELLÉRT PLASMA DRIVE : ONLINE</div>
+<div class="system"><span>RETICLE FORM : ACTIVE</span></div>
+<div class="system"><span>FLIGHT ASSIST : AVAILABLE</span></div>
+<div class="system"><span>GELLÉRT PLASMA DRIVE : ONLINE</span></div>
+<p>機体全体が、低く唸った。</p>
+<p>関節部に光が走る。</p>
+<p>足元の床材が震える。</p>
+<p>イズは操縦桿を握る。</p>
+<p>「行くよ」</p>
+<p>誰に言ったのか。</p>
+<p>TERMINALISに。</p>
+<p>父に。</p>
+<p>それとも、さっきの声に。</p>
+<p>自分でも分からなかった。</p>
+<p>入力。</p>
+<p>次の瞬間。</p>
+<p>機体が跳ねた。</p>
+<p>「うっ…」</p>
+<p>飛んだ、というより。</p>
+<p>撃ち出された。</p>
+<p>身体がシートへ押しつけられる。</p>
+<p>「っく…」</p>
+<p>視界が傾く。</p>
+<p>警告が一気に並ぶ。</p>
+<div class="system"><span>ATTITUDE ERROR</span></div>
+<div class="system"><span>VECTOR IMBALANCE</span></div>
+<div class="system"><span>AUTO COMPENSATION : LIMIT</span></div>
+<p>「待って待って待って！」</p>
+<p>反射的に入力を戻す。</p>
+<p>右が強い。</p>
+<p>左を足す。</p>
+<p>腰の推力を落とす。</p>
+<p>脚部を合わせる。</p>
+<p>「こう……！」</p>
+<p>機体が大きく振れた。</p>
+<p>それでも、落ちなかった。</p>
 <p>TERMINALISは崩れた外壁を越える。</p>
+<p>炎と煙の上へ。</p>
+<p>研究区画の建物が、一気に小さくなる。</p>
+<p>イズは目を見開いた。</p>
 <p>「……飛んでる」</p>
-<div class="system">MISSILE ALERT<br>MULTIPLE TRACKS DETECTED</div>
+<p>信じられなかった。</p>
+<p>自分が。</p>
+<p>この機体が。</p>
+<p>空にいる。</p>
+<p>背後から敵BOARDが追撃の光を放つ。</p>
+<p>イズはそれを見て、操縦桿を切った。</p>
+<p>今度は自分で。</p>
+<p>TERMINALISが軌道を変える。</p>
+<p>まだ荒い。</p>
+<p>まだ怖い。</p>
+<p>でも。</p>
+<p>飛べている。</p>
+<p>その瞬間だった。</p>
+<div class="system danger" data-fx="alarm"><span>MISSILE ALERT</span></div>
+<div class="system"><span>MULTIPLE TRACKS DETECTED</span></div>
+<p>「……は？」</p>
+<p>視界の端に、複数の警告表示が立ち上がる。</p>
+<p>後方。</p>
+<p>側面。</p>
+<p>さらに上空。</p>
+<p>赤い軌跡が、一斉にこちらへ伸びていた。</p>
+<p>「やば……！」</p>
+<p>避ける。</p>
+<p>右へ。</p>
+<p>TERMINALISが傾く。</p>
+<p>一発。</p>
+<p>二発。</p>
+<p>ぎりぎりで外れる。</p>
+<p>けれど、次が来る。</p>
 <p>上空には別の敵BOARD。</p>
+<p>こちらの進路を塞ぐように降りてくる。</p>
+<p>「無理……！」</p>
 <p>通常飛行のままでは、抜けられない。</p>
-<div class="system">IMPULSE FORM : AVAILABLE<br>FRAME SHIFT : AVAILABLE<br>PLASMA VECTOR SYNC : STANDBY</div>
+<p>そう思った瞬間。</p>
+<p>機構データの奥に、まだ展開していない項目があることに気づいた。</p>
+<div class="system"><span>IMPULSE FORM : AVAILABLE</span></div>
+<div class="system"><span>FRAME SHIFT : AVAILABLE</span></div>
+<div class="system"><span>PLASMA VECTOR SYNC : STANDBY</span></div>
+<p>「……これ」</p>
+<p>イズはデータを開く。</p>
+<p>脚部。</p>
+<p>腰部。</p>
+<p>背部。</p>
+<p>肩部。</p>
 <p>複数の推力軸が、ひとつの方向へ収束する設計。</p>
+<p>通常飛行では、各部の出力を独立して姿勢維持に使っている。</p>
+<p>でも。</p>
+<p>この形態では違う。</p>
 <p>機体そのものを、ひとつの推進体にする。</p>
 <p>「……TERMINALISは」</p>
+<p>警告音。</p>
+<p>ミサイルがさらに近づく。</p>
+<p>上空の敵BOARDが武器を向ける。</p>
+<p>イズは画面から目を離さない。</p>
 <p>「もっと……飛べる」</p>
-<div class="system">FORM SHIFT : IMPULSE</div>
+<p>指が走る。</p>
+<div class="system" data-fx="impulse"><span>FORM SHIFT : IMPULSE</span></div>
 <p>機体各部でロックが外れる音がした。</p>
 <p>脚部装甲が動く。</p>
 <p>腰部の推力軸が後方へ揃う。</p>
 <p>背部ユニットが展開する。</p>
-<p>肩部の姿勢制御翼が開く。</p>
-<div class="system">IMPULSE FORM : ACTIVE<br>PLASMA VECTOR SYNC : COMPLETE<br>LIMITER : RELEASED</div>
+<p>肩部の姿勢制御翼が開き、機体の輪郭が細く、前へ伸びる。</p>
+<div class="system" data-fx="impulse"><span>IMPULSE FORM : ACTIVE</span></div>
+<div class="system"><span>PLASMA VECTOR SYNC : COMPLETE</span></div>
+<div class="system"><span>LIMITER : RELEASED</span></div>
+<p>「いける……！」</p>
+<div class="system danger" data-fx="alarm"><span>MISSILE ALERT : CRITICAL</span></div>
+<p>イズは操縦桿を前へ倒す。</p>
 <p>世界が、後ろへ飛んだ。</p>
+<p>「――っ！」</p>
+<p>今度は跳ねたのではない。</p>
+<p>明確に。</p>
 <p>TERMINALISが加速した。</p>
-<p>ミサイルの間を抜ける。</p>
+<p>追ってきたミサイルの間を抜ける。</p>
+<p>一発が右をかすめる。</p>
+<p>二発目。</p>
+<p>三発目。</p>
+<p>レティクルに軌道が重なる。</p>
+<p>イズはその線を見る。</p>
+<p>避けるべき場所が、分かる。</p>
+<p>「そこ……！」</p>
+<p>機体を捻る。</p>
+<p>ミサイル同士が交差する。</p>
+<p>背後で爆発。</p>
+<p>衝撃波。</p>
+<p>それすら置き去りにする。</p>
 <p>上空の敵BOARDが進路を塞ぐ。</p>
+<p>武器を向ける。</p>
+<p>イズの指が強張る。</p>
+<p>撃てる。</p>
+<p>たぶん。</p>
+<p>でも。</p>
 <p>「どいて……！」</p>
-<p>攻撃ではなく、推力を上げた。</p>
+<p>攻撃ではなく。</p>
+<p>推力を上げた。</p>
 <p>TERMINALISが敵BOARDの脇をすり抜ける。</p>
+<p>さらに一機。</p>
+<p>さらにその上。</p>
 <p>雲を抜ける。</p>
-<div class="system">MISSILE TRACK : LOST<br>HOSTILE LOCK : LOST</div>
-<div class="system">CONTACT : UNKNOWN<br>SIGNAL : UNSTABLE</div>
+<div class="system"><span>MISSILE TRACK : LOST</span></div>
+<div class="system"><span>HOSTILE LOCK : LOST</span></div>
+<p>街が遠ざかる。</p>
+<p>炎も。</p>
+<p>研究所も。</p>
+<p>BOARDたちも。</p>
+<p>全部が眼下へ沈んでいく。</p>
+<p>やがて。</p>
+<p>警告音が消えた。</p>
+<p>静かだった。</p>
+<p>ただ、機体を包む低い振動だけが残っている。</p>
+<p>右耳の石は、まだ淡く光っていた。</p>
+<div class="system"><span>CONTACT : UNKNOWN</span></div>
+<div class="system"><span>SIGNAL : UNSTABLE</span></div>
+<p>イズは一瞬だけ、その表示を見る。</p>
 <p>「……あとで、ちゃんと聞くから」</p>
-
-<section class="chapter-head"><div class="chapter-no">12</div><h2>CONNECTION LOST</h2></section>
+<p>返事はなかった。</p>
+<p>TERMINALISは、さらに空へ上がっていく。</p>
+<section class="chapter-head" id="ch12"><div class="chapter-no">12</div><h2>CONNECTION LOST</h2></section>
 <p>遠く、空へ昇っていく光があった。</p>
 <p>レインは、それを見た。</p>
 <p>TERMINALIS。</p>
@@ -3702,180 +2338,13 @@ stroke="rgba(52,230,238,.22)" stroke-width="1.2" fill="none"/>
 <p>それでも。</p>
 <p>あの子は、一人ではなかった。</p>
 <p>「……セラ」</p>
+<p>レインは、かすかに笑った。</p>
 <p>「君の言った通りだった」</p>
-<div class="system">CONNECTION LOST</div>
+<div class="system" data-fx="lost"><span>CONNECTION LOST</span></div>
 <p>背後で、重い金属音がした。</p>
 <p>レインが振り返る。</p>
 <p>そこで、景色は途切れた。</p>
-<div class="system">CONTACT : UNKNOWN<br>SOURCE : ----<br>SIGNAL : UNSTABLE</div>
-<div class="divider"><span></span><i>CONTINUE</i><span></span></div>
-
-</main><footer>SEIKAN NO TERMINALIS / CONTINUE ONLINE</footer>
-<script>
-(()=>{
-const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
-const boot=q('#fx-boot');
-if(boot && !matchMedia('(prefers-reduced-motion: reduce)').matches){
-  qa('.fx-boot-line').forEach(el=>setTimeout(()=>el.classList.add('on'),Number(el.dataset.t)||0));
-  setTimeout(()=>boot.classList.add('done'),1450);
-}else if(boot){boot.remove();}
-const fx={red:q('#fx-red'),cyan:q('#fx-cyan'),black:q('#fx-black'),impulse:q('#fx-impulse'),reticle:q('#fx-reticle')};
-function replay(el,cls){if(!el)return;el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls);}
-const SYS=qa('.system');
-SYS.forEach(el=>{el.classList.add('fx-system');el.dataset.full=el.textContent.trim();});
-const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const seen=new WeakSet();
-function typeSystem(el){
- if(reduced||seen.has(el)) return;
- seen.add(el); const full=el.dataset.full||el.textContent.trim(); el.textContent=''; el.classList.add('reveal');
- let i=0; const speed=Math.max(9,Math.min(20,550/Math.max(1,full.length)));
- const cursor=document.createElement('span'); cursor.className='type-cursor'; el.append(cursor);
- const id=setInterval(()=>{ if(i>=full.length){clearInterval(id);cursor.remove();el.textContent=full;triggerFX(full,el);return;} el.insertBefore(document.createTextNode(full[i++]),cursor);},speed);
-}
-function triggerFX(txt,el){
- const t=txt.toUpperCase();
- if(/EMERGENCY|MISSILE ALERT|WEAPON LOCK|DAMAGE|CRITICAL/.test(t)) replay(fx.red,'pulse');
- if(/MAIN POWER\s*:\s*LOST/.test(t)) replay(fx.black,'blackout');
- if(/CONNECTION LOST/.test(t)){replay(fx.black,'blink');el.classList.add('glitch');setTimeout(()=>el.classList.remove('glitch'),500)}
- if(/UNKNOWN SIGNAL DETECTED/.test(t)){replay(fx.cyan,'signal');el.classList.add('signal-event','glitch');setTimeout(()=>el.classList.remove('glitch'),700)}
- if(/RETICLE\s*:\s*DEPLOYING|RETICLE FORM\s*:\s*INITIALIZING/.test(t)) replay(fx.reticle,'deploy');
- if(/IMPULSE FORM\s*:\s*ACTIVE|FORM SHIFT\s*:\s*IMPULSE/.test(t)) replay(fx.impulse,'impulse');
-}
-const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){typeSystem(e.target);io.unobserve(e.target)}}),{threshold:.55,rootMargin:'0px 0px -12% 0px'});
-SYS.forEach(el=>io.observe(el));
-// Ambient red light only in emergency-heavy chapters, subtle and scroll-triggered.
-const chapterObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(!e.isIntersecting)return;const n=e.target.querySelector('.chapter-no')?.textContent.trim();document.body.dataset.chapter=n||'';}),{threshold:.4});
-qa('.chapter-head').forEach(h=>chapterObserver.observe(h));
-})();
-</script>
-
-
-<script>
-(()=>{
-const main=document.querySelector('main');
-if(!main) return;
-const heads=[...main.querySelectorAll('.chapter-head')];
-if(!heads.length) return;
-
-const storageKey='seikan-terminalis-reader-v2';
-const intro=[];
-let n=main.firstElementChild;
-while(n && n!==heads[0]){ intro.push(n); n=n.nextElementSibling; }
-intro.forEach(el=>el.style.display='none');
-
-const stages=[];
-heads.forEach((head,i)=>{
-  const stage=document.createElement('section');
-  stage.className='reader-stage';
-  stage.dataset.index=String(i);
-  main.insertBefore(stage,head);
-  let cur=head;
-  const nextHead=heads[i+1]||null;
-  while(cur && cur!==nextHead){
-    const next=cur.nextElementSibling;
-    stage.appendChild(cur);
-    cur=next;
-  }
-  stages.push(stage);
-});
-
-const count=stages.length;
-const wordish=(main.innerText||'').replace(/\s+/g,'').length;
-const minutes=Math.max(1,Math.round(wordish/500));
-const $=s=>document.querySelector(s);
-$('#reader-count').textContent=count;
-$('#reader-time').textContent=minutes+' MIN';
-
-const dots=$('#reader-dots');
-for(let i=0;i<count;i++){
-  const d=document.createElement('span');
-  d.className='reader-dot'; d.dataset.i=i;
-  dots.appendChild(d);
-}
-
-function titleAt(i){
- const h=stages[i]?.querySelector('h2');
- return h ? h.textContent.trim() : '';
-}
-function loadSaved(){
- try{
-   const x=JSON.parse(localStorage.getItem(storageKey)||'null');
-   return x && Number.isInteger(x.chapter) ? Math.max(0,Math.min(count-1,x.chapter)) : 0;
- }catch(e){return 0;}
-}
-let active=loadSaved();
-const resumeBtn=$('#reader-resume-btn');
-const resumeText=$('#reader-resume-text');
-if(active>0){
- resumeBtn.hidden=false;
- resumeBtn.textContent='CONTINUE / '+String(active+1).padStart(2,'0');
- resumeText.textContent='Resume from '+String(active+1).padStart(2,'0')+' / '+titleAt(active);
-}
-
-function save(){
- try{localStorage.setItem(storageKey,JSON.stringify({chapter:active,updated:Date.now()}));}catch(e){}
-}
-function controls(i){
- const c=document.createElement('nav');
- c.className='reader-controls';
- const prev=document.createElement('button');
- prev.className='prev'; prev.disabled=i===0;
- prev.innerHTML=i===0?'':'← PREV<span class="reader-chapter-next">'+String(i).padStart(2,'0')+' / '+titleAt(i-1)+'</span>';
- const mid=document.createElement('span'); mid.className='counter';
- mid.textContent=String(i+1).padStart(2,'0')+' / '+String(count).padStart(2,'0');
- const next=document.createElement('button'); next.className='next';
- if(i<count-1){
-   next.innerHTML='NEXT →<span class="reader-chapter-next">'+String(i+2).padStart(2,'0')+' / '+titleAt(i+1)+'</span>';
- }else{
-   next.innerHTML='CONTINUE.<span class="reader-chapter-next">END OF PROLOGUE</span>';
-   next.disabled=true;
- }
- prev.addEventListener('click',()=>show(i-1,true));
- next.addEventListener('click',()=>show(i+1,true));
- c.append(prev,mid,next);
- stages[i].appendChild(c);
-}
-stages.forEach((_,i)=>controls(i));
-
-function show(i,scroll){
- if(i<0||i>=count)return;
- active=i;
- stages.forEach((s,j)=>s.classList.toggle('active',j===i));
- document.body.dataset.readerChapter=String(i+1).padStart(2,'0');
- $('#reader-record').textContent='RECORD '+String(i+1).padStart(2,'0')+' / '+String(count).padStart(2,'0');
- [...dots.children].forEach((d,j)=>{
-   d.classList.toggle('active',j===i);
-   d.classList.toggle('done',j<i);
- });
- $('#reader-bar-fill').style.width=((i+1)/count*100)+'%';
- save();
- if(scroll) window.scrollTo({top:document.querySelector('#reader-progress').offsetTop,behavior:'smooth'});
- // Re-arm visible system FX after a chapter switch without changing story content.
- setTimeout(()=>{
-   stages[i].querySelectorAll('.system').forEach(el=>{
-     if(el.getBoundingClientRect().top<innerHeight*.85 && el.getBoundingClientRect().bottom>0){
-       el.dispatchEvent(new Event('reader-visible'));
-     }
-   });
- },420);
-}
-
-function enter(chapter){
- $('#reader-start').classList.add('hidden');
- $('#reader-progress').hidden=false;
- document.querySelector('.top').style.display='none';
- show(chapter,false);
- setTimeout(()=>window.scrollTo({top:0,behavior:'instant'}),20);
-}
-$('#reader-start-btn').addEventListener('click',()=>{active=0;enter(0);});
-resumeBtn.addEventListener('click',()=>enter(active));
-
-document.addEventListener('keydown',e=>{
- if(!$('#reader-start').classList.contains('hidden')) return;
- if(e.key==='ArrowRight' && active<count-1) show(active+1,true);
- if(e.key==='ArrowLeft' && active>0) show(active-1,true);
-});
-})();
-</script>
-
-</body></html>
+<div class="system"><span>CONTACT : UNKNOWN</span></div>
+<div class="system"><span>SOURCE : ----</span></div>
+<div class="system"><span>SIGNAL : UNSTABLE</span></div>
+<div class="system"><span>CONTINUE.</span></div></main><footer>SEIKAN NO TERMINALIS / CONTINUE ONLINE</footer><script>const q=s=>document.querySelector(s),qa=s=>[...document.querySelectorAll(s)];const boot=q('.boot'),bootLines=qa('.bootline');window.addEventListener('load',()=>{bootLines.forEach((el,i)=>setTimeout(()=>el.classList.add('on'),350+i*420));setTimeout(()=>boot.classList.add('hide'),2100)});const red=q('.flash.red'),cyan=q('.flash.cyan'),black=q('.blackout'),ret=q('.reticlefx'),streak=q('.streak');function pulse(el,max=.18,dur=520){el.animate([{opacity:0},{opacity:max},{opacity:0}],{duration:dur,easing:'ease-out'})}function blackout(){black.animate([{opacity:0},{opacity:1},{opacity:1},{opacity:0}],{duration:520,easing:'steps(2,end)'})}function reticle(){ret.animate([{opacity:0,transform:'translate(-50%,-50%) scale(.35) rotate(-15deg)'},{opacity:.72,transform:'translate(-50%,-50%) scale(1.08) rotate(2deg)'},{opacity:.25,transform:'translate(-50%,-50%) scale(1)'},{opacity:0}],{duration:1450})}function impulse(){streak.animate([{opacity:0},{opacity:.42},{opacity:0}],{duration:900})}function glitchText(el){el.animate([{transform:'translateX(0)'},{transform:'translateX(2px)'},{transform:'translateX(-1px)'},{transform:'none'}],{duration:430,easing:'steps(3,end)'});pulse(cyan,.12,430)}const seen=new WeakSet();const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(!e.isIntersecting||seen.has(e.target))return;seen.add(e.target);const fx=(e.target.dataset.fx||'').split(' ');if(fx.includes('alarm'))pulse(red,.16,600);if(fx.includes('blackout'))blackout();if(fx.includes('lost')){blackout();setTimeout(()=>pulse(red,.1,360),150)}if(fx.includes('unknown')){pulse(cyan,.14,850);glitchText(e.target)}if(fx.includes('reticle'))reticle();if(fx.includes('impulse'))impulse();if(fx.includes('voice-fragment'))glitchText(e.target);if(fx.includes('voice-clear'))pulse(cyan,.11,520)}),{threshold:.65});qa('[data-fx]').forEach(el=>io.observe(el));</script></body></html>
