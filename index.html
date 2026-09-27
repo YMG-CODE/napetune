@@ -1415,8 +1415,7 @@
 <p>なのに今は、その数キロ先へ声すら届かない。</p>
 <p>人の流れに押され、イズは公園の入口まで来た。</p>
 <p>地下避難区画を示す表示が点滅している。</p>
-<div class="system danger"><span>SHELTER</span></div>
-<p>↓</p>
+<div class="system danger"><span>SHELTER↓↓↓</span></div>
 <p>ここへ入ればいい。</p>
 <p>そうすれば安全なのだろう。</p>
 <p>父にも、そう言われた。</p>
@@ -2325,8 +2324,12 @@
 <p>崩れた外壁のさらに先。</p>
 <p>空が見えた。</p>
 <p>「……たぶん」</p>
-<p>自分でも、少し笑ってしまう。</p>
-<p>こんなときに。</p>
+<p>こんなときなのに。</p>
+<p>怖くて、呼吸も浅くなっているはずなのに。</p>
+<p>思考は妙にさえていて。</p>
+<p>次にすべきことと、それをやれるという確信があふれてくる感覚。</p>
+<p>道標も、確証もない、ただ私が、今すべきこと。</p>
+<p>それを決めた。</p>
 <p>「飛べる」</p>
 <div class="system terminalis"><span>RETICLE FORM : ACTIVE</span></div>
 <div class="system terminalis"><span>FLIGHT ASSIST : AVAILABLE</span></div>
@@ -2402,11 +2405,11 @@
 <p>「無理……！」</p>
 <p>通常飛行のままでは、抜けられない。</p>
 <p>そう思った瞬間。</p>
-<p>機構データの奥に、まだ展開していない項目があることに気づいた。</p>
+<p>メインコンソールの飛行機能の中に、まだ展開していない項目があることに気づいた。</p>
 <div class="system terminalis"><span>IMPULSE FORM : AVAILABLE</span></div>
 <div class="system terminalis"><span>FRAME SHIFT : AVAILABLE</span></div>
 <div class="system terminalis"><span>PLASMA VECTOR SYNC : STANDBY</span></div>
-<p>「……これ」</p>
+<p>「インパルスフォーム……？」</p>
 <p>イズはデータを開く。</p>
 <p>脚部。</p>
 <p>腰部。</p>
@@ -2422,6 +2425,7 @@
 <p>ミサイルがさらに近づく。</p>
 <p>上空の敵BOARDが武器を向ける。</p>
 <p>イズは画面から目を離さない。</p>
+<p>再び、あの感覚が湧き上がってくる。</p>
 <p class="key-dialogue">「もっと……飛べる」</p>
 <p>指が走る。</p>
 <div class="system terminalis" data-fx="impulse"><span>FORM SHIFT : IMPULSE</span></div>
@@ -2437,7 +2441,7 @@
 <div class="system danger" data-fx="alarm"><span>MISSILE ALERT : CRITICAL</span></div>
 <p>イズは操縦桿を前へ倒す。</p>
 <p>世界が、後ろへ飛んだ。</p>
-<p>「――っ！」</p>
+<p>「――っ、これ早っ…！」</p>
 <p>今度は跳ねたのではない。</p>
 <p>明確に。</p>
 <p>TERMINALISが加速した。</p>
@@ -2445,7 +2449,7 @@
 <p>一発が右をかすめる。</p>
 <p>二発目。</p>
 <p>三発目。</p>
-<p>レティクルに軌道が重なる。</p>
+<p>メインコンソールのレティクルに、ミサイルの軌道が重なる。</p>
 <p>イズはその線を見る。</p>
 <p>避けるべき場所が、分かる。</p>
 <p>「そこ……！」</p>
@@ -2511,7 +2515,7 @@
 <div class="system terminalis"><span>CONTACT : UNKNOWN</span></div>
 <div class="system terminalis"><span>SOURCE : ----</span></div>
 <div class="system terminalis"><span>SIGNAL : UNSTABLE</span></div>
-<p class="closing-prose">To Be Continue・・・</p>
+<p class="closing-prose">CONTINUE.</p>
 
 </section>
 </main><script>const q=s=>document.querySelector(s),qa=s=>[...document.querySelectorAll(s)];const boot=q('.boot'),bootLines=qa('.bootline');window.addEventListener('load',()=>{bootLines.forEach((el,i)=>setTimeout(()=>el.classList.add('on'),350+i*420));setTimeout(()=>boot.classList.add('hide'),2100)});const red=q('.flash.red'),cyan=q('.flash.cyan'),black=q('.blackout'),ret=q('.reticlefx'),streak=q('.streak');function pulse(el,max=.18,dur=520){el.animate([{opacity:0},{opacity:max},{opacity:0}],{duration:dur,easing:'ease-out'})}function blackout(){black.animate([{opacity:0},{opacity:1},{opacity:1},{opacity:0}],{duration:520,easing:'steps(2,end)'})}function reticle(){ret.animate([{opacity:0,transform:'translate(-50%,-50%) scale(.35) rotate(-15deg)'},{opacity:.72,transform:'translate(-50%,-50%) scale(1.08) rotate(2deg)'},{opacity:.25,transform:'translate(-50%,-50%) scale(1)'},{opacity:0}],{duration:1450})}function impulse(){streak.animate([{opacity:0},{opacity:.42},{opacity:0}],{duration:900})}function glitchText(el){el.animate([{transform:'translateX(0)'},{transform:'translateX(2px)'},{transform:'translateX(-1px)'},{transform:'none'}],{duration:430,easing:'steps(3,end)'});pulse(cyan,.12,430)}const seen=new WeakSet();const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(!e.isIntersecting||seen.has(e.target))return;seen.add(e.target);const fx=(e.target.dataset.fx||'').split(' ');if(fx.includes('unknown'))glitchText(e.target);if(fx.includes('voice-fragment'))glitchText(e.target);if(fx.includes('voice-clear'))pulse(cyan,.11,520)}),{threshold:.65});qa('[data-fx]').forEach(el=>io.observe(el));</script>
@@ -2717,7 +2721,10 @@
     }
     try{localStorage.setItem(key,String(i))}catch(e){}
     history.replaceState(null,'','#ch'+String(i+1).padStart(2,'0'));
-    if(!opts.noScroll) window.scrollTo({top:document.querySelector('main').offsetTop-12,behavior:opts.instant?'auto':'smooth'});
+    if(!opts.noScroll){
+      const scrollTarget=i===0 ? document.querySelector('.front-matter') : document.querySelector('main');
+      if(scrollTarget) window.scrollTo({top:Math.max(0,scrollTarget.offsetTop-(i===0?0:12)),behavior:opts.instant?'auto':'smooth'});
+    }
   }
 
   prev.addEventListener('click',()=>show(current-1));
@@ -2750,7 +2757,15 @@
       if(Number.isInteger(saved)&&saved>=0&&saved<stages.length) initial=saved;
     }catch(e){}
   }
-  show(initial,{noScroll:true,instant:true});
+  // Initial load must use the same chapter-aware start position as later navigation.
+  // CHAPTER 01 starts at KEY VISUAL / COVER; CHAPTER 02+ starts at the novel body.
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  show(initial,{instant:true});
+  // Re-assert after layout/image restoration so the browser cannot restore an old body scroll position.
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    const scrollTarget=initial===0 ? document.querySelector('.front-matter') : document.querySelector('main');
+    if(scrollTarget) window.scrollTo({top:Math.max(0,scrollTarget.offsetTop-(initial===0?0:12)),behavior:'auto'});
+  }));
 })();
 </script>
 </body></html>
