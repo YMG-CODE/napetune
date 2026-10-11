@@ -1,0 +1,97 @@
+{
+  "copyright": "2026 YMGWorks",
+  "content_license": "CONTENT_LICENSE.md",
+  "entries": [
+    {
+      "path": "src/assets/demo_prologue_qr_132x132.png",
+      "scope": "画像および画像を符号化したデータ",
+      "license": "YMGWorks content terms v1.0",
+      "sha256": "4722f3789b1a74852ca5250f72effc3655646d8a5f630f38297286a39199a365"
+    },
+    {
+      "path": "src/assets/demo_terminalis_kv_320x240.png",
+      "scope": "画像および画像を符号化したデータ",
+      "license": "YMGWorks content terms v1.0",
+      "sha256": "56cc2afdfa1c191a8ca43134bb93d5d606d85b5f4f4272e9fb76b1aafa7be8dd"
+    },
+    {
+      "path": "src/assets/hangar_mecha_front_v7_184x132.png",
+      "scope": "画像および画像を符号化したデータ",
+      "license": "YMGWorks content terms v1.0",
+      "sha256": "7f603127958a0971e5755dc656e3b77d8db12b84af30d9922fd5753a9fafedf1"
+    },
+    {
+      "path": "src/assets/hangar_mecha_rear_v7_184x132.png",
+      "scope": "画像および画像を符号化したデータ",
+      "license": "YMGWorks content terms v1.0",
+      "sha256": "e32b99d9088f8602705ff6e5314f9286a1bba3dc34ad268b5527fec939a8689d"
+    },
+    {
+      "path": "src/assets/iz_comms_face_152x157.png",
+      "scope": "画像および画像を符号化したデータ",
+      "license": "YMGWorks content terms v1.0",
+      "sha256": "c3ad1a4a04634461595e567a13927086cd616fc9e42d7d629062e0c079c73c7b"
+    },
+    {
+      "path": "src/assets/iz_sleep_bed_132x88.png",
+      "scope": "画像および画像を符号化したデータ",
+      "license": "YMGWorks content terms v1.0",
+      "sha256": "1db0986668c2048e602fce224c5cca16086eeabf6f05516d1f69e17b8eb89d3a"
+    },
+    {
+      "path": "src/assets/iz_sleep_portrait_98x128.png",
+      "scope": "画像および画像を符号化したデータ",
+      "license": "YMGWorks content terms v1.0",
+      "sha256": "e913fc508da0525e09692f1ecfb3cb8c008416a8f2ce83738db4a30c81d68552"
+    },
+    {
+      "path": "src/mecha/mecha_hybrid_body_48x64.png",
+      "scope": "画像および画像を符号化したデータ",
+      "license": "YMGWorks content terms v1.0",
+      "sha256": "9864ac02c99cf8b8e1c1074ff1ae1e1ecbc4ce6ecb4cdbbe27204ed25f583ece"
+    },
+    {
+      "path": "src/mecha/mecha_hybrid_flight_48x64.png",
+      "scope": "画像および画像を符号化したデータ",
+      "license": "YMGWorks content terms v1.0",
+      "sha256": "c2f0efbda6a639b788deca29f74c9c6483f20625cf5c6e916dc7e8487017a957"
+    },
+    {
+      "path": "src/mecha/mecha_hybrid_flight_sprite.h",
+      "scope": "画像および画像を符号化したデータ",
+      "license": "YMGWorks content terms v1.0",
+      "sha256": "00c42cd0f9abae503ee3afae7e6e4a618334f11811daa21df7a8d2df2f57abf9"
+    },
+    {
+      "path": "src/mecha/mecha_hybrid_sprite.h",
+      "scope": "画像および画像を符号化したデータ",
+      "license": "YMGWorks content terms v1.0",
+      "sha256": "71c2eddd8cbe1b13040e4de59724957a16fb45b02f94783824a5d4d3867fb5f9"
+    },
+    {
+      "path": "src/dialogue/iz_lounge_dialogue.cpp",
+      "scope": "収録のイベント名、選択肢、台詞・物語テキスト。イベント処理ロジックはMIT。",
+      "license": "MIT software logic; YMGWorks content terms v1.0 for creative content"
+    },
+    {
+      "path": "src/mecha/mecha_game.cpp",
+      "scope": "作品固有の台詞・物語テキスト・固有名、BOSS_PIXEL_ROWS等の画像データ、drawBossMecha/drawShipAndHud等に記述されたキャラクター・メカ固有の造形表現。一般的な描画・ゲーム処理はMIT。",
+      "license": "MIT software logic; YMGWorks content terms v1.0 for creative content"
+    },
+    {
+      "path": "src/modes/mode_rooms.cpp",
+      "scope": "作品固有の台詞・固有名およびキャラクター固有の造形表現。一般的なUI・状態処理はMIT。",
+      "license": "MIT software logic; YMGWorks content terms v1.0 for creative content"
+    },
+    {
+      "path": "src/core2_bridge.cpp",
+      "scope": "作品固有の収録台詞・物語表現、キャラクター固有の造形表現。一般的なUI・通信・描画処理はMIT。",
+      "license": "MIT software logic; YMGWorks content terms v1.0 for creative content"
+    },
+    {
+      "path": "src/launcher/game_launcher.cpp",
+      "scope": "作品固有の収録テキストと作品の表示表現。一般的なランチャー処理はMIT。",
+      "license": "MIT software logic; YMGWorks content terms v1.0 for creative content"
+    }
+  ]
+}
