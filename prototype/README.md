@@ -1,15 +1,18 @@
-# NapeTune — 『曐間のテルミナリス』体験版 / Prototype
+# NapeTune — 『曐間のTERMINALIS』体験版 / Prototype
 
 © 2026 YMGWorks
 
 M5Stack CoreS3 Lite / Core2とNapeProを使う、開発中の体験版です。
-小説『曐間のテルミナリス』の進行に合わせて、物語・画像・ゲーム内容・仕様を追加・改変していく予定です。
+小説『曐間のTERMINALIS』の進行に合わせて、物語・画像・ゲーム内容・仕様を追加・改変していく予定です。
 正式版の仕様、互換性、収録内容を保証するものではありません。
 
 **プログラムはオープンソース、作品素材は別の利用条件です。**
 コードだけの商用利用もMITの範囲で可能ですが、物語・キャラクター素材の商用利用や転載は許可していません。
 [適用範囲](LICENSE_SCOPE.md) / [MIT](LICENSE) / [作品素材の条件](CONTENT_LICENSE.md) /
 [対象一覧](CONTENT_MANIFEST.json) / [第三者ライセンス](THIRD_PARTY_NOTICES.md)
+
+本プロジェクト全体と、同一作者のTheExtendとの関係は[トップREADME](../README.md)を参照してください。
+将来の製品頒布に必要な対応・公開監査の未確認事項は[監査記録](docs/PUBLIC_ANNOUNCEMENT_AUDIT.md)にまとめています。
 
 ## 収録内容
 
@@ -23,7 +26,11 @@ M5Stack CoreS3 Lite / Core2とNapeProを使う、開発中の体験版です。
 - USB Module v1.2 / MAX3421E、およびNapeProの対応USBドングル
 - GLASS2 Unit（任意）、microSD（保存・外部素材に使用）
 
-USB ModuleのCS/INTセレクターと配線は使用ボードに合わせてください。Core2の配線をCoreS3へ流用しないでください。
+下表は**本体でプログラムが使うGPIO番号**です。USBモジュール上のCS/INTスイッチ印字とは別です。
+同じM-BUS位置でも本体によってGPIO番号が変わるため、印字だけで設定変更を判断しないでください。
+現在正常に動いている構成は保持し、初めて組む場合はモジュールの回路図・本体のM-BUS表で対応を確認してください。
+[USB Module v1.2公式資料](https://docs.m5stack.com/en/module/Module_USB_v1.2) /
+[CoreS3公式資料](https://docs.m5stack.com/en/core/CoreS3)。
 
 | 信号 | CoreS3 Lite | Core2標準 |
 |---|---|---|
@@ -50,6 +57,11 @@ pio device monitor -p COM10 -b 115200 --dtr 0 --rts 0
 COM10は使用環境に合わせて変更してください。モニターはCtrl+Cで終了します。
 Microsoft Serial Monitor拡張の開閉で停止する問題があるため、CoreS3では上記DTR/RTS OFFのPlatformIOモニターを使います。
 再コピー後に環境一覧が更新されない場合はProject Tasksを更新するか、VSCodeをReload Windowしてください。
+
+## この説明の対象バージョン
+
+本リポジトリの公開版はGLASS2 v6を基にしています。F8のコンフィグ追加・ROLL表記等を含む開発用v7/v7aの動作変更は、今回の文書PRでは取り込みません。
+今回の変更は説明文のみです。新たなビルドは実施していません。既存の[ビルド記録](BUILD_RESULTS.md)と区別してください。
 
 ## 実機確認
 
