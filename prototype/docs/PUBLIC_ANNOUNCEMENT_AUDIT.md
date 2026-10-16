@@ -1,5 +1,10 @@
 # 公開周知・ライセンス・将来の頒布の確認記録
 
+> この文書は2026-10-15時点の監査記録です。現在のタスク管理はGitHub Issuesへ移しました。
+> [入力・公開版の差](https://github.com/YMG-CODE/napetune/issues/4) / [実機・配線・画像](https://github.com/YMG-CODE/napetune/issues/5) /
+> [周辺機器の頒布](https://github.com/YMG-CODE/napetune/issues/6) / [作品・権利の作者確認](https://github.com/YMG-CODE/napetune/issues/7)。
+> 以下の根拠・確認案は保持し、この注記によって既存の許諾条件は変更しません。
+
 確認日：2026-10-15。これは確認記録と対応案であり、新たな利用許諾ではありません。
 
 ## 対象と確認方法

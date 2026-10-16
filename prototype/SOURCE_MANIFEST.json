@@ -191,7 +191,7 @@
   "LICENSES/M5Unified-MIT.txt": "3b18b56de2122a7580b2e516f80463177503d071ea1603fd7ea8a626ba91ea52",
   "OPEN_CORES3_MONITOR_NO_RESET.ps1": "cde2fa25527d43fb9b306fad893d57a4a18e652c6f462966baa6ab01477d0ba6",
   "platformio.ini": "f472fed7dec88906ea3817e5e2f4d6b8a57976f9a2ca31fbd50a501c5e66b1b5",
-  "README.md": "8fa402b9cbf1a8472fb8057219f12e2a7252492b9854848d7add3f6a08c09dd4",
+  "README.md": "16a8282f1118b4eb0065b6a4c158c0438c90a752a7b87ac0f909d69c06c4dbcb",
   "src/assets/demo_prologue_qr_132x132.png": "4722f3789b1a74852ca5250f72effc3655646d8a5f630f38297286a39199a365",
   "src/assets/demo_terminalis_kv_320x240.png": "56cc2afdfa1c191a8ca43134bb93d5d606d85b5f4f4272e9fb76b1aafa7be8dd",
   "src/assets/hangar_mecha_front_v7_184x132.png": "7f603127958a0971e5755dc656e3b77d8db12b84af30d9922fd5753a9fafedf1",
@@ -225,5 +225,5 @@
   "src/tuning/tuning_mode.h": "d30e0381bb9ffc062ecbf1286fb110a8627f1cb659f5257aebf7e7893bb3afb6",
   "THIRD_PARTY_NOTICES.md": "b372268eceded5d4fe1ddb0c97bf46183988caadfbba2b3f495d5dee779ffd75",
   "tools/monitor_no_reset.py": "edf9bf57e47d03463d0ebc443777e88d1349706702681684bdb88e0412017a9b",
-  "docs/PUBLIC_ANNOUNCEMENT_AUDIT.md": "e0ed9ce482c749dcd195900ec7665161d0a0c297c852b73a1fcf143c5c0a5a6d"
+  "docs/PUBLIC_ANNOUNCEMENT_AUDIT.md": "5321925c4a580448402f2587714a8e06e1b1adc4f23f92a8bd371556bb6b6c21"
 }
