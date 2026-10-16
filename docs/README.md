@@ -10,7 +10,7 @@
 
 ## 掲載画像
 
-[terminalis-web-preview.png](images/terminalis-web-preview.png)は、2026-10-17に既存の
+[terminalis-web-preview.jpg](images/terminalis-web-preview.jpg)は、2026-10-17に既存の
 [Web作品ビューア](https://ymg-code.github.io/napetune/)を撮影した画面キャプチャです。
 M5Stackの実機写真、ゲームのプレイ画面、ファームウェアの検証結果ではありません。
 原画や作品内容は変更していません。元のWeb作品の表現を含み、MITの適用対象には含めません。

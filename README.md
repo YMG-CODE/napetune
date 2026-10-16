@@ -4,7 +4,7 @@
 
 作者自身の[TheExtend](https://github.com/YMG-CODE/M5stack_TheExtend)から発展させています。
 
-<a href="https://ymg-code.github.io/napetune/"><img src="docs/images/terminalis-web-preview.png" width="640" alt="曐間のTERMINALISのWeb作品ビューア画面"></a>
+<a href="https://ymg-code.github.io/napetune/"><img src="docs/images/terminalis-web-preview.jpg" width="640" alt="曐間のTERMINALISのWeb作品ビューア画面"></a>
 
 『曐間のTERMINALIS』Web作品ビューアのスクリーンショットです。M5Stackの実機画面ではありません。
 [Web作品を読む](https://ymg-code.github.io/napetune/) / [実機写真・画面の掲載準備](https://github.com/YMG-CODE/napetune/issues/5)
