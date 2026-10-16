@@ -33,9 +33,8 @@ CoreS3では、DTR/RTSをOFFにしたPlatformIOモニターを使用します。
 pio device monitor -p COM10 -b 115200 --dtr 0 --rts 0
 ```
 
-終了はCtrl+Cです。Microsoft Serial Monitor拡張で開閉する方法とは区別してください。
+終了はCtrl+Cです。
 同梱の[PowerShell起動用スクリプト](../prototype/OPEN_CORES3_MONITOR_NO_RESET.ps1)も利用できます。
-問題の追跡は[Issue](https://github.com/YMG-CODE/napetune/issues/3)、適用範囲は[ハードウェアの制約](hardware.md)を参照してください。
 
 ## 4. 操作と初回確認
 

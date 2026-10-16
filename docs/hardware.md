@@ -42,10 +42,8 @@ Core2標準のUSB CSとGLASS2 SCLはG33で競合します。GLASS2併用時はUS
 
 ### CoreS3 Liteのシリアルモニター
 
-Microsoft Serial Monitor拡張の開閉で停止する報告があります。
-PlatformIOモニターをDTR/RTS OFFで使い、Ctrl+Cで閉じた場合の動作継続は開発時に確認済みです。
-拡張がplatformio.iniのモニター設定を使うとは限りません。具体的なコマンドは[導入方法](getting-started.md)へ。
-根本原因・公開版での再現確認は[Issue](https://github.com/YMG-CODE/napetune/issues/3)で管理します。
+CoreS3 Liteでは、DTR/RTSをOFFにしたPlatformIOモニターを使用してください。
+起動コマンドと終了方法は[導入方法](getting-started.md)を参照してください。
 
 ### 画面下の仮想ボタン
 
