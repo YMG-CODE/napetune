@@ -26,8 +26,8 @@ Napetuneは、YMGWorksによる非公式の個人開発プロジェクトです�
 - [**GAMING MODE3**](https://x.com/ymg_yamag/status/2100614865878765753?s=20)
 - [**GAMING MODE4**](https://x.com/ymg_yamag/status/2103145974910910658?s=20)
 - [**GAMING MODE5**](https://x.com/ymg_yamag/status/2106426926760169894?s=20)
-- [**3DOCASE1**](https://x.com/ymg_yamag/status/2103475342216466468?s=20)
-- [**3DOCASE2**](https://x.com/ymg_yamag/status/2096482864905031841?s=20)
+- [**3DPCASE1**](https://x.com/ymg_yamag/status/2103475342216466468?s=20)
+- [**3DDPCASE2**](https://x.com/ymg_yamag/status/2096482864905031841?s=20)
 
 ## 対応ハードウェア
 
