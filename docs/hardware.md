@@ -18,6 +18,9 @@ CoreS3 Liteの開発時の確認を、公開コピーの全モード・全周辺
 
 ## 必要な機材
 
+現在配布するCore2用デモ版は**USB CS＝G19の1構成**です。[配布ファームウェアと対応ソース](firmware.md)を参照してください。
+下表のCore2標準G33は共通ソース内の従来構成を示しており、今回のCore2ダウンロード版では使用しません。
+
 - CoreS3 Lite（8MB QSPI PSRAM）またはCore2。
 - USB Module v1.2 / MAX3421EとNapeProの対応USBドングル。
 - GLASS2 Unit（任意）、microSD（保存・外部素材用）。

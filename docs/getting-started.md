@@ -8,6 +8,10 @@ VSCode + PlatformIOを用意し、取得したリポジトリの **prototype/** 
 
 ## 2. 環境を選んで書き込む
 
+配布バイナリを使う場合は[ファームウェアのダウンロード](firmware.md)を参照してください。
+現在のCore2用デモ版をソースからビルドする場合は、リリース添付の対応ソース`core2-demo/`を開きます。
+以下のCore2環境は、リポジトリ内の共通ソースにある従来の構成です。
+
 | 本体・構成 | PlatformIO環境 |
 |---|---|
 | CoreS3 Lite（既定） | m5stack-cores3-lite-app |
