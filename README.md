@@ -49,6 +49,9 @@ M5Stack CoreS3 Lite本体、USB Module v1.2 / MAX3421E、Nape Proの対応USBド
 
 ## 導入方法
 
+[機種別ファームウェアをダウンロードして書き込む](docs/firmware.md)ことができます。
+ソースからビルドする場合は、次の手順を使用します。
+
 1. リポジトリをダウンロード、またはcloneします。
 2. VSCode + PlatformIOで **`prototype/` フォルダー**を開きます。
 3. CoreS3 Liteは `m5stack-cores3-lite-app` を選び、Uploadします。
@@ -62,6 +65,7 @@ pio run -d prototype -e m5stack-cores3-lite-app -t upload
 ## 開発状況
 
 趣味で開発している体験版・プロトタイプです。
+**Core2版はデモとして提供し、今後はCoreS3 Liteを主体に開発します。**
  [ドキュメント一覧](docs/README.md)
 
 開発状況については[X(@ymg_yamag)](https://x.com/search?q=from:ymg_yamag+Napetune+filter:videos&f=live&utm_source=chatgpt.com)でも随時発信します。
