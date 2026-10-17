@@ -3,6 +3,9 @@
 Napetuneは次のライブラリ・フォントを利用しています。
 第三者のソース内の著作権表示・ライセンス文は維持し、YMGWorks独自コードのMITや作品素材の条件とは分けて扱います。
 
+下表はこの`prototype/`の共通ソースに対応します。別添ソースから作成するCore2用デモ版はM5Unified 0.2.23／M5GFX 0.2.30を使用し、
+その対応ソース・通知・再リンク資料をリリースに添付しています。[機種別の対応ソース](../docs/firmware.md)を参照してください。
+
 | 対象 | 使用版・構成 | ライセンス・通知 |
 |---|---|---|
 | [M5Unified](https://github.com/m5stack/M5Unified) | 0.2.25 | [MIT](LICENSES/M5Unified-MIT.txt) |
