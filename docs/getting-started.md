@@ -48,8 +48,8 @@ pio device monitor -p COM10 -b 115200 --dtr 0 --rts 0
 
 ## 4. 操作と初回確認
 
-ランチャーからTUNING、MECHA、DEMO、LOUNGE、HANGARを選択します。
-公開版はGLASS2 v6ベースで、操作説明が表示されます（5秒ごとの2ページ切替）。
+ランチャーからTUNING、STORY、DEMO、LOUNGE、HANGARを選択します。
+GLASS2には操作説明が表示されます（5秒ごとの2ページ切替）。
 CoreS3の最下部20pxは仮想A/B/Cです。
 
 起動後はタッチ/Nape入力、設定保存、ゲーム開始・終了、SD、GLASS2表示を確認します。
@@ -59,11 +59,6 @@ CoreS3の最下部20pxは仮想A/B/Cです。
 
 ZIPやコピーを置き換えた後はProject Tasksを更新してください。
 戻らない場合はVSCodeのReload Windowを使い、開いているフォルダーのplatformio.iniに対象環境があるか確認します。
-
-## ビルドと実機確認の記録
-
-[機種ごとの状態](hardware.md)と[既存ビルド結果](../prototype/BUILD_RESULTS.md)を区別してください。
-今回の文書整理では、新しいビルド・実機試験を実施していません。
 
 ## 従来の共通ソース構成（参考）
 
