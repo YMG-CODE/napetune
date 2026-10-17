@@ -5,7 +5,6 @@
   "CHANGELOG.md": "8dabb3d0c8632a40b422ad151b0e0378c6d71a03bb32b60339ebc933c095f78d",
   "CONTENT_LICENSE.md": "ce86344115c77962edf2fbb1f26de3481cfe44af53652ddabe327eb0f35f037e",
   "CONTENT_MANIFEST.json": "dd7fda4f1cdb3606dff854284dc18d9c0a498cedc7417fcba1ab53b89e440b37",
-  "docs/PUBLICATION_REVIEW.md": "9f7880004f0eec96f0fe58933754c4ecfdb49eb01ce2662bc70c101181b03a06",
   "docs/SOURCE_VERIFICATION.md": "c33d951828d509c9e4ee7a6aa42f559c150c32518efd7115b0d527f08703b6b7",
   "include/core2_bridge.h": "9426b347fd13196e052a3c02003a297fb3ffed3be51a8fcc916923239e92a5ae",
   "include/core2_input_source.h": "446d9804084afa5044ef23ca3bf5097da91f114040b47e4a1552672385fd67ca",
@@ -223,7 +222,6 @@
   "src/spi_guard.cpp": "acaf672fcb0b079be5c126e00dfb00b856cf7d7ed564f462b646bc24608e9587",
   "src/tuning/tuning_mode.cpp": "83db574b27863d0462760dbe7e494da1e2f32fc10ce8fbf1b7fe39471972375b",
   "src/tuning/tuning_mode.h": "d30e0381bb9ffc062ecbf1286fb110a8627f1cb659f5257aebf7e7893bb3afb6",
-  "THIRD_PARTY_NOTICES.md": "b372268eceded5d4fe1ddb0c97bf46183988caadfbba2b3f495d5dee779ffd75",
-  "tools/monitor_no_reset.py": "edf9bf57e47d03463d0ebc443777e88d1349706702681684bdb88e0412017a9b",
-  "docs/PUBLIC_ANNOUNCEMENT_AUDIT.md": "5321925c4a580448402f2587714a8e06e1b1adc4f23f92a8bd371556bb6b6c21"
+  "THIRD_PARTY_NOTICES.md": "688de85c16a42db72d0192d606729f01e547f82e05cab6cfbd8bb3e6eb82ebce",
+  "tools/monitor_no_reset.py": "edf9bf57e47d03463d0ebc443777e88d1349706702681684bdb88e0412017a9b"
 }

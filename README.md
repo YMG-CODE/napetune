@@ -43,7 +43,7 @@ pio run -d prototype -e m5stack-cores3-lite-app -t upload
 
 ## 開発状況
 
-開発中の体験版・プロトタイプです。現在はソースを公開しています。
+趣味で開発している体験版・プロトタイプです。対応ファームウェアのソースを公開しており、ソフトウェア自体を有償で頒布する予定はありません。
 不具合・実機確認・開発予定は[GitHub Issues](https://github.com/YMG-CODE/napetune/issues)で管理します。
 [ケース等の頒布構想](https://github.com/YMG-CODE/napetune/issues/6) / [ドキュメント一覧](docs/README.md)
 
