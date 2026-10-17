@@ -19,14 +19,13 @@
 ## 対応ハードウェア
 
 M5Stack本体、USB Module v1.2 / MAX3421E、NapeProの対応USBドングルを使用します。
-GLASS2 Unitは任意、保存・外部素材にはmicroSDを使用します。
+保存・外部素材にはmicroSDを使用します。
 
 | 構成 | 動作確認の状態 |
 |---|---|
-| CoreS3 Lite | **制約あり**：移植初版の実機動作は確認済み。現行公開版の再確認は未検証。モニター設定に制約あり |
-| Core2標準 | **制約あり**：ビルド確認済み、現行公開版の実機は未検証。標準USB CSとGLASS2のピンが競合 |
-| Core2 USB CS19 | **未検証**：ビルド確認済み、現行公開版の実機結果は未記録 |
-
+| CoreS3 Lite |
+| M5Stack用MAX3421E搭載 USBモジュール v9 |
+| GLASS2 Unit | 
 [配線・確認範囲の詳細](docs/hardware.md)
 
 ## 導入方法
