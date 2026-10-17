@@ -16,8 +16,7 @@ Napetuneは、YMGWorksによる非公式の個人開発プロジェクトです�
 - **TUNING MODE**：Nape Proのキーマップを表示・WEBツールなしで変更・保存。
 - **GAMING MODE**：Nape Proでゲーム※やアプリを操作。
 - **GLASS2連携**：操作ガイドやメッセージを手元に表示。
-- **※作品・ハードウェア**：オリジナル作品『曐間のTERMINALIS』と連動。対応3Dプリントケース・筐体も開発中。
-- [Web作品を読む](https://ymg-code.github.io/napetune/) 
+- **※作品・ハードウェア**：オリジナル作品『曐間のTERMINALIS』と連動。対応3Dプリントケース・筐体も開発中。 [Web作品を読む](https://ymg-code.github.io/napetune/) 
 
 ## 動作イメージ（Xにて開発機の動画をポスト）
 - [**TUNIUG MODE**](https://x.com/ymg_yamag/status/2089270332968640803?s=20)
