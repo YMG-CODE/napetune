@@ -27,21 +27,5 @@ YMGWorks提供の開発機・試作ケースの写真です。写真ごとに開
 |---|---|
 | <img src="images/case-separated.jpg" width="420" alt="Nape Pro側とM5Stack側を分離した試作ケース"> | <img src="images/case-rear.jpg" width="420" alt="M5Stack背面と試作ケースの取り付け部"> |
 
-## 掲載元
-
-写真：YMGWorks。提供された[Driveフォルダー](https://drive.google.com/drive/u/0/folders/1nkbqfiru85gRVRomgaQTLHTSMA1EAvWf)内の静止画を、向きの補正・縮小・圧縮をして掲載しています。
-動画・設計データは追加していません。写真の掲載に伴う追加の利用許諾は行いません。[ライセンスの適用範囲](../LICENSE.md)を参照してください。
-
-| 掲載ファイル | 提供ファイル名 |
-|---|---|
-| napetune-overview.jpg | 3DPCASE_1 |
-| case-separated.jpg | 3DPCASE_2 |
-| case-rear.jpg | 3DPCASE_3 |
-| device-gaming.jpg | IMG_7991.jpg |
-| gaming-setup.jpg | GAMINGMODE_1 |
-| gaming-screen.jpg | GAMINGMODE_4 |
-| lounge-screen.jpg | GAMING_5 |
-| tuning-setup.jpg | TUNIGMMODE_1 |
-| tuning-screen.jpg | TUNIGMODE_2 |
 
 [READMEへ戻る](../README.md)
