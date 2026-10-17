@@ -14,7 +14,7 @@
 
 公開コピーのビルドの根拠は[既存の記録](../prototype/BUILD_RESULTS.md)です。
 CoreS3 Liteの開発時の確認を、公開コピーの全モード・全周辺機器の確認へ拡張しません。
-この表の更新に必要な試験と実機写真は[対応機種の確認Issue](https://github.com/YMG-CODE/napetune/issues/5)で管理します。
+[実機・ケース写真](gallery.md)と[システム構成・接続図](system.md)も参照してください。
 
 ## 必要な機材
 
@@ -26,7 +26,7 @@ CoreS3 Liteの開発時の確認を、公開コピーの全モード・全周辺
 同じM-BUS位置でも本体のGPIO番号は異なります。印字だけを見てスイッチを変更しないでください。
 現在正常に動いている構成は保持し、初めて組む場合は[USBモジュール公式資料](https://docs.m5stack.com/en/module/Module_USB_v1.2)と
 [CoreS3公式資料](https://docs.m5stack.com/en/core/CoreS3)で対応を確認します。
-現物のCS印字の対応は、写真を含めて上記Issueで確認中です。
+接続図のGPIO表記とモジュールのスイッチ印字は区別してください。
 
 | 信号 | CoreS3 Lite | Core2標準 |
 |---|---|---|
