@@ -11,7 +11,7 @@ Core2版はデモとして提供し、今後はCoreS3 Liteを主体に開発し�
 この「Core2用デモ版」は提供方針を示す呼称です。アプリ内のSTORY・DEMO・HANGAR・LOUNGE・TUNINGは両機種に含まれます。
 CoreS3向けのZIPは**CoreS3 Lite構成用**で、他のCoreS3製品での動作を保証するものではありません。
 
-Core2版は作者提供の`Napetune_game.zip`の`m5stack-core2-usb-cs19`構成からビルドしています。G33版はこのリリースでは配布しません。
+Core2版は作者提供の`Napetune_game.zip`の`m5stack-core2-usb-cs19`構成からビルドしています。Core2の配布構成はG19の1つです。
 CoreS3 Lite版は前リリースと同じバイナリです。各配布バイナリのビルド・再リンクを確認済みで、実機書き込み・操作確認は未実施です。
 必要な機材、GPIOとUSBモジュールのスイッチ印字の違いは[ハードウェア案内](hardware.md)を参照してください。
 Core2のUSB CSの物理経路もG19構成に合わせます。
