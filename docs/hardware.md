@@ -14,8 +14,8 @@ Core2版はデモとして提供し、今後はCoreS3 Liteを主体に開発し�
 
 | 構成・環境 | ビルド | 実機確認 | 構成の状態 |
 |---|---|---|---|
-| CoreS3 Lite / m5stack-cores3-lite-app | 確認済み | アプリ移植初版は確認済み。配布バイナリは未検証 | 制約あり：モニターのDTR/RTS設定 |
-| Core2用デモ版 / m5stack-core2-usb-cs19 | 確認済み | 作者の使用構成はG19。配布バイナリは未検証 | 制約あり：USB CSの物理経路をG19に合わせる |
+| CoreS3 Lite / m5stack-cores3-lite-app | 確認済み | アプリ移植初版は確認済み。| 制約あり：シリアルモニターのDTR/RTS設定 |
+| Core2用デモ版 / m5stack-core2-usb-cs19 | 確認済み | 作者の使用構成はG19。| 制約あり：USB CSの物理経路をG19に合わせる |
 
 現在の配布物のビルド・再リンク結果とソースの識別情報は[リリース説明](https://github.com/YMG-CODE/napetune/releases/tag/v0.1.0-prototype.2)に記載しています。
 開発時の実機確認と、配布バイナリの実機確認は区別しています。
