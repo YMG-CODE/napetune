@@ -1,6 +1,8 @@
 # Napetune
 
-**M5StackとNapeProを組み合わせ、キーマップの表示・変更、ゲームやアプリの操作、対応ケース・筐体を開発するプロジェクトです。**
+**M5Stackと[Keychron Nape Pro](https://www.keychron.com/products/keychron-nape-pro-wireless-trackball-mouse)を組み合わせ、キーマップの表示・変更、ゲームやアプリの操作、対応ケース・筐体を開発するプロジェクトです。**
+
+Napetuneは、YMGWorksによる非公式の個人開発プロジェクトです。Keychron、Gizmodo Japan、M5Stackによる開発・提供・公認を受けたプロジェクトではありません。
 
 作者自身の[TheExtend](https://github.com/YMG-CODE/M5stack_TheExtend)から発展させています。
 
@@ -11,14 +13,14 @@
 
 ## 主な機能
 
-- **TUNING MODE**：NapeProのキーマップを表示・変更。
-- **GAMING MODE**：NapeProでゲームやアプリを操作。MECHA、DEMO、LOUNGE、HANGARを収録。
+- **TUNING MODE**：Nape Proのキーマップを表示・変更。
+- **GAMING MODE**：Nape Proでゲームやアプリを操作。MECHA、DEMO、LOUNGE、HANGARを収録。
 - **GLASS2連携**：操作ガイドやメッセージを手元に表示。
 - **作品・ハードウェア**：オリジナル作品『曐間のTERMINALIS』と連動。対応3Dプリントケース・筐体も開発中。
 
 ## 対応ハードウェア
 
-M5Stack本体、USB Module v1.2 / MAX3421E、NapeProの対応USBドングルを使用します。
+M5Stack本体、USB Module v1.2 / MAX3421E、Nape Proの対応USBドングルを使用します。
 保存・外部素材にはmicroSDを使用します。
 
 | 構成 | 動作確認の状態 |
@@ -49,6 +51,8 @@ pio run -d prototype -e m5stack-cores3-lite-app -t upload
 ## ライセンス・クレジット
 
 開発・オリジナル作品：**YMGWorks**。
+
+記載の製品名・ブランド名は、各権利者に帰属します。
 
 - 独自の対象コード：[MIT](prototype/LICENSE)。条件に従って商用利用・改変・再配布ができます。
 - ストーリー、キャラクター、メカデザイン等：[作品素材の利用条件](prototype/CONTENT_LICENSE.md)。MIT対象外です。
