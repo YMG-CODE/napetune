@@ -2,21 +2,22 @@
 
 ## 1. プロジェクトを開く
 
-VSCode + PlatformIOを用意し、取得したリポジトリの **prototype/** を開きます。
+VSCode + PlatformIOを用意します。
+
+- **CoreS3 Lite**：取得したリポジトリの **prototype/** を開きます。
+- **Core2用デモ版（G19）**：[リリースの対応ソース](firmware.md#対応ソースライセンス)を展開し、**core2-demo/** を開きます。
+
 初回ビルド時に依存パッケージがダウンロードされます。
 [必要な機材と配線](hardware.md)を確認してから書き込んでください。
 
 ## 2. 環境を選んで書き込む
 
 配布バイナリを使う場合は[ファームウェアのダウンロード](firmware.md)を参照してください。
-現在のCore2用デモ版をソースからビルドする場合は、リリース添付の対応ソース`core2-demo/`を開きます。
-以下のCore2環境は、リポジトリ内の共通ソースにある従来の構成です。
 
-| 本体・構成 | PlatformIO環境 |
-|---|---|
-| CoreS3 Lite（既定） | m5stack-cores3-lite-app |
-| Core2標準 | m5stack-core2 |
-| Core2 USB CS19 | m5stack-core2-usb-cs19 |
+| 本体・構成 | 開くフォルダー | PlatformIO環境 |
+|---|---|---|
+| CoreS3 Lite | prototype/ | m5stack-cores3-lite-app |
+| Core2用デモ版（G19） | 対応ソース内のcore2-demo/ | m5stack-core2-usb-cs19 |
 
 VSCodeのProject Tasksで環境を選び、Build / Uploadを実行します。
 ターミナルをprototype/で開いた場合のCoreS3例：
@@ -28,6 +29,11 @@ pio run -e m5stack-cores3-lite-app -t upload --upload-port COM10
 
 COM10は実際のポートに置き換えます。Core2では環境名も上表に合わせます。
 リポジトリのルートから実行する場合は `pio run -d prototype ...` と指定します。
+Core2用デモ版は`core2-demo/`内で、次を実行します。
+
+```sh
+pio run -e m5stack-core2-usb-cs19 -t upload --upload-port COM10
+```
 
 ## 3. シリアルモニター
 
@@ -42,8 +48,8 @@ pio device monitor -p COM10 -b 115200 --dtr 0 --rts 0
 
 ## 4. 操作と初回確認
 
-ランチャーからTUNING、MECHA、DEMO、LOUNGE、HANGARを選択します。
-公開版はGLASS2 v6ベースで、操作説明が表示されます（5秒ごとの2ページ切替）。
+ランチャーからTUNING、STORY、DEMO、LOUNGE、HANGARを選択します。
+GLASS2には操作説明が表示されます（5秒ごとの2ページ切替）。
 CoreS3の最下部20pxは仮想A/B/Cです。
 
 起動後はタッチ/Nape入力、設定保存、ゲーム開始・終了、SD、GLASS2表示を確認します。
@@ -54,7 +60,15 @@ CoreS3の最下部20pxは仮想A/B/Cです。
 ZIPやコピーを置き換えた後はProject Tasksを更新してください。
 戻らない場合はVSCodeのReload Windowを使い、開いているフォルダーのplatformio.iniに対象環境があるか確認します。
 
-## ビルドと実機確認の記録
+## 従来の共通ソース構成（参考）
 
-[機種ごとの状態](hardware.md)と[既存ビルド結果](../prototype/BUILD_RESULTS.md)を区別してください。
-今回の文書整理では、新しいビルド・実機試験を実施していません。
+リポジトリの`prototype/`には、従来のCore2向けビルド環境も残っています。
+現在配布するCore2用デモ版の再ビルドには、この共通ソースではなく、上記の`core2-demo/`を使用してください。
+
+| 従来の環境 | USB CS | 補足 |
+|---|---|---|
+| m5stack-core2 | G33 | GLASS2のSCL G33と競合 |
+| m5stack-core2-usb-cs19 | G19 | 共通ソースの従来構成。現行Core2配布版の対応ソースとは別 |
+
+従来のG33構成でGLASS2を併用するには、USB CSの物理経路をG19へ合わせ、対応するビルド環境を使用します。
+過去のビルド結果は[既存の記録](../prototype/BUILD_RESULTS.md)に保持しています。

@@ -19,12 +19,12 @@ Nape ProとM5Stackを組み合わせたケース試作機です。
 ## 主な機能
 
 - **TUNING MODE**：Nape Proのキーマップを表示・WEBツールなしで変更・保存。
-- **GAMING MODE**：Nape Proでゲーム※やアプリを操作。
+- **GAMING MODE**：Nape Proでゲームやアプリを操作。
 - **GLASS2連携**：操作ガイドやメッセージを手元に表示。
-- **※作品・ハードウェア**：オリジナル作品『曐間のTERMINALIS』と連動。対応3Dプリントケース・筐体も開発中。
- [Web作品を読む](https://ymg-code.github.io/napetune/)
+- **作品・ハードウェア**：オリジナル作品『曐間のTERMINALIS』と連動。対応3Dプリントケース・筐体も開発中。
 
 ## 動作イメージ（Xにて開発機の動画をポスト）
+
 - [**TUNING MODE**](https://x.com/ymg_yamag/status/2089270332968640803?s=20)
 - [**GAMING MODE1**](https://x.com/ymg_yamag/status/2095151337436766416?s=20)
 - [**GAMING MODE2**](https://x.com/ymg_yamag/status/2098027796014698704?s=20)
@@ -50,7 +50,7 @@ M5Stack CoreS3 Lite本体、USB Module v1.2 / MAX3421E、Nape Proの対応USBド
 ## 導入方法
 
 [機種別ファームウェアをダウンロードして書き込む](docs/firmware.md)ことができます。
-ソースからビルドする場合は、次の手順を使用します。
+CoreS3 Lite版をソースからビルドする場合は、次の手順を使用します。
 
 1. リポジトリをダウンロード、またはcloneします。
 2. VSCode + PlatformIOで **`prototype/` フォルダー**を開きます。
@@ -66,9 +66,10 @@ pio run -d prototype -e m5stack-cores3-lite-app -t upload
 
 趣味で開発している体験版・プロトタイプです。
 **Core2版はデモとして提供し、今後はCoreS3 Liteを主体に開発します。**
- [ドキュメント一覧](docs/README.md)
 
-開発状況については[X(@ymg_yamag)](https://x.com/search?q=from:ymg_yamag+Napetune+filter:videos&f=live&utm_source=chatgpt.com)でも随時発信します。
+[ドキュメント一覧](docs/README.md)
+
+開発状況については[X(@ymg_yamag)](https://x.com/search?q=from:ymg_yamag+Napetune+filter:videos&f=live)でも随時発信します。
 
 ## ライセンス・クレジット
 

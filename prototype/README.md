@@ -1,15 +1,19 @@
 # Napetune firmware prototype
 
-M5Stack CoreS3 Lite / Core2向けのソース公開版です。
-TUNING、MECHA、DEMO、LOUNGE、HANGARとGLASS2連携を含みます。
+CoreS3 Lite向けファームウェアのソースです。
+TUNING、STORY、DEMO、LOUNGE、HANGARとGLASS2連携を含みます。
 
 - [プロジェクト概要・画面](../README.md)
+- [機種別ファームウェアのダウンロード](../docs/firmware.md)
 - [導入方法](../docs/getting-started.md)
 - [配線・対応機種の確認範囲](../docs/hardware.md)
-- [不具合・開発予定](https://github.com/YMG-CODE/napetune/issues)
 
 VSCode + PlatformIOでこのフォルダーを開いてください。既定環境は `m5stack-cores3-lite-app` です。
-現在はソースのみの公開で、ファームウェアバイナリは同梱していません。
+書き込み用バイナリは[GitHub Releases](https://github.com/YMG-CODE/napetune/releases/tag/v0.1.0-prototype.2)で配布しています。
+
+**Core2用デモ版（G19）の対応ソースは、リリース添付の`core2-demo/`です。**
+このフォルダー内の従来のCore2環境とは別のため、配布版の再ビルドには`core2-demo/`を使用してください。
+今後はCoreS3 Liteを主体に開発します。
 
 ## ライセンスと参加
 
