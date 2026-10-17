@@ -14,7 +14,7 @@ constexpr uint16_t COLOR_TUNING = 0x981F;
 constexpr uint16_t COLOR_PANEL = 0x0861;
 constexpr int SWIPE_THRESHOLD = 55;
 
-// 0/1: GAMING/TUNING tabs, 2..5: the four Gaming cards.
+// 0/1: GAMING/TUNING tabs, 2..4: STORY, HANGAR, LOUNGE cards.
 uint8_t s_selectedItem = 2;
 bool s_launcherDirty = true;
 uint32_t s_lastNapeNavMs = 0;
@@ -68,10 +68,9 @@ void drawGamingCard(int x, int y, int width, int height,
 
 void drawGamingPage()
 {
-    drawGamingCard(10, 70, 146, 58, "STORY", "EXHIBITION", s_selectedItem == 2);
-    drawGamingCard(164, 70, 146, 58, "DEMO", "FREE FLIGHT", s_selectedItem == 3);
-    drawGamingCard(10, 136, 146, 58, "HANGAR", "LOADOUT", s_selectedItem == 4);
-    drawGamingCard(164, 136, 146, 58, "LOUNGE", "IZ ROOM", s_selectedItem == 5);
+    drawGamingCard(10, 70, 300, 58, "STORY", "EXHIBITION", s_selectedItem == 2);
+    drawGamingCard(10, 136, 146, 58, "HANGAR", "LOADOUT", s_selectedItem == 3);
+    drawGamingCard(164, 136, 146, 58, "LOUNGE", "IZ ROOM", s_selectedItem == 4);
     const bool psramReady = ESP.getPsramSize() != 0;
     M5.Display.setTextSize(1);
     M5.Display.setTextColor(psramReady ? DARKGREY : YELLOW, BLACK);
@@ -85,8 +84,7 @@ LauncherSelection selectedGamingMode()
     if (s_selectedItem == 1) return LauncherSelection::TUNING_MODE;
     if (s_selectedItem == 0) { s_selectedItem = 2; return LauncherSelection::NONE; }
     if (s_selectedItem == 2) return LauncherSelection::MECHA_PROTOCOL;
-    if (s_selectedItem == 3) return LauncherSelection::DEMO_MODE;
-    if (s_selectedItem == 4) return LauncherSelection::HANGAR;
+    if (s_selectedItem == 3) return LauncherSelection::HANGAR;
     return LauncherSelection::IZ_LOUNGE;
 }
 
@@ -104,9 +102,6 @@ void updateGlass2MenuDetail()
             core2_glass2_context("GAMING", "STORY / EXHIBITION", "展示会ストーリーを開始します");
             break;
         case 3:
-            core2_glass2_context("GAMING", "DEMO / FREE FLIGHT", "全武器・高速飛行を使用できます");
-            break;
-        case 4:
             core2_glass2_context("GAMING", "HANGAR / LOADOUT", "機体装備を変更します");
             break;
         default:
@@ -126,29 +121,21 @@ LauncherSelection handleTap(int x, int y)
         }
         return LauncherSelection::NONE;
     }
-    if (y >= 70 && y < 130)
+    if (y >= 70 && y < 130 && x >= 10 && x <= 310)
     {
-        if (x >= 10 && x < 160)
-        {
-            s_selectedItem = 2;
-            return LauncherSelection::MECHA_PROTOCOL;
-        }
-        if (x >= 160 && x <= 310)
-        {
-            s_selectedItem = 3;
-            return LauncherSelection::DEMO_MODE;
-        }
+        s_selectedItem = 2;
+        return LauncherSelection::MECHA_PROTOCOL;
     }
     if (y >= 134 && y <= 196)
     {
         if (x >= 10 && x < 160)
         {
-            s_selectedItem = 4;
+            s_selectedItem = 3;
             return LauncherSelection::HANGAR;
         }
         if (x >= 160 && x <= 310)
         {
-            s_selectedItem = 5;
+            s_selectedItem = 4;
             return LauncherSelection::IZ_LOUNGE;
         }
     }
@@ -278,11 +265,11 @@ LauncherSelection launcher_update()
             dy = input.aim_y < 0 ? -1 : 1;
         else dy = input.wheel < 0 ? -1 : 1;
 
-        // Fixed spatial navigation across tabs and the 2x2 card grid.
-        static const uint8_t left[6]  = {0,0,2,2,4,4};
-        static const uint8_t right[6] = {1,1,3,3,5,5};
-        static const uint8_t up[6]    = {0,1,0,1,2,3};
-        static const uint8_t down[6]  = {2,3,4,5,4,5};
+        // Spatial navigation across tabs, the wide STORY card, and two lower cards.
+        static const uint8_t left[5]  = {0,0,2,3,3};
+        static const uint8_t right[5] = {1,1,2,4,4};
+        static const uint8_t up[5]    = {0,1,0,2,2};
+        static const uint8_t down[5]  = {2,2,3,3,4};
         if (dx < 0) s_selectedItem = left[s_selectedItem];
         else if (dx > 0) s_selectedItem = right[s_selectedItem];
         else if (dy < 0) s_selectedItem = up[s_selectedItem];

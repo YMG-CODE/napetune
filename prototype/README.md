@@ -1,7 +1,7 @@
 # Napetune firmware prototype
 
 M5Stack CoreS3 Lite / Core2向けのソース公開版です。
-TUNING、MECHA、DEMO、LOUNGE、HANGARとGLASS2連携を含みます。
+TUNING、STORY、LOUNGE、HANGARとGLASS2連携を含みます。
 
 - [プロジェクト概要・画面](../README.md)
 - [導入方法](../docs/getting-started.md)

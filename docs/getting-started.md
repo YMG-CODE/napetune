@@ -38,7 +38,7 @@ pio device monitor -p COM10 -b 115200 --dtr 0 --rts 0
 
 ## 4. 操作と初回確認
 
-ランチャーからTUNING、MECHA、DEMO、LOUNGE、HANGARを選択します。
+ランチャーからTUNING、STORY、LOUNGE、HANGARを選択します。
 公開版はGLASS2 v6ベースで、操作説明が表示されます（5秒ごとの2ページ切替）。
 CoreS3の最下部20pxは仮想A/B/Cです。
 

@@ -60,7 +60,6 @@ bool s_sinLutReady = false;
 bool s_boostActive = false;
 bool s_cyanThrusterEquipped = false;
 GameLoadout s_loadout = {};
-bool s_demoMode = false;
 bool s_storyMode = true;
 bool s_showcaseMode = false;
 bool s_showcaseTouchTracking = false;
@@ -4563,7 +4562,7 @@ void drawExternalHud(bool force = false)
                               (unsigned)DEMO_KILLS_TO_UNLOCK);
         else if (s_storyMode && s_demoStoryPhase == DemoStoryPhase::ESCAPE)
             M5.Display.printf("EXIT:%02u", (unsigned)s_demoLastCountdown);
-        else if (s_storyMode || s_demoMode) M5.Display.print("OBJ:---");
+        else if (s_storyMode) M5.Display.print("OBJ:---");
         else if (s_missionComplete) M5.Display.print("OBJ:CLEAR");
         else M5.Display.printf("OBJ:%02d", s_missionTargetHp);
         M5.Display.setTextColor(hud, BLACK);
@@ -5104,7 +5103,7 @@ void mecha_game_draw()
     const uint32_t sceneDone = micros();
     drawShipAndHud(boost, speed);
     if ((s_storyMode && s_demoStoryPhase == DemoStoryPhase::SUCCESS) ||
-        ((s_storyMode || s_demoMode) &&
+        (s_storyMode &&
          s_demoStoryPhase == DemoStoryPhase::FAILED))
         drawDemoResult(s_demoStoryPhase == DemoStoryPhase::SUCCESS, millis());
     s_frame.endWrite();
@@ -5175,8 +5174,7 @@ static void drawExitConfirmation()
     M5.Display.setFont(&fonts::lgfxJapanGothic_12);
     M5.Display.setTextColor(CYAN, BLACK);
     M5.Display.drawString(
-        s_storyMode ? "STORYは次回先頭から開始します" :
-        "DEMOは進行を保存しません",
+        "STORYは次回先頭から開始します",
         160, 86
     );
 
@@ -5235,7 +5233,7 @@ static bool serviceExitConfirmation()
         {
             if (touchY >= 145 && touchY < 195 && touchX >= 45 && touchX < 140)
             {
-                if (!s_demoMode && !s_storyMode)
+                if (!s_storyMode)
                 {
                     const uint16_t checkpoint = storyCheckpointForTravel(s_travel);
                     napetune_save_set_story_position(
@@ -5283,17 +5281,16 @@ static bool serviceExitConfirmation()
     return false;
 }
 
-void mecha_game_begin(bool demoMode)
+void mecha_game_begin()
 {
     game_input_clear_nape();
     s_showcaseMode = false;
     s_showcaseTouchTracking = false;
-    s_demoMode = demoMode;
-    s_storyMode = !demoMode;
+    s_storyMode = true;
     s_loadout = game_loadout_load();
     s_cyanThrusterEquipped = s_loadout.thruster != 0;
     Serial.printf("[MECHA LOADOUT] mode=%s ARM=%u LEG=%u THR=%u W=%u/%u\n",
-                  s_demoMode ? "DEMO" : "STORY",
+                  "STORY",
                   s_loadout.arms, s_loadout.legs, s_loadout.thruster,
                   s_loadout.weapon1, s_loadout.weapon2);
     initializeSinLut();
@@ -5329,7 +5326,7 @@ void mecha_game_begin(bool demoMode)
     M5.Display.fillScreen(BLACK);
     napetune_lcd_release();
     s_shipX = 0; s_shipY = 0; s_shipVx = 0; s_shipVy = 0; s_travel = 0;
-    if (!s_storyMode && !s_demoMode && napetune_save_available())
+    if (!s_storyMode && napetune_save_available())
     {
         const NapetuneSaveData& save = napetune_save_data();
         if (strncmp(save.content_pack, STORY_SAVE_PACK,
@@ -5471,13 +5468,12 @@ void mecha_game_begin(bool demoMode)
     s_fireUntilMs = 0;
     s_lastUpdateMs = millis(); s_lastDrawMs = 0;
     s_gameStartedMs = s_lastUpdateMs;
-    // STORY owns the exhibition narrative. DEMO enters the flight loop
-    // immediately with no launch dialogue or control-guide interruption.
-    s_introCommsTriggered = s_demoMode;
+    // STORY starts with the launch dialogue and control guide.
+    s_introCommsTriggered = false;
     s_demoGuideVisible = false;
-    s_demoGuideDismissed = s_demoMode;
+    s_demoGuideDismissed = false;
     s_demoStoryPhase = DemoStoryPhase::COMBAT;
-    core2_glass2_set_demo_impulse_unlocked(s_demoMode ? 1 : 0);
+    core2_glass2_set_demo_impulse_unlocked(0);
     s_demoKills = 0;
     s_demoPhaseStartedMs = 0;
     s_demoCinematicPage = 255;
@@ -5492,7 +5488,7 @@ void mecha_game_begin(bool demoMode)
     s_exitConfirmVisible = false;
     s_exitConfirmArmed = false;
     s_exitConfirmTouchWasDown = false;
-    core2_glass2_set_demo_playing(s_demoMode ? 1 : 0);
+    core2_glass2_set_demo_playing(0);
     s_perfSinceMs = millis(); s_perfFrames = 0; s_perfRenderUs = 0;
     s_perfDrawUs = 0; s_perfTotalUs = 0; s_perfSceneUs = 0; s_perfShipUs = 0;
     s_perfMaxTotalUs = 0;
@@ -5508,7 +5504,7 @@ void mecha_game_begin_showcase()
 {
     // Reuse the exact exhibition assets and fade timing from STORY without
     // entering combat or its opening communications.
-    mecha_game_begin(false);
+    mecha_game_begin();
     s_showcaseMode = true;
     s_showcaseTouchTracking = false;
     s_introCommsTriggered = true;
@@ -5938,7 +5934,7 @@ bool mecha_game_update()
         return false;
     }
     if ((s_storyMode && s_demoStoryPhase == DemoStoryPhase::SUCCESS) ||
-        ((s_storyMode || s_demoMode) &&
+        (s_storyMode &&
          s_demoStoryPhase == DemoStoryPhase::FAILED))
     {
         mecha_game_draw();
@@ -5947,11 +5943,6 @@ bool mecha_game_update()
         if (now - s_demoPhaseStartedMs >= 800 &&
             (input.pressed & GAME_INPUT_FIRE))
         {
-            if (s_demoMode)
-            {
-                core2_glass2_set_demo_playing(0);
-                return true;
-            }
             s_demoStoryPhase = DemoStoryPhase::KV_CARD;
             s_demoPhaseStartedMs = now;
             s_demoKvLastFadeStep = 255;
@@ -6039,7 +6030,7 @@ bool mecha_game_update()
             Serial.println("[MECHA DEMO] ESCAPE TIMEOUT");
         }
     }
-    else if ((s_storyMode || s_demoMode) &&
+    else if (s_storyMode &&
              s_demoStoryPhase == DemoStoryPhase::FAIL_GRACE)
     {
         if (now - s_demoPhaseStartedMs >= 1900)
@@ -6223,7 +6214,7 @@ bool mecha_game_update()
         if (weaponAge < 950 || weaponAge >= 5700) input.buttons |= GAME_INPUT_RUN;
         else input.buttons &= ~GAME_INPUT_RUN;
     }
-    if (!autoPilotDriving && !s_demoMode && !s_storyMode &&
+    if (!autoPilotDriving && !s_storyMode &&
         s_weapon != s_loadout.weapon1 &&
         s_weapon != s_loadout.weapon2)
     {
@@ -6236,7 +6227,7 @@ bool mecha_game_update()
     }
     const float xSensitivity = game_input_get_tuning(6) / 100.0f;
     const float ySensitivity = game_input_get_tuning(7) / 100.0f;
-    const bool demoImpulseUnlocked = s_demoMode ||
+    const bool demoImpulseUnlocked =
         (s_storyMode &&
          (s_demoStoryPhase == DemoStoryPhase::ESCAPE ||
           s_demoStoryPhase == DemoStoryPhase::FAIL_GRACE));
@@ -6376,7 +6367,7 @@ bool mecha_game_update()
     if (input.wheel != 0)
     {
         int next = 0;
-        if (s_demoMode || s_storyMode)
+        if (s_storyMode)
         {
             next = (int)s_weapon + (input.wheel > 0 ? 1 : -1);
             if (next < 0) next = GAME_WEAPON_COUNT - 1;
@@ -6828,7 +6819,7 @@ bool mecha_game_update()
     {
         updateTerrainCollisions(now);
         updateRouteEnemyCollisions(now);
-        if (!s_demoMode && !s_storyMode) updateBossCollision(now);
+        if (!s_storyMode) updateBossCollision(now);
     }
     updateCourseMap();
     if (s_manualLoopActive)
@@ -6977,7 +6968,7 @@ bool mecha_game_update()
     // sequence used by the timed escape mission. GLASS2 gets Iz's line first;
     // after the grace period the craft visibly chain-explodes and the normal
     // MISSION FAILED overlay takes over.
-    if (PLAYER_HULL_ENABLED && (s_storyMode || s_demoMode) && s_playerHull <= 0 &&
+    if (PLAYER_HULL_ENABLED && s_storyMode && s_playerHull <= 0 &&
         s_demoStoryPhase != DemoStoryPhase::FAIL_GRACE &&
         s_demoStoryPhase != DemoStoryPhase::FAILED &&
         s_demoStoryPhase != DemoStoryPhase::SUCCESS &&

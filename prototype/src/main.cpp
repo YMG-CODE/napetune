@@ -151,7 +151,6 @@ void loop()
                 tuning_mode_begin();
             }
             else if (choice == LauncherSelection::MECHA_PROTOCOL ||
-                choice == LauncherSelection::DEMO_MODE ||
                 choice == LauncherSelection::SHOWCASE)
             {
                 if (!s_psramReady)
@@ -178,7 +177,7 @@ void loop()
                 if (choice == LauncherSelection::SHOWCASE)
                     mecha_game_begin_showcase();
                 else
-                    mecha_game_begin(choice == LauncherSelection::DEMO_MODE);
+                    mecha_game_begin();
             }
             else if (choice == LauncherSelection::IZ_LOUNGE)
             {

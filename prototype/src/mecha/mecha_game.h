@@ -1,6 +1,6 @@
 #pragma once
 
-void mecha_game_begin(bool demoMode = false);
+void mecha_game_begin();
 void mecha_game_begin_showcase();
 bool mecha_game_update();
 void mecha_game_draw();

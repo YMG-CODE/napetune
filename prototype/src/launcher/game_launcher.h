@@ -5,7 +5,6 @@ enum class LauncherSelection
     NONE,
     TUNING_MODE,
     MECHA_PROTOCOL,
-    DEMO_MODE,
     SHOWCASE,
     IZ_LOUNGE,
     HANGAR
