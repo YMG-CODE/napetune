@@ -1,5 +1,11 @@
 # 対応ハードウェア・動作確認
 
+## 現在の配布構成
+
+**CoreS3 Lite用**と**Core2用デモ版（USB CS＝G19）**を配布しています。
+Core2版はデモとして提供し、今後はCoreS3 Liteを主体に開発します。
+[ダウンロード・機種別の対応ソース](firmware.md)を参照してください。
+
 ## 状態の読み方
 
 **確認済み**は対象の版・構成で実機確認された項目、**未検証**は実機結果が記録されていない項目、
@@ -8,21 +14,17 @@
 
 | 構成・環境 | ビルド | 実機確認 | 構成の状態 |
 |---|---|---|---|
-| CoreS3 Lite / m5stack-cores3-lite-app | 確認済み | アプリ移植初版は確認済み。公開用コピーは未検証 | 制約あり：モニターのDTR/RTS設定 |
-| Core2 / m5stack-core2 | 確認済み | 現行公開版は未検証 | 制約あり：標準USB CS G33とGLASS2 SCL G33の競合 |
-| Core2 / m5stack-core2-usb-cs19 | 確認済み | 現行公開版は未検証 | 未検証：CS19構成での実機結果待ち |
+| CoreS3 Lite / m5stack-cores3-lite-app | 確認済み | アプリ移植初版は確認済み。配布バイナリは未検証 | 制約あり：モニターのDTR/RTS設定 |
+| Core2用デモ版 / m5stack-core2-usb-cs19 | 確認済み | 作者の使用構成はG19。配布バイナリは未検証 | 制約あり：USB CSの物理経路をG19に合わせる |
 
-公開コピーのビルドの根拠は[既存の記録](../prototype/BUILD_RESULTS.md)です。
-CoreS3 Liteの開発時の確認を、公開コピーの全モード・全周辺機器の確認へ拡張しません。
+現在の配布物のビルド・再リンク結果とソースの識別情報は[リリース説明](https://github.com/YMG-CODE/napetune/releases/tag/v0.1.0-prototype.2)に記載しています。
+開発時の実機確認と、配布バイナリの実機確認は区別しています。
 [実機・ケース写真](gallery.md)と[システム構成・接続図](system.md)も参照してください。
 
 ## 必要な機材
 
-現在配布するCore2用デモ版は**USB CS＝G19の1構成**です。[配布ファームウェアと対応ソース](firmware.md)を参照してください。
-下表のCore2標準G33は共通ソース内の従来構成を示しており、今回のCore2ダウンロード版では使用しません。
-
 - CoreS3 Lite（8MB QSPI PSRAM）またはCore2。
-- USB Module v1.2 / MAX3421EとNapeProの対応USBドングル。
+- USB Module v1.2 / MAX3421EとNape Proの対応USBドングル。
 - GLASS2 Unit（任意）、microSD（保存・外部素材用）。
 
 下表は**本体でプログラムが使うGPIO番号**であり、USBモジュールのCS/INTスイッチ印字とは別です。
@@ -31,15 +33,16 @@ CoreS3 Liteの開発時の確認を、公開コピーの全モード・全周辺
 [CoreS3公式資料](https://docs.m5stack.com/en/core/CoreS3)で対応を確認します。
 接続図のGPIO表記とモジュールのスイッチ印字は区別してください。
 
-| 信号 | CoreS3 Lite | Core2標準 |
+| 信号 | CoreS3 Lite | Core2用デモ版（G19） |
 |---|---|---|
 | SPI SCK / MOSI / MISO | G36 / G37 / G35 | G18 / G23 / G38 |
-| USB CS / INT | G7 / G10 | G33 / G35 |
+| USB CS / INT | G7 / G10 | G19 / G35 |
 | SD CS | G4 | G4 |
 | GLASS2 SDA / SCL | G2 / G1 | G32 / G33 |
 
-Core2標準のUSB CSとGLASS2 SCLはG33で競合します。GLASS2併用時はUSB CSをG19へ合わせ、
-`m5stack-core2-usb-cs19` 環境を使用します。コードの環境選択だけではモジュールの物理経路は切り替わりません。
+Core2用デモ版はUSB CS＝G19です。モジュールの物理CS経路も、この構成に合わせてください。
+コードの環境選択だけではモジュールの物理経路は切り替わりません。
+リポジトリ内に残るG33環境などの説明は[従来の共通ソース構成（参考）](getting-started.md#従来の共通ソース構成参考)に分けています。
 
 ## 再利用できる制約・回避方法
 
