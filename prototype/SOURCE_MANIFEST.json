@@ -222,6 +222,6 @@
   "src/spi_guard.cpp": "acaf672fcb0b079be5c126e00dfb00b856cf7d7ed564f462b646bc24608e9587",
   "src/tuning/tuning_mode.cpp": "83db574b27863d0462760dbe7e494da1e2f32fc10ce8fbf1b7fe39471972375b",
   "src/tuning/tuning_mode.h": "d30e0381bb9ffc062ecbf1286fb110a8627f1cb659f5257aebf7e7893bb3afb6",
-  "THIRD_PARTY_NOTICES.md": "688de85c16a42db72d0192d606729f01e547f82e05cab6cfbd8bb3e6eb82ebce",
+  "THIRD_PARTY_NOTICES.md": "08054b04ccb54972bfe12b114eb18d293665699ad61ad968c04000e4129036e0",
   "tools/monitor_no_reset.py": "edf9bf57e47d03463d0ebc443777e88d1349706702681684bdb88e0412017a9b"
 }
