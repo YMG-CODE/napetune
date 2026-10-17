@@ -23,7 +23,7 @@ YMGWorks提供の開発機・試作ケースの写真です。写真ごとに開
 
 <img src="images/napetune-overview.jpg" width="720" alt="Nape ProとM5Stackを取り付けた試作ケース全体">
 
-| 分離した状態 | 背面・取り付け部 |
+| 分離した状態（マグネット式着脱） | 背面・取り付け部 |
 |---|---|
 | <img src="images/case-separated.jpg" width="420" alt="Nape Pro側とM5Stack側を分離した試作ケース"> | <img src="images/case-rear.jpg" width="420" alt="M5Stack背面と試作ケースの取り付け部"> |
 
