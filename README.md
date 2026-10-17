@@ -2,31 +2,42 @@
 
 **M5Stackと[Keychron Nape Pro](https://www.keychron.com/products/keychron-nape-pro-wireless-trackball-mouse)を組み合わせ、キーマップの表示・変更、ゲームやアプリの操作、対応ケース・筐体を開発するプロジェクトです。**
 
-Napetuneは、YMGWorksによる非公式の個人開発プロジェクトです。Keychron、Gizmodo Japan、M5Stackによる開発・提供・公認を受けたプロジェクトではありません。
+Napetuneは、YMGWorksによる非公式の個人開発プロジェクトです。
 
 作者自身の[TheExtend](https://github.com/YMG-CODE/M5stack_TheExtend)から発展させています。
 
 <a href="https://ymg-code.github.io/napetune/"><img src="docs/images/terminalis-web-preview.jpg" width="640" alt="曐間のTERMINALISのWeb作品ビューア画面"></a>
 
-『曐間のTERMINALIS』Web作品ビューアのスクリーンショットです。M5Stackの実機画面ではありません。
-[Web作品を読む](https://ymg-code.github.io/napetune/) / [実機写真・画面の掲載準備](https://github.com/YMG-CODE/napetune/issues/5)
+『曐間のTERMINALIS』Web作品ビューアのスクリーンショットです。
+[Web作品を読む](https://ymg-code.github.io/napetune/) 
 
 ## 主な機能
 
-- **TUNING MODE**：Nape Proのキーマップを表示・変更。
-- **GAMING MODE**：Nape Proでゲームやアプリを操作。MECHA、DEMO、LOUNGE、HANGARを収録。
+- **TUNING MODE**：Nape Proのキーマップを表示・WEBツールなしで変更・保存。
+- **GAMING MODE**：Nape Proでゲーム※やアプリを操作。
 - **GLASS2連携**：操作ガイドやメッセージを手元に表示。
-- **作品・ハードウェア**：オリジナル作品『曐間のTERMINALIS』と連動。対応3Dプリントケース・筐体も開発中。
+- **※作品・ハードウェア**：オリジナル作品『曐間のTERMINALIS』と連動。対応3Dプリントケース・筐体も開発中。
+- [Web作品を読む](https://ymg-code.github.io/napetune/) 
+
+## 動作イメージ（Xにて開発機の動画をポスト）
+- [**TUNIUG MODE**](https://x.com/ymg_yamag/status/2089270332968640803?s=20)
+- [**GAMING MODE1**](https://x.com/ymg_yamag/status/2095151337436766416?s=20)
+- [**GAMING MODE2**](https://x.com/ymg_yamag/status/2098027796014698704?s=20)
+- [**GAMING MODE3**](https://x.com/ymg_yamag/status/2100614865878765753?s=20)
+- [**GAMING MODE4**](https://x.com/ymg_yamag/status/2103145974910910658?s=20)
+- [**GAMING MODE5**](https://x.com/ymg_yamag/status/2106426926760169894?s=20)
+- [**3DOCASE1**](https://x.com/ymg_yamag/status/2103475342216466468?s=20)
+- [**3DOCASE2**](https://x.com/ymg_yamag/status/2096482864905031841?s=20)
 
 ## 対応ハードウェア
 
-M5Stack本体、USB Module v1.2 / MAX3421E、Nape Proの対応USBドングルを使用します。
+M5StackCORES3LITE本体、USB Module v1.2 / MAX3421E、Nape Proの対応USBドングルを使用します。
 保存・外部素材にはmicroSDを使用します。
 
-| 構成 | 動作確認の状態 |
-|---|---|
+| 構成 |
+|---|
 | CoreS3 Lite |
-| M5Stack用MAX3421E搭載 USBモジュール v9 |
+| USSB Module v1.2 / MAX3421E |
 | GLASS2 Unit | 
 [配線・確認範囲の詳細](docs/hardware.md)
 
@@ -46,7 +57,9 @@ pio run -d prototype -e m5stack-cores3-lite-app -t upload
 
 趣味で開発している体験版・プロトタイプです。
 不具合・実機確認・開発予定は[GitHub Issues](https://github.com/YMG-CODE/napetune/issues)で管理します。
-[ケース等の頒布構想](https://github.com/YMG-CODE/napetune/issues/6) / [ドキュメント一覧](docs/README.md)
+ [ドキュメント一覧](docs/README.md)
+
+開発状況については[X(@ymg_yamag)](https://x.com/search?q=from:ymg_yamag+Napetune+filter:videos&f=live&utm_source=chatgpt.com)でも随時発信します。
 
 ## ライセンス・クレジット
 
