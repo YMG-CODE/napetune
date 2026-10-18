@@ -402,10 +402,8 @@ extern "C" uint8_t core2_glass2_lounge_expression(void)
     return s_glass2LoungeExpression;
 }
 
-extern "C" void core2_glass2_nape_buttons(uint8_t buttons)
+static void glass2HandleDialoguePressed(uint8_t pressed)
 {
-    const uint8_t pressed = buttons & (uint8_t)~s_glass2DialogueButtons;
-    s_glass2DialogueButtons = (s_glass2DialogueButtons & 0xFC) | (buttons & 0x03);
     if (s_glass2DialogueActive && (pressed & 0x01))
     {
         s_glass2AdvanceRequested = true;
@@ -421,6 +419,21 @@ extern "C" void core2_glass2_nape_buttons(uint8_t buttons)
         Serial.printf("[GLASS2 CHOICE] select=%u/%u\n",
                       (unsigned)(glass2ChoiceIndex() + 1), (unsigned)count);
     }
+}
+
+extern "C" void core2_glass2_nape_buttons(uint8_t buttons)
+{
+    const uint8_t pressed = buttons & (uint8_t)~s_glass2DialogueButtons;
+    s_glass2DialogueButtons = (s_glass2DialogueButtons & 0xFC) | (buttons & 0x03);
+    glass2HandleDialoguePressed(pressed);
+}
+
+extern "C" void core2_glass2_local_buttons(uint8_t buttons)
+{
+    static uint8_t previousLocalButtons = 0;
+    const uint8_t pressed = buttons & (uint8_t)~previousLocalButtons;
+    previousLocalButtons = buttons & 0x03;
+    glass2HandleDialoguePressed(pressed);
 }
 
 static size_t utf8PrefixBytes(const char* text, size_t characters)
@@ -751,6 +764,154 @@ static void glass2PushChangedFrame(M5Canvas& canvas)
     s_glass2State->lastTransferPixels = width * height;
 }
 
+// Only stable keymap data is persisted; USB counters are never written.
+struct Glass2GuideCache {
+    uint32_t version;
+    uint8_t layer;
+    uint8_t valid;
+    uint8_t tapValid[8];
+    uint16_t keys[8][7];
+    uint16_t tap[8][7];
+    uint16_t hold[8][7];
+};
+static Glass2GuideCache s_guideCache = {};
+static portMUX_TYPE s_guideCacheMux = portMUX_INITIALIZER_UNLOCKED;
+
+static void glass2LoadGuideCache()
+{
+    Glass2GuideCache saved = {};
+    if (s_configStore.getBytesLength("guideMap") == sizeof(saved) &&
+        s_configStore.getBytes("guideMap", &saved, sizeof(saved)) == sizeof(saved) &&
+        saved.version == 1 && saved.layer < 8)
+        s_guideCache = saved;
+}
+
+static void glass2SaveGuideCache()
+{
+    if (!s_configStoreReady) return;
+    static uint32_t lastCheck = 0;
+    const uint32_t now = millis();
+    if (now - lastCheck < 2000) return;
+    lastCheck = now;
+    NapeTuningSnapshot live = {};
+    nape_tuning_get_snapshot(&live);
+    if (!live.connected || !live.keymap_valid_mask) return;
+    Glass2GuideCache next;
+    portENTER_CRITICAL(&s_guideCacheMux);
+    next = s_guideCache;
+    portEXIT_CRITICAL(&s_guideCacheMux);
+    next.version = 1;
+    if (live.runtime_valid && live.current_layer < 8) next.layer = live.current_layer;
+    else if (!next.valid) next.layer = 7;
+    for (uint8_t layer = 0; layer < 8; ++layer)
+    {
+        if (!(live.keymap_valid_mask & (1u << layer))) continue;
+        next.valid |= 1u << layer;
+        memcpy(next.keys[layer], live.keymap[layer], sizeof(next.keys[layer]));
+        next.tapValid[layer] = live.tap_hold_valid[layer];
+        memcpy(next.tap[layer], live.tap_key[layer], sizeof(next.tap[layer]));
+        memcpy(next.hold[layer], live.hold_key[layer], sizeof(next.hold[layer]));
+    }
+    portENTER_CRITICAL(&s_guideCacheMux);
+    const bool changed = next.version != s_guideCache.version ||
+        next.layer != s_guideCache.layer || next.valid != s_guideCache.valid ||
+        memcmp(next.tapValid, s_guideCache.tapValid, sizeof(next.tapValid)) != 0 ||
+        memcmp(next.keys, s_guideCache.keys, sizeof(next.keys)) != 0 ||
+        memcmp(next.tap, s_guideCache.tap, sizeof(next.tap)) != 0 ||
+        memcmp(next.hold, s_guideCache.hold, sizeof(next.hold)) != 0;
+    portEXIT_CRITICAL(&s_guideCacheMux);
+    if (!changed) return;
+    if (s_configStore.putBytes("guideMap", &next, sizeof(next)) != sizeof(next)) return;
+    portENTER_CRITICAL(&s_guideCacheMux);
+    s_guideCache = next;
+    portEXIT_CRITICAL(&s_guideCacheMux);
+}
+
+static void glass2GuideSnapshot(NapeTuningSnapshot* state)
+{
+    nape_tuning_get_snapshot(state);
+    Glass2GuideCache saved;
+    portENTER_CRITICAL(&s_guideCacheMux);
+    saved = s_guideCache;
+    portEXIT_CRITICAL(&s_guideCacheMux);
+    const uint8_t layer = state->runtime_valid && state->current_layer < 8
+        ? state->current_layer : (saved.valid ? saved.layer : 7);
+    state->current_layer = layer;
+    state->runtime_valid = true;
+    if (!(state->keymap_valid_mask & (1u << layer)))
+    {
+        if (saved.valid & (1u << layer))
+        {
+            memcpy(state->keymap[layer], saved.keys[layer], sizeof(saved.keys[layer]));
+            state->tap_hold_valid[layer] = saved.tapValid[layer];
+            memcpy(state->tap_key[layer], saved.tap[layer], sizeof(saved.tap[layer]));
+            memcpy(state->hold_key[layer], saved.hold[layer], sizeof(saved.hold[layer]));
+        }
+        else
+        {
+            // Original standard physical layout: 03,04,01,02,M1,M2,ROUND.
+            static const uint16_t defaults[7] = {0x44,0x45,0x43,0x41,0xD1,0xD2,0};
+            memcpy(state->keymap[layer], defaults, sizeof(defaults));
+            state->tap_hold_valid[layer] = 0;
+        }
+        state->keymap_valid_mask |= 1u << layer;
+    }
+    // This snapshot is for display only; never change actual USB readiness.
+    state->connected = true;
+}
+
+// Compose the physical Nape mapping with the game's logical action mapping.
+// 0xFF denotes a keycode that this guide cannot describe safely.
+static uint8_t glass2GuideAction(uint16_t code)
+{
+    if (code == 0) return NAPE_ACTION_OFF;
+    if (code == 0x00D1 || code == 0x00D2)
+        return nape_game_source_get_mouse_action(code - 0x00D1);
+    if (code == 0x0041) return nape_game_source_get_key_action(4);
+    if (code >= 0x0042 && code <= 0x0045)
+        return nape_game_source_get_key_action(code - 0x0042);
+    return 0xFF;
+}
+
+static const char* glass2GuideActionText(uint8_t action)
+{
+    switch (action)
+    {
+        case NAPE_ACTION_OFF: return "OFF";
+        case NAPE_ACTION_FIRE: return "攻撃/溜め";
+        case NAPE_ACTION_USE: return "ロール";
+        case NAPE_ACTION_RUN_TOGGLE: return "変形/ブースト";
+        case NAPE_ACTION_WEAPON_NEXT: return "武器切替";
+        case NAPE_ACTION_GUIDE_TOGGLE: return "ガイド切替";
+        case NAPE_ACTION_HUD_TOGGLE: return "HUD切替";
+        case NAPE_ACTION_THROTTLE_UP: return "スロットルUP";
+        case NAPE_ACTION_THROTTLE_DOWN: return "スロットルDown";
+        case NAPE_ACTION_FLARE: return "フレア射出";
+        default: return "別キー設定";
+    }
+}
+
+static const char* glass2PhysicalGuideAction(const NapeTuningSnapshot& state,
+                                            uint8_t physical)
+{
+    static const uint8_t columns[6] = {4, 5, 2, 3, 0, 1};
+    if (physical >= 6) return "--";
+    const uint8_t layer = state.runtime_valid && state.current_layer < 8
+        ? state.current_layer : 7;
+    if (!state.connected || !(state.keymap_valid_mask & (1u << layer)))
+        return "読込待ち";
+    const uint8_t column = columns[physical];
+    // Do not silently flatten distinct tap/hold assignments into one action.
+    if ((state.tap_hold_valid[layer] & (1u << column)) &&
+        (state.tap_key[layer][column] || state.hold_key[layer][column]))
+    {
+        if (state.tap_key[layer][column] != state.hold_key[layer][column])
+            return "TAP/HOLD設定";
+        return glass2GuideActionText(glass2GuideAction(state.tap_key[layer][column]));
+    }
+    return glass2GuideActionText(glass2GuideAction(state.keymap[layer][column]));
+}
+
 static void glass2RenderFrame()
 {
     const uint32_t now = millis();
@@ -910,7 +1071,7 @@ static void glass2RenderFrame()
                 g.setTextColor(TFT_WHITE, TFT_BLACK);
                 g.setFont(&fonts::Font0);
                 g.setCursor(2, 56);
-                g.print("M2 NEXT / M1 OK");
+                g.print("C/M2 NEXT B/M1 OK");
             }
             else
             {
@@ -1082,7 +1243,7 @@ static void glass2RenderFrame()
                     1800 + utf8CharacterCount(msg.japanese) * 350 + 700;
             g.print(s_glass2ContextActive ? "CURSOR INFORMATION" :
                     (finalVoiceWaiting ? "SIGNAL..." :
-                    (s_glass2DialogueActive ? "M1 NEXT" : "LINK ACTIVE")));
+                    (s_glass2DialogueActive ? "B/M1 NEXT" : "LINK ACTIVE")));
         }
     }
     else if (s_glass2DemoPlaying && !s_glass2DemoConsolePage)
@@ -1096,26 +1257,19 @@ static void glass2RenderFrame()
         g.printf("%u/2", page + 1);
         g.drawFastHLine(0, 10, 128, TFT_WHITE);
         g.setFont(&fonts::lgfxJapanGothic_12);
-        static const char* const lockedGuide[] = {
-            "M1 攻撃  M2 ロール",
-            "M1長押し 溜め攻撃",
-            "BALL 照準・高度",
-            "WHEEL+/- 武器切替"
-        };
-        static const char* const unlockedGuide[] = {
-            "M1 攻撃  M2 ロール",
-            "01 高速飛行に変形",
-            "BALL 照準・高度",
-            "WHEEL+/- 武器切替"
-        };
-        static const char* const flightGuide[] = {
-            "02 フレア射出",
-            "03 スロットルUP",
-            "04 スロットルDown"
-        };
-        const char* const* guide = page == 1 ? flightGuide :
-            (s_glass2DemoImpulseUnlocked ? unlockedGuide : lockedGuide);
-        const int rows = page == 1 ? 3 : 4;
+        NapeTuningSnapshot mapping = {};
+        glass2GuideSnapshot(&mapping);
+        static const char* const physicalLabels[6] = {"M1", "M2", "01", "02", "03", "04"};
+        char guide[4][64] = {};
+        const int rows = 4;
+        for (uint8_t row = 0; row < 3; ++row)
+        {
+            const uint8_t physical = page * 3 + row;
+            snprintf(guide[row], sizeof(guide[row]), "%s %s",
+                     physicalLabels[physical], glass2PhysicalGuideAction(mapping, physical));
+        }
+        snprintf(guide[3], sizeof(guide[3]), "%s",
+                 page == 0 ? "BALL 照準・高度" : "WHEEL+/- 武器切替");
         for (int i = 0; i < rows; ++i)
         {
             g.setCursor(2, 13 + i * 12);
@@ -1187,27 +1341,62 @@ static void glass2Task(void*)
     }
 }
 
+static constexpr uint32_t GLASS2_OFFLINE_WAIT_MS = 5000;
+static constexpr uint32_t GLASS2_NAPE_SETTLE_MS = 1500;
+
+static constexpr bool glass2StartupWaitElapsed(uint32_t now, uint32_t waitStartedMs,
+                                              uint32_t napeReadySinceMs,
+                                              bool napeReady)
+{
+    return napeReady
+        ? (uint32_t)(now - napeReadySinceMs) >= GLASS2_NAPE_SETTLE_MS
+        : (uint32_t)(now - waitStartedMs) >= GLASS2_OFFLINE_WAIT_MS;
+}
+
 extern "C" void core2_glass2_service(void)
 {
     if (s_glass2Ready) return;
 
-    const uint32_t now = millis();
-    // USB enumeration is timing-sensitive on this hardware. Let Nape mount
-    // all interfaces and remain stable before starting the external I2C bus.
-    if (!nape_game_source_ready())
-    {
-        s_glass2NapeReadySinceMs = 0;
-        return;
-    }
-    if (!s_glass2NapeReadySinceMs)
-    {
-        s_glass2NapeReadySinceMs = now;
-        s_glass2NextInitMs = now + 1500;
-        Serial.println("[GLASS2] DEFERRED; waiting 1500ms after Nape online");
-        return;
-    }
-    if ((int32_t)(now - s_glass2NextInitMs) < 0) return;
+    static bool waitStarted = false;
+    static bool napeWasReady = false;
+    static bool retryScheduled = false;
+    static bool standaloneLogged = false;
+    static uint32_t waitStartedMs = 0;
 
+    const uint32_t now = millis();
+    if (!waitStarted)
+    {
+        waitStarted = true;
+        waitStartedMs = now;
+        Serial.println("[GLASS2] WAIT USB; offline timeout=5000ms settle=1500ms");
+    }
+
+    const bool napeReady = nape_game_source_ready();
+    if (napeReady)
+    {
+        if (!napeWasReady)
+        {
+            napeWasReady = true;
+            s_glass2NapeReadySinceMs = now;
+            Serial.println("[GLASS2] DEFERRED; waiting 1500ms after Nape online");
+        }
+    }
+    else
+    {
+        napeWasReady = false;
+        s_glass2NapeReadySinceMs = 0;
+    }
+
+    if (!glass2StartupWaitElapsed(now, waitStartedMs,
+                                 s_glass2NapeReadySinceMs, napeReady)) return;
+    if (retryScheduled && (int32_t)(now - s_glass2NextInitMs) < 0) return;
+
+    if (!napeReady && !standaloneLogged)
+    {
+        standaloneLogged = true;
+        Serial.println("[GLASS2] STANDALONE; starting without Nape USB");
+    }
+    retryScheduled = true;
     ++s_glass2InitAttempts;
     Serial.printf("[GLASS2] PROBE attempt=%u SDA=%d SCL=%d\n",
                   (unsigned)s_glass2InitAttempts, napetune_board::pins.glass_sda, napetune_board::pins.glass_scl);
@@ -1252,29 +1441,29 @@ static bool isNapetuneAction(uint8_t action)
 static const char* configItemName(uint8_t item)
 {
     static const char* names[] = {
-        "M1", "M2", "F9", "F10", "F11", "F12",
+        "M1", "M2", "F8", "F9", "F10", "F11", "F12",
         "X SENSITIVITY", "Y SENSITIVITY", "BOOST POWER",
-        "MECHA RENDER", "DEMO AUTOPILOT", "COMMS AUTO PAUSE",
+        "MECHA RENDER", "STORY/DEMO AUTO", "COMMS AUTO PAUSE",
         "RESET DEFAULT"
     };
-    return item < 13 ? names[item] : "?";
+    return item < 14 ? names[item] : "?";
 }
 
 static void resetConfigDefaults()
 {
-    static const uint8_t keyDefaults[4] = {
+    static const uint8_t keyDefaults[5] = {
         NAPE_ACTION_GUIDE_TOGGLE, NAPE_ACTION_RUN_TOGGLE,
-        NAPE_ACTION_THROTTLE_UP, NAPE_ACTION_THROTTLE_DOWN
+        NAPE_ACTION_THROTTLE_UP, NAPE_ACTION_THROTTLE_DOWN, NAPE_ACTION_FLARE
     };
     nape_game_source_set_mouse_action(0, NAPE_ACTION_FIRE);
     nape_game_source_set_mouse_action(1, NAPE_ACTION_USE);
-    for (uint8_t i = 0; i < 4; ++i)
+    for (uint8_t i = 0; i < 5; ++i)
         nape_game_source_set_key_action(i, keyDefaults[i]);
     static const int tuningDefaults[9] = {100, 65, 110, 64, 16, 32, 75, 100, 100};
     for (uint8_t i = 6; i < 9; ++i)
         game_input_set_tuning(i, tuningDefaults[i]);
     mecha_game_set_hybrid_render(true);
-    mecha_game_set_autopilot(false);
+    mecha_game_set_autopilot(true);
     s_glass2AutoPauseEnabled = true;
     markConfigChanged();
     Serial.println("[NAPE CONFIG] defaults restored");
@@ -1284,6 +1473,7 @@ static void loadConfig()
 {
     if (!s_configStore.begin("nape_cfg", false)) return;
     s_configStoreReady = true;
+    glass2LoadGuideCache();
     if (s_configStore.getUChar("version", 0) != 1)
     {
         resetConfigDefaults();
@@ -1297,12 +1487,12 @@ static void loadConfig()
         const uint8_t saved = s_configStore.getUChar(key, fallback);
         nape_game_source_set_mouse_action(i, isNapetuneAction(saved) ? saved : fallback);
     }
-    static const uint8_t keyDefaults[4] = {
+    static const uint8_t keyDefaults[5] = {
         NAPE_ACTION_GUIDE_TOGGLE, NAPE_ACTION_RUN_TOGGLE,
-        NAPE_ACTION_THROTTLE_UP, NAPE_ACTION_THROTTLE_DOWN
+        NAPE_ACTION_THROTTLE_UP, NAPE_ACTION_THROTTLE_DOWN, NAPE_ACTION_FLARE
     };
-    uint8_t loadedKeys[4];
-    for (uint8_t i = 0; i < 4; ++i)
+    uint8_t loadedKeys[5];
+    for (uint8_t i = 0; i < 5; ++i)
     {
         char key[4]; snprintf(key, sizeof(key), "k%u", i);
         loadedKeys[i] = s_configStore.getUChar(key, keyDefaults[i]);
@@ -1318,7 +1508,7 @@ static void loadConfig()
         s_configStore.putUChar("k3", loadedKeys[3]);
         Serial.println("[NAPE CONFIG] F11/F12 migrated to throttle up/down");
     }
-    for (uint8_t i = 0; i < 4; ++i)
+    for (uint8_t i = 0; i < 5; ++i)
         nape_game_source_set_key_action(i, isNapetuneAction(loadedKeys[i]) ? loadedKeys[i] : keyDefaults[i]);
     static const int tuningDefaults[9] = {100, 65, 110, 64, 16, 32, 75, 100, 100};
     for (uint8_t i = 0; i < 9; ++i)
@@ -1328,7 +1518,15 @@ static void loadConfig()
     }
     s_reticleEnabled = s_configStore.getBool("reticle", true);
     mecha_game_set_hybrid_render(s_configStore.getBool("hybrid", true));
-    mecha_game_set_autopilot(s_configStore.getBool("autopilot", false));
+    // Enable the new default once for existing installs, then preserve user OFF.
+    const bool migrateAutopilotDefault = !s_configStore.getBool("apDefaultOn", false);
+    mecha_game_set_autopilot(migrateAutopilotDefault ||
+                             s_configStore.getBool("autopilot", true));
+    if (migrateAutopilotDefault)
+    {
+        markConfigChanged();
+        Serial.println("[NAPE CONFIG] autopilot default migrated to ON");
+    }
     s_glass2AutoPauseEnabled = s_configStore.getBool("commPause", true);
     Serial.println("[NAPE CONFIG] saved settings loaded");
 }
@@ -1342,7 +1540,7 @@ static const char* actionName(uint8_t action)
         case NAPE_ACTION_STRAFE_LEFT:  return "STRAFE LEFT";
         case NAPE_ACTION_STRAFE_RIGHT: return "STRAFE RIGHT";
         case NAPE_ACTION_FIRE:         return "FIRE";
-        case NAPE_ACTION_USE:          return "USE";
+        case NAPE_ACTION_USE:          return "ROLL";
         case NAPE_ACTION_WEAPON_NEXT:  return "WEAPON NEXT";
         case NAPE_ACTION_FORWARD:      return "FORWARD";
         case NAPE_ACTION_BACKWARD:     return "BACKWARD";
@@ -1360,26 +1558,26 @@ static const char* actionName(uint8_t action)
 static void adjustConfigItem(int direction)
 {
     const uint8_t item = s_configSelection;
-    if (item < 6)
+    if (item < 7)
     {
         const uint8_t current = item < 2
             ? nape_game_source_get_mouse_action(item)
-            : nape_game_source_get_key_action(item - 2);
+            : nape_game_source_get_key_action((item == 2 ? 4 : item - 3));
         const int count = sizeof(s_configActions) / sizeof(s_configActions[0]);
         int index = 0;
         for (int i = 0; i < count; ++i)
             if (s_configActions[i] == current) index = i;
         const uint8_t action = s_configActions[(index + (direction > 0 ? 1 : count - 1)) % count];
         if (item < 2) nape_game_source_set_mouse_action(item, action);
-        else nape_game_source_set_key_action(item - 2, action);
+        else nape_game_source_set_key_action((item == 2 ? 4 : item - 3), action);
     }
-    else if (item < 9)
-        game_input_adjust_tuning(item, direction > 0 ? 5 : -5);
-    else if (item == 9)
-        mecha_game_set_hybrid_render(direction > 0);
+    else if (item < 10)
+        game_input_adjust_tuning(item - 1, direction > 0 ? 5 : -5);
     else if (item == 10)
-        mecha_game_set_autopilot(direction > 0);
+        mecha_game_set_hybrid_render(direction > 0);
     else if (item == 11)
+        mecha_game_set_autopilot(direction > 0);
+    else if (item == 12)
         s_glass2AutoPauseEnabled = direction > 0;
     else
     {
@@ -1392,10 +1590,10 @@ static void adjustConfigItem(int direction)
 static void moveConfigSelection(int direction)
 {
     int next = (int)s_configSelection + (direction >= 0 ? 1 : -1);
-    if (next < 0) next = 12;
-    if (next > 12) next = 0;
+    if (next < 0) next = 13;
+    if (next > 13) next = 0;
     s_configSelection = (uint8_t)next;
-    s_configPage = next >= 9 ? 2 : (next >= 6 ? 1 : 0);
+    s_configPage = next >= 10 ? 2 : (next >= 7 ? 1 : 0);
     s_configDirty = true;
 }
 
@@ -1447,8 +1645,8 @@ static void drawConfigScreen()
     M5.Display.setCursor(237, 39); M5.Display.print("OPTIONS");
 
     const uint8_t item = s_configSelection;
-    const uint8_t first = s_configPage == 0 ? 0 : (s_configPage == 1 ? 6 : 9);
-    const uint8_t last = s_configPage == 0 ? 5 : (s_configPage == 1 ? 8 : 12);
+    const uint8_t first = s_configPage == 0 ? 0 : (s_configPage == 1 ? 7 : 10);
+    const uint8_t last = s_configPage == 0 ? 6 : (s_configPage == 1 ? 9 : 13);
     const uint8_t previous = item == first ? last : item - 1;
     const uint8_t next = item == last ? first : item + 1;
 
@@ -1466,20 +1664,20 @@ static void drawConfigScreen()
     M5.Display.setTextColor(WHITE, NAVY);
     M5.Display.setCursor(20, 139);
     M5.Display.print("< ");
-    if (item < 6)
+    if (item < 7)
     {
         const uint8_t action = item < 2
             ? nape_game_source_get_mouse_action(item)
-            : nape_game_source_get_key_action(item - 2);
+            : nape_game_source_get_key_action((item == 2 ? 4 : item - 3));
         M5.Display.print(actionName(action));
     }
-    else if (item < 9)
-        M5.Display.printf("%d%%", game_input_get_tuning(item));
-    else if (item == 9)
-        M5.Display.print(mecha_game_get_hybrid_render() ? "HYBRID" : "LINE");
+    else if (item < 10)
+        M5.Display.printf("%d%%", game_input_get_tuning(item - 1));
     else if (item == 10)
-        M5.Display.print(mecha_game_get_autopilot() ? "ON" : "OFF");
+        M5.Display.print(mecha_game_get_hybrid_render() ? "HYBRID" : "LINE");
     else if (item == 11)
+        M5.Display.print(mecha_game_get_autopilot() ? "ON" : "OFF");
+    else if (item == 12)
         M5.Display.print(s_glass2AutoPauseEnabled ? "ON" : "OFF");
     else
         M5.Display.print("M2: RESTORE");
@@ -1518,13 +1716,13 @@ extern "C" void core2_config_touch(int x, int y)
     if (y >= 28 && y < 58)
     {
         s_configPage = x < 107 ? 0 : (x < 214 ? 1 : 2);
-        s_configSelection = s_configPage == 0 ? 0 : (s_configPage == 1 ? 6 : 9);
+        s_configSelection = s_configPage == 0 ? 0 : (s_configPage == 1 ? 7 : 10);
         s_configDirty = true;
         return;
     }
     // For the NapeTune sensitivity/boost rows, the whole content area is
     // a large decrement/increment control. A/B handle item navigation.
-    if (s_configSelection >= 6 && s_configSelection < 9 && y >= 58 && y < 200)
+    if (s_configSelection >= 7 && s_configSelection < 10 && y >= 58 && y < 200)
     {
         adjustConfigItem(x < 160 ? -1 : 1);
         return;
@@ -1565,6 +1763,7 @@ extern "C" void core2_config_nape_buttons(uint8_t buttons)
 
 extern "C" void core2_config_service(void)
 {
+    glass2SaveGuideCache();
     if (!s_configStoreReady || !s_configSavePending) return;
     if (s_configChangedMs != 0 && millis() - s_configChangedMs < 1000) return;
     for (uint8_t i = 0; i < 2; ++i)
@@ -1572,7 +1771,7 @@ extern "C" void core2_config_service(void)
         char key[4]; snprintf(key, sizeof(key), "m%u", i);
         s_configStore.putUChar(key, nape_game_source_get_mouse_action(i));
     }
-    for (uint8_t i = 0; i < 4; ++i)
+    for (uint8_t i = 0; i < 5; ++i)
     {
         char key[4]; snprintf(key, sizeof(key), "k%u", i);
         s_configStore.putUChar(key, nape_game_source_get_key_action(i));
@@ -1586,6 +1785,7 @@ extern "C" void core2_config_service(void)
     s_configStore.putBool("reticle", s_reticleEnabled);
     s_configStore.putBool("hybrid", mecha_game_get_hybrid_render());
     s_configStore.putBool("autopilot", mecha_game_get_autopilot());
+    s_configStore.putBool("apDefaultOn", true);
     s_configStore.putBool("commPause", s_glass2AutoPauseEnabled);
     s_configSavePending = false;
     Serial.println("[NAPE CONFIG] settings saved");
@@ -1793,7 +1993,7 @@ extern "C" void core2_platform_init(void)
 
     Serial.println();
     Serial.println("NAPETUNE GAME MODE v0.5");
-    Serial.println("PROTOTYPE / PURE ARDUINO");
+    Serial.println("PRBOOM / PURE ARDUINO");
 
     s_rgbFrame = (uint16_t*)heap_caps_malloc(
         320 * 240 * sizeof(uint16_t),
@@ -1814,12 +2014,12 @@ extern "C" void core2_platform_init(void)
     M5.Display.setTextSize(2);
     M5.Display.setTextColor(CYAN, BLACK);
     M5.Display.setCursor(20, 42);
-    M5.Display.print("NAPETUNE");
+    M5.Display.print("DOOM CORE");
 
     M5.Display.setTextSize(1);
     M5.Display.setTextColor(GREEN, BLACK);
     M5.Display.setCursor(20, 76);
-    M5.Display.print("INITIALIZING CONTROLS...");
+    M5.Display.print("INITIALIZING PRBOOM...");
 
     // Disable MAX3421E on the shared SPI bus before SD init.
     pinMode(NAPETUNE_USB_CS_PIN, OUTPUT);

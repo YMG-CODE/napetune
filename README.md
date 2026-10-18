@@ -37,7 +37,7 @@ Nape ProとM5Stackを組み合わせたケース試作機です。
 ## 対応ハードウェア
 
 M5Stack CoreS3 Lite本体、USB Module v1.2 / MAX3421E、Nape Proの対応USBドングルを使用します。
-保存・外部素材にはmicroSDを使用します。
+保存・外部素材にはmicroSDを使用します。[SDカードの使い方](docs/sd-card.md)を参照してください。
 
 | 構成 |
 |---|

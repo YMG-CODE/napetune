@@ -3,13 +3,13 @@
 Napetuneは次のライブラリ・フォントを利用しています。
 第三者のソース内の著作権表示・ライセンス文は維持し、YMGWorks独自コードのMITや作品素材の条件とは分けて扱います。
 
-下表はこの`prototype/`の共通ソースに対応します。別添ソースから作成するCore2用デモ版はM5Unified 0.2.23／M5GFX 0.2.30を使用し、
-その対応ソース・通知・再リンク資料をリリースに添付しています。[機種別の対応ソース](../docs/firmware.md)を参照してください。
+下表はこの`prototype/`の共通開発ソースに対応します。ライブラリ版は機種別のビルド環境で固定しています。
+公開済みリリースの対応ソース・通知・再リンク資料は、そのリリースの添付物を参照してください。[機種別の対応ソース](../docs/firmware.md)を参照してください。
 
 | 対象 | 使用版・構成 | ライセンス・通知 |
 |---|---|---|
-| [M5Unified](https://github.com/m5stack/M5Unified) | 0.2.25 | [MIT](LICENSES/M5Unified-MIT.txt) |
-| [M5GFX](https://github.com/m5stack/M5GFX) | 0.2.32 | [MIT](LICENSES/M5GFX-MIT.txt)および内部コンポーネントの条件 |
+| [M5Unified](https://github.com/m5stack/M5Unified) | CoreS3 Lite: 0.2.25 / Core2: 0.2.23 | [MIT](LICENSES/M5Unified-MIT.txt) |
+| [M5GFX](https://github.com/m5stack/M5GFX) | CoreS3 Lite: 0.2.32 / Core2: 0.2.30 | [MIT](LICENSES/M5GFX-MIT.txt)および内部コンポーネントの条件 |
 | [M5 MAX3421E USB library](https://github.com/m5stack/M5-Max3421E-USBShield) | 同梱改変版（library.properties: 1.0.0） | [MIT](lib/M5-Max3421E-USBShield/LICENSE)。同梱ソースの表示を維持 |
 | TinyUSB / Adafruit TinyUSB由来コード | USBライブラリに同梱。TinyUSB内部表記0.19.0 | 各ソース冒頭のMIT・著作権表示 |
 | ST STM32 FSDEV定義 | 同梱USBソース内の別機種向け定義 | [元のBSD系表示](lib/M5-Max3421E-USBShield/src/portable/st/stm32_fsdev/fsdev_stm32.h) |
