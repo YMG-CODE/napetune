@@ -55,7 +55,8 @@ python -m esptool --chip esp32 --port COM10 --baud 460800 write_flash 0x0 Napetu
   M5Unified 0.2.23／M5GFX 0.2.30を使用します。`core2-demo/`をPlatformIOで開いてビルドします。
 - **CoreS3 Lite**：`source/prototype/`が対応ソースです。リリース記載のソースコミットとM5Unified 0.2.25／M5GFX 0.2.32を使用します。
 
-リポジトリ内の共通ソースに残る従来のCore2環境と、今回のCore2配布バイナリの対応ソースは区別してください。
+現在の`prototype/`は両機種共通の開発ソースで、上記リリース以降の修正を含みます。
+最新ソースのビルド方法は[導入方法](getting-started.md)を参照してください。公開済みリリースのバイナリや対応ソースは変更していません。
 
 ソフトウェアと作品素材の条件は[既存の適用範囲](../LICENSE.md)、外部ライブラリは[第三者通知](../prototype/THIRD_PARTY_NOTICES.md)に従います。
 バイナリの提供によって作品素材の利用条件を変更するものではありません。

@@ -71,7 +71,7 @@ int s_showcaseTouchLastY = 0;
 volatile uint8_t s_modelCaptureRequest = 0;
 bool s_modelCaptureClean = false;
 bool s_hybridRenderEnabled = true;
-bool s_autoPilotEnabled = false;
+bool s_autoPilotEnabled = true;
 bool s_autoPilotWasDriving = false;
 bool s_autoPilotFireDown = false;
 bool s_autoPilotUseDown = false;
@@ -4763,7 +4763,7 @@ void drawDemoUnlockGuide()
     M5.Display.drawString("30秒以内にEXIT POINTへ到達せよ", 14, 166);
     M5.Display.setTextColor(YELLOW, BLACK);
     M5.Display.setTextDatum(middle_center);
-    M5.Display.drawString("M1 : START", 160, 216);
+    M5.Display.drawString("M1/B : START", 160, 216);
     M5.Display.setTextDatum(top_left);
     M5.Display.setFont(&fonts::Font0);
     napetune_lcd_release();
@@ -4877,7 +4877,7 @@ void drawDemoResult(bool success, uint32_t now)
         {
             s_frame.setFont(&fonts::Font0);
             s_frame.setTextColor(YELLOW, BLACK);
-            s_frame.drawString("M1 : NEXT", CX, 123);
+            s_frame.drawString("M1/B : NEXT", CX, 123);
         }
         s_frame.setTextDatum(top_left);
         s_frame.setFont(&fonts::Font0);
@@ -4918,7 +4918,7 @@ void drawDemoEndCard()
     M5.Display.setTextDatum(middle_center);
     M5.Display.setFont(&fonts::Font2);
     M5.Display.setTextColor(YELLOW, BLACK);
-    M5.Display.drawString("M1 : BACK TO MENU", 160, 222);
+    M5.Display.drawString("M1/B : BACK TO MENU", 160, 222);
     M5.Display.setTextDatum(top_left);
     M5.Display.setFont(&fonts::Font0);
     napetune_lcd_release();
@@ -5626,20 +5626,20 @@ bool mecha_game_update()
                 M5.Display.drawString("イズ / COMMS", 160, 18);
                 M5.Display.drawPng(iz_comms_face_start,
                     (size_t)(iz_comms_face_end - iz_comms_face_start), 84, 34);
-                M5.Display.fillRect(92, 202, 136, 29, BLACK);
-                M5.Display.drawRect(92, 202, 136, 29, CYAN);
-                M5.Display.setTextColor(WHITE, BLACK);
-                M5.Display.drawString("GLASS2を確認", 160, 216);
             }
             else
             {
-                M5.Display.fillRect(66, 156, 188, 56, BLACK);
-                M5.Display.drawRect(66, 156, 188, 56, CYAN);
+                M5.Display.fillRect(66, 140, 188, 56, BLACK);
+                M5.Display.drawRect(66, 140, 188, 56, CYAN);
                 M5.Display.setFont(&fonts::lgfxJapanGothic_16);
                 M5.Display.setTextColor(CYAN, BLACK);
-                M5.Display.drawString("重要通信", 160, 172);
-                M5.Display.drawString("GLASS2を確認", 160, 195);
+                M5.Display.drawString("重要通信", 160, 156);
+                M5.Display.drawString("GLASS2を確認", 160, 179);
             }
+            M5.Display.fillRect(110, 202, 90, 29, BLACK);
+            M5.Display.drawRect(110, 202, 90, 29, CYAN);
+            M5.Display.setTextColor(WHITE, BLACK);
+            M5.Display.drawString("NEXT [B]", 155, 216);
             M5.Display.setTextDatum(top_left);
             M5.Display.setFont(&fonts::Font0);
             napetune_lcd_release();
@@ -5696,7 +5696,7 @@ bool mecha_game_update()
             M5.Display.setFont(&fonts::lgfxJapanGothic_16);
             M5.Display.setTextColor(YELLOW, BLACK);
             M5.Display.setTextDatum(middle_center);
-            M5.Display.drawString("Press M1!", 160, 215);
+            M5.Display.drawString("Press M1 / B!", 160, 215);
             M5.Display.setTextDatum(top_left);
             M5.Display.setFont(&fonts::Font0);
             napetune_lcd_release();
@@ -5894,15 +5894,16 @@ bool mecha_game_update()
             core2_glass2_context("FLARE", "AUTO INTERCEPT",
                 "フレア展開　迎撃");
         }
-        // Keep the cinematic missile at a threatening but safe distance until
-        // the roll finishes. Once the flare is away, normal homing/intercept
-        // timing resumes and resolves the hit visually.
+        // This scripted interception must not enter the normal threat update:
+        // autopilot suppression there can discard the cinematic missile and
+        // its pending flare before the detonation deadline.
         if (s_demoRevealMissileAlerted)
         {
             if (!s_demoRevealFlareLaunched)
                 s_rearMissileElapsedMs = 3000;
-            else
-                updateRearMissile(elapsed, now, true);
+            else if (s_flareInterceptPending &&
+                     (int32_t)(now - s_flareInterceptAtMs) >= 0)
+                resolveRearMissile(now, "INTERCEPTED FLARE", false);
         }
         mecha_game_draw();
         s_lastDrawMs = millis();

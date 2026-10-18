@@ -51,6 +51,7 @@ void core2_glass2_toggle_demo_page(void);
 int core2_glass2_dialogue_active(void);
 int core2_glass2_current_speaker_is_izu(void);
 void core2_glass2_nape_buttons(uint8_t buttons);
+void core2_glass2_local_buttons(uint8_t buttons);
 uint8_t core2_glass2_lounge_expression(void);
 
 #ifdef __cplusplus

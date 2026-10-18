@@ -449,8 +449,8 @@ void drawLoungeScene()
         g.drawString("DIALOGUE LINK / IZ", 23, 62);
         g.setTextColor(WHITE, 0x0862);
         g.drawString("GLASS2で返答を選択", 23, 88);
-        g.drawString("M2  SELECT", 23, 116);
-        g.drawString("M1  NEXT / OK", 23, 132);
+        g.drawString("C / M2  SELECT", 23, 116);
+        g.drawString("B / M1  NEXT / OK", 23, 132);
         g.setTextColor(DARKGREY, 0x0862);
         g.drawString("会話中...", 23, 157);
         const uint8_t expression = min((uint8_t)9,
@@ -459,6 +459,14 @@ void drawLoungeScene()
             s_izPortraitFrames[expression]->pushSprite(&g, 210, 45);
         else
             drawIzSprite(g, 237, 91, 0, 0);
+        g.setFont(&fonts::lgfxJapanGothic_16);
+        g.setTextColor(WHITE, BLACK);
+        g.setTextDatum(middle_center);
+        g.drawRect(14, 202, 64, 29, WHITE);
+        g.drawString("戻る", 46, 216);
+        g.drawRect(110, 202, 90, 29, CYAN);
+        g.drawString("NEXT [B]", 155, 216);
+        g.setTextDatum(top_left);
         g.pushSprite(0, 0);
         return;
     }
@@ -609,7 +617,7 @@ void drawRoom()
     M5.Display.setTextColor(s_room->saveFailed ? RED : DARKGREY, BLACK);
     if (s_room->saveFailed)
         M5.Display.drawString("保存できませんでした", 13, 213);
-    if (!s_room->hangar)
+    if (!s_room->hangar && !core2_glass2_dialogue_active())
     {
         M5.Display.drawString("M1 / 画面タップ：話す", 13, 232);
         drawButton(14, "戻る", false);
@@ -815,11 +823,28 @@ void mode_room_begin(bool hangar)
 bool mode_room_update()
 {
     if (!s_room) return true;
+    const bool dialogueAtPollStart = !s_room->hangar && core2_glass2_dialogue_active();
     GameInputState input = {};
     game_input_poll(&input);
     const bool touchDown = M5.Touch.getCount() > 0;
     bool touchActionHandled = false;
-    if (touchDown && !s_room->touchWasDown)
+    const bool dialogueOwnsTouch = !s_room->hangar &&
+        (dialogueAtPollStart || core2_glass2_dialogue_active());
+    const bool confirmOrCycleActive = M5.BtnB.isPressed() || M5.BtnB.wasPressed() ||
+        M5.BtnC.isPressed() || M5.BtnC.wasPressed();
+    if (dialogueOwnsTouch)
+    {
+        // Dialogue confirmation/selection is owned by the shared input source.
+        // The only extra lounge gesture is this disjoint on-screen BACK button.
+        touchActionHandled = true;
+        if (!confirmOrCycleActive && touchDown && !s_room->touchWasDown)
+        {
+            const auto touch = M5.Touch.getDetail(0);
+            if (touch.isPressed() && touch.x >= 14 && touch.x < 78 &&
+                touch.y >= 202 && touch.y < 231) return true;
+        }
+    }
+    else if (touchDown && !s_room->touchWasDown)
     {
         const auto touch = M5.Touch.getDetail(0);
         if (touch.isPressed())
@@ -832,14 +857,7 @@ bool mode_room_update()
             }
             else if (!s_room->hangar)
             {
-                if (core2_glass2_dialogue_active())
-                {
-                    // A lounge screen tap mirrors one fresh M1 edge. Resetting
-                    // immediately preserves the bridge's normal edge detector.
-                    core2_glass2_nape_buttons(0x01);
-                    core2_glass2_nape_buttons(0x00);
-                }
-                else talkToIz();
+                talkToIz();
                 touchActionHandled = true;
             }
         }

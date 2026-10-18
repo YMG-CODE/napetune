@@ -16,7 +16,7 @@
 // y=120..179 right  WEAPON NEXT
 // y>=180             reserved for Core2 A/B/C strip
 //
-// A = TURN LEFT
+// A = TRANSFORM / BOOST (same input as Nape 01)
 // B = FIRE (+ short ENTER pulse)
 // C = TURN RIGHT
 // ============================================================
@@ -90,6 +90,9 @@ extern "C" uint32_t core2_input_source_poll(void)
     static bool configHotspotTracking = false;
     static bool demoTouchWasDown = false;
     static bool menuHotspotTracking = false;
+    static bool dialogueBHeld = false;
+    static bool dialogueCHeld = false;
+    static bool dialogueTouchHeld = false;
     const bool touchDownNow = M5.Touch.getCount() > 0;
     bool configHotspotDown = false;
     int touchX = -1;
@@ -127,6 +130,7 @@ extern "C" uint32_t core2_input_source_poll(void)
 
     if (core2_config_is_active())
     {
+        core2_glass2_local_buttons(0);
         demoTouchWasDown = touchDownNow;
         static bool touchWasDown = false;
         const bool touchDown = touchDownNow;
@@ -152,8 +156,40 @@ extern "C" uint32_t core2_input_source_poll(void)
     // Reserve the battery icon hotspot exclusively for opening config.
     if (configHotspotDown)
     {
+        core2_glass2_local_buttons(0);
         demoTouchWasDown = touchDownNow;
         return finishPoll(0);
+    }
+
+    if (!M5.BtnB.isPressed()) dialogueBHeld = false;
+    if (!M5.BtnC.isPressed()) dialogueCHeld = false;
+
+    if (core2_glass2_dialogue_active())
+    {
+        // Core2 A/B/C are also touch contacts. Never turn a C touch into M1.
+        const bool cActive = M5.BtnC.isPressed() || M5.BtnC.wasPressed();
+        const bool stripActive = cActive || M5.BtnA.isPressed() || M5.BtnA.wasPressed() ||
+            M5.BtnB.isPressed() || M5.BtnB.wasPressed();
+        const bool nextTap = !stripActive && touchDownNow && !demoTouchWasDown &&
+            touchX >= 110 && touchX < 200 && touchY >= 202 && touchY < 231;
+        uint8_t localButtons = 0;
+        if (!cActive && ((!dialogueBHeld && M5.BtnB.wasPressed()) || nextTap)) localButtons |= 0x01;
+        if (!dialogueCHeld && M5.BtnC.wasPressed()) localButtons |= 0x02;
+        core2_glass2_local_buttons(localButtons);
+        dialogueBHeld = M5.BtnB.isPressed();
+        dialogueCHeld = M5.BtnC.isPressed();
+        dialogueTouchHeld = touchDownNow;
+        demoTouchWasDown = touchDownNow;
+        menuHotspotTracking = false;
+        // Dialogue owns this press; do not also fire, steer or select a menu.
+        return finishPoll(0);
+    }
+    core2_glass2_local_buttons(0);
+    if (dialogueTouchHeld)
+    {
+        demoTouchWasDown = touchDownNow;
+        if (touchDownNow) return finishPoll(0);
+        dialogueTouchHeld = false;
     }
 
     if (core2_glass2_demo_playing())
@@ -186,15 +222,15 @@ extern "C" uint32_t core2_input_source_poll(void)
 
     if (M5.BtnA.isPressed())
     {
-        mask |= GAME_INPUT_TURN_LEFT;
+        mask |= GAME_INPUT_RUN;
     }
 
-    if (M5.BtnC.isPressed())
+    if (M5.BtnC.isPressed() && !dialogueCHeld)
     {
         mask |= GAME_INPUT_TURN_RIGHT;
     }
 
-    if (M5.BtnB.isPressed())
+    if (M5.BtnB.isPressed() && !dialogueBHeld)
     {
         mask |= GAME_INPUT_FIRE;
     }
@@ -202,7 +238,7 @@ extern "C" uint32_t core2_input_source_poll(void)
     // B also provides a short menu ENTER pulse on the press edge.
     static uint32_t enterPulseUntil = 0;
 
-    if (M5.BtnB.wasPressed())
+    if (M5.BtnB.wasPressed() && !dialogueBHeld)
     {
         enterPulseUntil = millis() + 90;
     }

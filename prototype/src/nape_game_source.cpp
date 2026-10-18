@@ -89,11 +89,12 @@ static uint16_t s_lastConfigKeyTick = 0;
 static constexpr uint16_t WHEEL_CHORD_GUARD_MS = 250;
 static bool s_runToggle = false;
 static volatile uint32_t s_auxGameButtons = 0;
-static volatile uint8_t s_keyActions[4] = {
+static volatile uint8_t s_keyActions[5] = {
     NAPE_ACTION_MAP,
     NAPE_ACTION_RUN_TOGGLE,
     NAPE_ACTION_STRAFE_LEFT,
     NAPE_ACTION_STRAFE_RIGHT,
+    NAPE_ACTION_FLARE
 };
 static volatile uint8_t s_mouseActions[2] = {
     NAPE_ACTION_FIRE,
@@ -1568,12 +1569,12 @@ uint32_t nape_game_source_motion_age_ms(void)
 
 uint8_t nape_game_source_get_key_action(uint8_t index)
 {
-    return index < 4 ? s_keyActions[index] : NAPE_ACTION_OFF;
+    return index < 5 ? s_keyActions[index] : NAPE_ACTION_OFF;
 }
 
 void nape_game_source_set_key_action(uint8_t index, uint8_t action)
 {
-    if (index >= 4 || action > NAPE_ACTION_FLARE) return;
+    if (index >= 5 || action > NAPE_ACTION_FLARE) return;
     s_keyActions[index] = action;
 }
 
@@ -2004,13 +2005,12 @@ void tuh_hid_report_received_cb(
     // Nape can route its two wheel directions through IF2 as configurable
     // keyboard usages. Resolve each report against the WHEEL+/WHEEL- values
     // read from the active layer, preserving direction instead of forcing
-    // every detent to +1. F8 (HID usage 0x41) is reserved for FLARE.
+    // every detent to +1. F8-F12 follow the game action configuration.
     if (instance == 2 && report && len == 9 && report[0] == 0x01)
     {
         bool wheelPlusDown = false;
         bool wheelMinusDown = false;
-        bool flareKeyDown = false;
-        bool configKeyDown[4] = {};
+        bool configKeyDown[5] = {};
         const uint8_t activeLayer = s_currentLayer >= 0 && s_currentLayer < 8
             ? (uint8_t)s_currentLayer : 7;
         const bool wheelPairValid =
@@ -2032,13 +2032,13 @@ void tuh_hid_report_received_cb(
                 (key != 0 && key == wheelPlusUsage)) wheelPlusDown = true;
             if (key == 0x40 ||
                 (key != 0 && key == wheelMinusUsage)) wheelMinusDown = true;
-            if (key == 0x41) flareKeyDown = true;
+            if (key == 0x41) configKeyDown[4] = true;
             else if (key >= 0x42 && key <= 0x45)
                 configKeyDown[key - 0x42] = true;
         }
 
         uint8_t configKeyMask = 0;
-        for (uint8_t i = 0; i < 4; ++i)
+        for (uint8_t i = 0; i < 5; ++i)
             if (configKeyDown[i]) configKeyMask |= (uint8_t)(1u << i);
         if (configKeyMask || s_if2ConfigKeyMask)
             s_lastConfigKeyTick = (uint16_t)now;
@@ -2066,9 +2066,9 @@ void tuh_hid_report_received_cb(
         }
         s_if2WheelPlusDown = wheelPlusDown;
         s_if2WheelMinusDown = wheelMinusDown;
-        s_if2FlareKeyDown = flareKeyDown;
+        s_if2FlareKeyDown = false;
 
-        for (uint8_t i = 0; i < 4; ++i)
+        for (uint8_t i = 0; i < 5; ++i)
         {
             if (
                 s_keyActions[i] == NAPE_ACTION_RUN_TOGGLE &&
@@ -2087,8 +2087,7 @@ void tuh_hid_report_received_cb(
 
         uint32_t aux = 0;
         if (s_runToggle) aux |= GAME_INPUT_RUN;
-        if (s_if2FlareKeyDown) aux |= GAME_INPUT_FLARE;
-        for (uint8_t i = 0; i < 4; ++i)
+        for (uint8_t i = 0; i < 5; ++i)
         {
             if (!configKeyDown[i]) continue;
             aux |= actionToButton(s_keyActions[i]);
