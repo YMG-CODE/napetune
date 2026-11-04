@@ -120,7 +120,7 @@ header{position:sticky;top:0;z-index:30}.mainnav-wrap{border-top:1px solid #213e
 .obs-radar{width:118px;height:118px;border:1px solid #47d9e45a;border-radius:50%;background:repeating-radial-gradient(circle,#2ae1f00e 0 1px,transparent 2px 24px),linear-gradient(30deg,transparent 49%,#58edfa40 50%,transparent 51%),linear-gradient(120deg,transparent 49%,#58edfa40 50%,transparent 51%);position:relative;box-shadow:inset 0 0 22px #00e5ff1c}
 .obs-radar:before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,#60efff55,transparent 90deg,transparent 360deg);animation:obs-rotate 4s linear infinite}
 .obs-radar:after{content:"";position:absolute;top:36%;left:60%;width:7px;height:7px;border-radius:50%;background:#ff5d6e;box-shadow:0 0 15px #ff536b;animation:obs-blink 1s step-end infinite}
-.obs-protocol{font-size:clamp(14px,2.5vw,16px);font-weight:700;line-height:1.55;overflow-wrap:anywhere;text-shadow:0 0 10px #ff627866;margin-top:19px;padding:13px;border:1px solid #e86a754f;background:#4d121b33;color:#ff8591;letter-spacing:.08em;box-shadow:inset 0 0 24px #e04b5611;min-height:2em}
+.obs-protocol{display:block;width:100%;box-sizing:border-box;font-family:inherit;text-align:left;cursor:pointer;font-size:clamp(14px,2.5vw,16px);font-weight:700;line-height:1.55;overflow-wrap:anywhere;text-shadow:0 0 10px #ff627866;margin-top:19px;padding:13px;border:1px solid #e86a754f;background:#4d121b33;color:#ff8591;letter-spacing:.08em;box-shadow:inset 0 0 24px #e04b5611;min-height:2em}
 .obs-protocol.triggered{animation:obs-alert .5s ease-in-out 3}
 .obs-footer{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:12px;color:#6fabb5;font-size:10px}
 .obs-replay{border:1px solid #418b99;background:#102a33;color:#b5faff;padding:6px 10px;font:inherit;cursor:pointer}
@@ -237,7 +237,7 @@ function observationMarkup(lines){
   <div class="obs-top"><span>OBSERVATION SYSTEM</span><span>LOG / 01242</span></div>
   <div class="obs-top" style="border:0;padding:0;margin:0 0 13px;font-weight:400"><span>AUTOMATED OBSERVATION RECORD</span><span class="obs-live">● ACTIVE</span></div>
   <div class="obs-grid"><div class="obs-rows">${data.map((x,i)=>`<div class="obs-line ${/超過/.test(x)?'warn':''}" data-line="${i}" data-text="${esc(x)}"></div>`).join('')}</div><div class="obs-radar" aria-hidden="true"></div></div>
-  <div class="obs-protocol" data-protocol></div><div class="obs-float" aria-hidden="true">THRESHOLD EXCEEDED</div>
+  <button type="button" class="obs-protocol" data-protocol aria-label="観測ログを閉じる"></button><div class="obs-float" aria-hidden="true">THRESHOLD EXCEEDED</div>
   <div class="obs-footer"><button class="obs-replay" type="button" aria-label="観測ログの演出を再生">↻ REPLAY</button></div>
  </section>`;
 }
@@ -287,6 +287,7 @@ function setupObservation(){
   overlay.querySelector('.obs-close').focus();
  };
  overlay.querySelector('.obs-close').onclick=close;
+ panel.querySelector('[data-protocol]').onclick=close;
  panel.querySelector('.obs-replay').onclick=()=>playObservation(panel);
  overlay.onclick=e=>{if(e.target===overlay)close()};
  document.addEventListener('keydown',e=>{
